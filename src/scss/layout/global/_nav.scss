@@ -10,15 +10,27 @@
   }
 
   &__link {
+    transition: color $transition-time ease;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $link-hover-color;
+        // font-weight: $weight-Medium;
+      }
+    }
   }
 
   &--header {
-    .nav__item {
+    .nav__list {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+    }
 
+    .nav__item {
     }
 
     .nav__link {
-
     }
   }
 }
