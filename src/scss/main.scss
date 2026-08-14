@@ -1,0 +1,39 @@
+@use "sass:color";
+
+/* Ядро медиа-запросов */
+@import "abstracts/functions/breakpoint";
+@import "vendors/include/scss-libs/sass-mq/sass-mq";
+
+/* Основные импорты */
+@import "abstracts/main";
+
+@import "vendors/include/main";
+
+@import "settings/container";
+@import "settings/vars";
+@import "settings/fonts";
+
+@import "common/reset";
+@import "common/base";
+@import "common/misc";
+
+@import "vendors/override/main";
+@import "vendors/extend/main";
+
+/* ПОРЯДОК ПОДКЛЮЧЕНИЙ ВЫШЕ МЕНЯТЬ ТОЛЬКО ПРИ ОСОБОЙ НЕОБХОДИМОСТИ */
+
+@import "layout/components/main";
+
+/* Глобальные стили */
+@import "layout/global/page";
+@import "layout/global/header";
+@import "layout/global/nav";
+@import "layout/global/footer";
+@import "layout/global/mobile-menu";
+@import "layout/global/section";
+
+/* Стили для повторяющихся блоков */
+@import "layout/partials/main";
+
+/* Стили для шаблонов страниц, подключать новые фрагменты только в _main.scss */
+@import "layout/pages/main";

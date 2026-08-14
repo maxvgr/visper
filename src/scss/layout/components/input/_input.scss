@@ -1,0 +1,51 @@
+.input {
+  position: relative;
+
+  &__field {
+    width: 100%;
+    padding: 20px 25px;
+
+    border: 1px solid $palette-black;
+    outline: none;
+
+    background-color: transparent;
+    color: $color-text__primary;
+
+    font-size: var(--font-text-regular);
+    transition: $transition-time ease;
+
+    &::placeholder {
+      color: #353535;
+    }
+
+    &:focus + .input__label,
+    &:not(:placeholder-shown) + .input__label {
+      top: 4px;
+      transform: scale(0.75);
+    }
+
+    &[type="search"]::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    &[type="number"] {
+      appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        appearance: none;
+      }
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    color: $color-text__primary;
+    pointer-events: none;
+    transform-origin: left top;
+    transition: $transition-time ease;
+  }
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страницы проекта</title>
+
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel-bg: #181b22;
+      --border: #262a34;
+      --text: #e6e8ee;
+      --muted: #9aa0b3;
+
+      --done: #3ddc97;
+      --wip: #f5c26b;
+      --review: #6aa9ff;
+      --todo: #ff6b6b;
+    }
+
+    html {
+      margin-right: 0 !important;
+    }
+
+    body {
+      background: radial-gradient(1200px 600px at 20% -10%, #1c2030, transparent),
+        var(--bg);
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    h1,
+    h2 {
+      font-family: system-ui, sans-serif !important;
+    }
+
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 24px 16px;
+      color: var(--text);
+    }
+
+    .dashboard__header {
+      margin-bottom: 32px;
+    }
+
+    .dashboard__header h1 {
+      margin: 0 0 16px;
+      font-size: 36px;
+    }
+
+    .dashboard__header p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .dashboard__body {
+      margin-bottom: 24px;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .column {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
+        var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      min-height: 60vh;
+    }
+
+    .column h2 {
+      margin: 0 0 16px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    ul li {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid transparent;
+      white-space: nowrap;
+      transition: border-color .15s ease, background .15s ease;
+    }
+
+    ul li::after {
+      content: '';
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      background: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+    }
+
+    .page-item a,
+    .page-item span:first-child {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul a::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+
+    ul li:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .status {
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      background: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+    }
+
+    li.status-todo {
+      color: var(--todo);
+    }
+
+    li.status-todo::after {
+      content: 'Не начато';
+    }
+
+    li.status-wip {
+      color: var(--wip);
+    }
+
+    li.status-wip::after {
+      content: 'В работе';
+    }
+
+    li.status-review {
+      color: var(--review);
+    }
+
+    li.status-review::after {
+      content: 'На проверке';
+    }
+
+    li.status-done {
+      color: var(--done);
+    }
+
+    li.status-done::after {
+      content: 'Готово';
+    }
+
+    .layout-meta {
+      position: sticky;
+      bottom: 16px;
+      margin-top: auto;
+      padding: 14px 20px;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
+        var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      color: var(--text);
+    }
+
+    .layout-meta__item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .layout-meta__item:last-child {
+      margin-left: auto;
+    }
+
+    .layout-meta__label {
+      color: var(--muted);
+    }
+
+    .layout-meta__value {
+      font-weight: 500;
+    }
+
+    .layout-meta__link {
+      color: var(--review);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(106, 169, 255, 0.4);
+    }
+
+    .layout-meta__link:hover {
+      border-bottom-color: transparent;
+    }
+
+    @media (max-width: 640px) {
+      .layout-meta {
+        gap: 12px;
+        padding: 12px 16px;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      .columns {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .columns {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body class="root-page dashboard">
+  <header class="dashboard__header">
+    <h1>Страницы проекта</h1>
+    <p>Текущее состояние вёрстки</p>
+  </header>
+
+  <main class="dashboard__body">
+    <section class="columns">
+      <div class="column">
+        <h2>Основные</h2>
+        <ul>
+          <li class="status-todo"><a href="page-home.html">Главная страница</a></li>
+        </ul>
+      </div>
+
+      <div class="column">
+        <h2>Каталог</h2>
+        <ul>
+
+        </ul>
+      </div>
+
+      <div class="column">
+        <h2>Внутренние</h2>
+        <ul>
+
+        </ul>
+      </div>
+
+      <div class="column">
+        <h2>Прочее</h2>
+        <ul>
+
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="layout-meta">
+    <div class="layout-meta__item">
+      <span class="layout-meta__label">Актуально на:</span>
+      <span class="layout-meta__value">{{ buildDate }}</span>
+    </div>
+
+    <div class="layout-meta__item">
+      <span class="layout-meta__label">Figma:</span>
+      <a class="layout-meta__link" href="" target="_blank" rel="noopener">
+        Открыть макет
+      </a>
+    </div>
+
+    <div class="layout-meta__item">
+      <span class="layout-meta__label">Автор:</span>
+      <span class="layout-meta__value">Никита</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>

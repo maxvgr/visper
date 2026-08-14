@@ -1,0 +1,23 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: var(--border-radius);
+
+  background-color: transparent;
+
+  line-height: 1;
+  text-align: center;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition: all $transition-time ease;
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
