@@ -33,4 +33,47 @@
     .nav__link {
     }
   }
+
+  &--footer {
+    padding-top: 26px;
+
+    .nav__list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+      color: $color-text__white;
+      list-style-type: decimal-leading-zero; /* Делает 1 → 01, 2 → 02 */
+      font-weight: $weight-Medium;
+      counter-reset: my-counter; /* Сброс счетчика (на всякий случай) */
+    }
+
+    .nav__item {
+      position: relative;
+      padding-left: 40px; /* Отступ слева, чтобы текст не наезжал на цифры */
+      list-style-type: none; /* Убираем стандартную нумерацию браузера */
+
+      &::before {
+        content: counter(my-counter, decimal-leading-zero) " - "; /* Формируем: 01 - */
+        position: absolute;
+        left: 0;
+        counter-increment: my-counter; /* Увеличиваем счетчик */
+
+
+
+
+      }
+    }
+
+    .nav__link {
+      color: $color-text__white;
+      font-weight: $weight-Medium;
+      font-size: var(--font-text-regular);
+      transition: all $transition-time ease;
+
+      &:hover {
+        color: $color-text__white;
+        // text-decoration: underline;
+      }
+    }
+  }
 }
