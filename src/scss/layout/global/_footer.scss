@@ -99,14 +99,16 @@
   }
 
   &-bottom__right {
-    display: flex;
-    gap: 9px;
-    align-items: center;
-    justify-content: end;
+    a {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      justify-content: end;
 
-    svg {
-      width: initial;
-      height: initial;
+      svg {
+        width: initial;
+        height: initial;
+      }
     }
   }
 
