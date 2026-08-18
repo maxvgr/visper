@@ -9,3 +9,6 @@ import './global/init';
 
 import './layout/header';
 import './layout/menu';
+
+/* Подключение cnhfybw */
+import './layout/page/home';

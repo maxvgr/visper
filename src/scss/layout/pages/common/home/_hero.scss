@@ -4,6 +4,7 @@
 
   height: 620px;
   margin-top: -20px;
+  padding-top: 115px;
   border-bottom: 1px solid $palette-gray;
   background: url("../assets/images/layout/pages/home/hero/bg.webp");
   background-position: top right 100%;
@@ -81,9 +82,87 @@
       /* Можно добавить фон, границы или тени, чтобы сделать вырез видимым */
     }
 
+    &__slide {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    &__info {
+      max-width: 590px;
+    }
+
+    &__title {
+      padding-top: 40px;
+      color: $color-text__white;
+      font-weight: $weight-Bold;
+      font-size: 42px;
+      line-height: 120%; /* 50.4px */
+    }
+
+    &__line {
+      width: 572px;
+      height: 1px;
+      margin-top: 18px;
+      margin-bottom: 16px;
+      background-color: $palette-white;
+    }
+
+    &__text {
+      color: $color-text__white;
+      font-weight: $weight-Medium;
+      line-height: 150%; /* 24px */
+    }
+
+    &__action {
+      margin-top: 28px;
+    }
+
     .swiper {
       &-slide {
       }
+    }
+
+    .swiper-pagination-numeric {
+      position: absolute;
+      top: 0;
+      bottom: unset;
+      left: 0;
+      width: auto;
+      padding: 0 15px;
+      color: #efefef;
+      font-weight: $weight-Medium;
+      line-height: 150%; /* 24px */
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        user-select: none;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        content: "[";
+        left: 0;
+      }
+
+      &::after {
+        content: "]";
+        right: 0;
+      }
+    }
+
+    .swiper-pagination-bullets {
+      position: absolute;
+      z-index: 20;
+      bottom: 0;
+      left: 50%;
+      display: flex;
+      gap: 20px;
+      text-align: center;
+      transform: translateX(-50%);
     }
   }
 }
