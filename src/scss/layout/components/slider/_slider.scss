@@ -1,2 +1,69 @@
 .slider {
+  .swiper-pagination__animation {
+    .swiper-pagination-bullet {
+      width: 100%;
+      height: 8px;
+      border: 1px solid $palette-white;
+      border-radius: 0;
+      background: #c3d5ff;
+      opacity: 1;
+
+      &:first-child {
+        clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      &:last-child {
+        clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+      }
+    }
+
+    .swiper-pagination-bullet-active {
+      position: relative;
+      width: 100%;
+      border-radius: 0;
+      background: #c3d5ff;
+
+      &::after {
+        @keyframes bg-full {
+          from {
+            width: 0;
+          }
+
+          to {
+            width: 100%;
+          }
+        }
+
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        background-color: $palette-blue;
+        animation-name: bg-full;
+        animation-duration: 5s;
+        animation-timing-function: ease-in;
+      }
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 32% !important;
+
+    svg {
+      display: none;
+    }
+  }
+
+  .swiper-button-prev {
+    left: -100px!important;
+  }
+
+  .swiper-button-next {
+    right: -100px!important;
+  }
 }

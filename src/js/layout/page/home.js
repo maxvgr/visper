@@ -2,19 +2,29 @@ import { Swiper } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, EffectCreative } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectCreative,
+} from "swiper/modules";
 
 const heroSlider = document.querySelector("#cp-home-hero .hero");
 const heroTarget = heroSlider?.querySelector(".swiper");
 
 if (heroTarget) {
   new Swiper(heroTarget, {
-    modules: [Navigation, Pagination],
+    modules: [Navigation, Pagination, Autoplay],
 
     slidesPerView: 1,
     spaceBetween: 20,
     speed: 600,
     grabCursor: true,
+
+    autoplay: {
+      delay: 4400,
+      disableOnInteraction: false,
+    },
 
     navigation: {
       prevEl: heroSlider.querySelector(".swiper-button-prev"),

@@ -69,17 +69,15 @@
 
     &__center-cut {
       position: absolute;
-      z-index: 0; /* между ::before и ::after */
+      z-index: 0;
       top: -1px;
       left: 50%;
       width: 30px; /* ширина выреза */
       height: 320px;
-      background-color: #f7f7f7; /* или цвет фона, если нужно */
+      background-color: #f7f7f7;
       transform: translateX(-50%);
-      // clip-path: polygon(0 0, 100% 0, 100% 98%, 98% 100%, 0 100%);
-
       clip-path: polygon(0 0%, 0 92%, 100% 100%, 100% 0);
-      /* Можно добавить фон, границы или тени, чтобы сделать вырез видимым */
+
     }
 
     &__slide {
@@ -161,7 +159,8 @@
       left: 50%;
       display: flex;
       gap: 20px;
-      text-align: center;
+      justify-content: center;
+      padding: 0 30px;
       transform: translateX(-50%);
     }
   }
