@@ -60,3 +60,34 @@ if (heroTarget) {
     numericPagination.textContent = `${swiper.realIndex + 1} / ${swiper.slides.length}`;
   }
 }
+
+const switchSlider = document.querySelector("#cp-home-switch .switch");
+const switchTarget = switchSlider?.querySelector(".swiper");
+
+if (heroTarget) {
+  new Swiper(switchTarget, {
+    modules: [Navigation, Pagination, Autoplay],
+
+    slidesPerView: 3, // показываем 3 слайда
+    centeredSlides: true, // центральный слайд по центру
+    spaceBetween: 30,
+    // spaceBetween: 60,
+    speed: 600,
+    grabCursor: true,
+
+    // autoplay: {
+    //   delay: 4400,
+    //   disableOnInteraction: false,
+    // },
+
+    navigation: {
+      prevEl: switchSlider.querySelector(".swiper-button-prev"),
+      nextEl: switchSlider.querySelector(".swiper-button-next"),
+    },
+
+    pagination: {
+      el: switchSlider.querySelector(".swiper-pagination"),
+      type: "fraction",
+    },
+  });
+}

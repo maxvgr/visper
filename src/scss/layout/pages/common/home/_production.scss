@@ -88,6 +88,7 @@
       transition: $transition-time ease;
 
       svg {
+        flex-shrink: 0;
         width: initial;
         height: initial;
         transition: $transition-time ease;
