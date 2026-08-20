@@ -91,3 +91,96 @@ if (heroTarget) {
     },
   });
 }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const indicator = document.querySelector(".timeline-indicator");
+//   const points = [...document.querySelectorAll(".timeline-point")];
+//   const timeline = document.querySelector(".timeline-container");
+
+//   if (!indicator || points.length === 0 || !timeline) {
+//     console.warn("Не найдены необходимые элементы для таймлайна");
+//     return;
+//   }
+
+//   // Получаем позиции точек относительно документа
+//   let pointsPositions = points.map((p) => {
+//     const rect = p.getBoundingClientRect();
+//     return rect.top + window.pageYOffset;
+//   });
+
+//   function updateIndicator() {
+//     const scrollY = window.pageYOffset + window.innerHeight / 2;
+//     let closestIndex = 0;
+//     let minDist = Number.POSITIVE_INFINITY;
+
+//     for (const [i, pos] of pointsPositions.entries()) {
+//       const dist = Math.abs(pos - scrollY);
+//       if (dist < minDist) {
+//         minDist = dist;
+//         closestIndex = i;
+//       }
+//     }
+
+//     // Позиция выбранной точки относительно контейнера
+//     const topRelative = points[closestIndex].offsetTop;
+
+//     indicator.style.top = topRelative + "px";
+//   }
+
+//   // Инициализируем позицию
+//   updateIndicator();
+
+//   window.addEventListener("scroll", updateIndicator);
+//   window.addEventListener("resize", () => {
+//     pointsPositions = points.map((p) => {
+//       const rect = p.getBoundingClientRect();
+//       return rect.top + window.pageYOffset;
+//     });
+//     updateIndicator();
+//   });
+// });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const indicator = document.querySelector(".timeline-indicator");
+  const points = [...document.querySelectorAll(".timeline-point")];
+  const timeline = document.querySelector(".timeline-container");
+
+  if (!indicator || points.length === 0 || !timeline) {
+    console.warn("Не найдены необходимые элементы для таймлайна");
+    return;
+  }
+
+  const spacing = 200; // расстояние между точками в пикселях
+  const neededHeight = spacing * (points.length - 1) + 250; // высота контейнера
+  timeline.style.height = neededHeight + "px";
+
+  // Располагаем точки
+  for (const [i, point] of points.entries()) {
+    point.style.position = "absolute";
+    point.style.top = spacing * i + "px";
+  }
+
+  function updateIndicator() {
+    const scrollY = window.pageYOffset + window.innerHeight / 2;
+    let closestIndex = 0;
+    let minDist = Number.POSITIVE_INFINITY;
+
+    for (const [i, point] of points.entries()) {
+      const rect = point.getBoundingClientRect();
+      const pointY = rect.top + window.pageYOffset;
+      const dist = Math.abs(pointY - scrollY);
+      if (dist < minDist) {
+        minDist = dist;
+        closestIndex = i;
+      }
+    }
+
+    const topRelative = points[closestIndex].offsetTop;
+    indicator.style.top = topRelative + "px";
+  }
+
+  updateIndicator();
+
+  window.addEventListener("scroll", updateIndicator);
+  window.addEventListener("resize", updateIndicator);
+});

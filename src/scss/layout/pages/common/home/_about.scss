@@ -1,0 +1,153 @@
+#cp-home-about {
+  .about {
+    &__text {
+      position: relative;
+      max-width: 639px;
+      margin: 0 auto;
+      padding-top: 60px;
+      font-size: 20px;
+      text-align: center;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 28px;
+        height: 38px;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='38' viewBox='0 0 28 38' fill='none'%3e%3cpath d='M0.00390638 27.1911L0.0039065 16.7327L14.0031 27.1911L14.0031 37.998L0.00390638 27.1911Z' fill='%230038B2'/%3e%3cpath d='M28 27.1911L28 16.7327L14.0008 27.1911L14.0008 37.998L28 27.1911Z' fill='%230038B2'/%3e%3cpath d='M1.27315e-07 10.4586L2.50524e-07 0.000257492L13.9992 10.4586L13.9992 21.2656L1.27315e-07 10.4586Z' fill='%23EC1C24'/%3e%3cpath d='M27.9961 10.4586L27.9961 0.000257492L13.9969 10.4586L13.9969 21.2656L27.9961 10.4586Z' fill='%23EC1C24'/%3e%3c/svg%3e");
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .timeline-container {
+    position: relative;
+    width: 1060px;
+    height: 1300px; /* подкорректируй под реальную высоту */
+    margin: 130px auto 0;
+  }
+
+  .timeline-line {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    // background: $palette-blue;
+
+    background: linear-gradient(to bottom, $palette-blue 0%, $palette-blue 70%, rgba(58, 107, 215, 0) 100%);
+    transform: translateX(-50%);
+  }
+
+  .timeline-point {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 50%;
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    border: 1px solid $palette-blue;
+    border-radius: 50%;
+    background-color: $palette-white;
+    pointer-events: none;
+    transform: translateX(-50%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      border: none;
+      border-radius: 50%;
+      background-color: $palette-blue;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .timeline-content {
+    position: absolute;
+    width: 450px;
+    margin-top: -50px;
+    border: 1px solid $palette-gray;
+    border-radius: 4px;
+    background: $palette-gray;
+    line-height: 1.4;
+    transition: 0.3s ease;
+    clip-path: polygon(
+      15px 0%,
+      calc(100% - 15px) 0%,
+      100% 15px,
+      100% calc(100% - 15px),
+      calc(100% - 15px) 100%,
+      15px 100%,
+      0% calc(100% - 15px),
+      0% 15px
+    );
+
+    &--inner {
+      padding: 20px;
+      background: $palette-white;
+      clip-path: inherit;
+    }
+
+    &--left {
+      right: 80px;
+      text-align: left;
+    }
+
+    &--right {
+      left: 80px;
+      text-align: left;
+    }
+
+    &__year {
+      margin-bottom: 6px;
+    }
+
+    &__title {
+      margin-bottom: 8px;
+      color: $palette-blue;
+      font-weight: 700;
+    }
+
+    &__text {
+      color: $palette-black;
+    }
+  }
+
+  /* Красная точка-индикатор */
+  .timeline-indicator {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 50%;
+    box-sizing: border-box;
+    width: 28px;
+    height: 28px;
+    border: 1px solid $palette-blue;
+    border-radius: 50%;
+    background-color: $palette-white;
+    pointer-events: none;
+    transform: translateX(-50%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      border: none;
+      border-radius: 50%;
+      background-color: $palette-red;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
