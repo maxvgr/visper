@@ -4,16 +4,25 @@
   justify-content: center;
   min-width: 176px;
   height: 34px;
-  border: 1px solid $palette-blue;
-  background-color: $palette-white;
-  color: $color-text__blue;
+  padding: 10px;
+  // border: 1px solid $palette-white;
+
+  background-color: $palette-blue;
+  color: $color-text__white;
   font-weight: $weight-Medium;
-  font-size: var(--font-text-small);
+  font-size: var(--font-text-regular);
 
   @media (hover: hover) {
     &:hover {
-      background-color: $palette-blue;
-      color: $color-text__white;
+      border: 1px solid $palette-blue;
+      background-color: $palette-white;
+      color: $color-text__blue;
+
+      svg {
+        path {
+          stroke: $palette-blue;
+        }
+      }
     }
   }
 }
