@@ -72,52 +72,119 @@
 
   .timeline-content {
     position: absolute;
+    overflow: visible;
     width: 450px;
     margin-top: -50px;
-    border: 1px solid $palette-gray;
-    border-radius: 4px;
-    background: $palette-gray;
     line-height: 1.4;
-    transition: 0.3s ease;
-    clip-path: polygon(
-      15px 0%,
-      calc(100% - 15px) 0%,
-      100% 15px,
-      100% calc(100% - 15px),
-      calc(100% - 15px) 100%,
-      15px 100%,
-      0% calc(100% - 15px),
-      0% 15px
-    );
 
     &--inner {
+      padding: 1px;
+      background: $palette-gray;
+
+      clip-path: polygon(
+        15px 0,
+        calc(100% - 15px) 0,
+        100% 15px,
+        100% calc(100% - 15px),
+        calc(100% - 15px) 100%,
+        15px 100%,
+        0 calc(100% - 15px),
+        0 15px
+      );
+    }
+
+    &--body {
       padding: 20px;
       background: $palette-white;
-      clip-path: inherit;
+
+      clip-path: polygon(
+        14px 0,
+        calc(100% - 14px) 0,
+        100% 14px,
+        100% calc(100% - 14px),
+        calc(100% - 14px) 100%,
+        14px 100%,
+        0 calc(100% - 14px),
+        0 14px
+      );
     }
 
     &--left {
       right: 80px;
       text-align: left;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        right: -6px;
+
+        width: 6px;
+        height: 40px;
+
+        background: $palette-gray;
+      }
+
+      // Первый SVG из Figma
+      &::before {
+        top: 32px;
+        clip-path: polygon(0 0, 100% 16.25%, 100% 100%, 0 100%);
+      }
+
+      // Второй SVG сразу под первым
+      &::after {
+        top: 72px; // 32 + 40
+        clip-path: polygon(0 0, 100% 0, 100% 83.75%, 0 100%);
+      }
     }
 
     &--right {
       left: 80px;
       text-align: left;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        left: -6px;
+        width: 6px;
+        height: 40px;
+        background: $palette-gray;
+      }
+
+      // верхняя часть
+      &::before {
+        top: 32px;
+        clip-path: polygon(100% 0, 0 16.25%, 0 100%, 100% 100%);
+      }
+
+      // нижняя часть
+      &::after {
+        top: 72px;
+        clip-path: polygon(100% 0, 0 0, 0 83.75%, 100% 100%);
+      }
     }
 
     &__year {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      font-weight: $weight-Bold;
+      font-size: var(--font-text-big);
+      line-height: var(--line-height-small);
     }
 
     &__title {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $palette-gray;
       color: $palette-blue;
-      font-weight: 700;
+      font-weight: $weight-Bold;
+      line-height: var(--line-height-medium);
     }
 
     &__text {
-      color: $palette-black;
+      line-height: var(--line-height-medium);
     }
   }
 
