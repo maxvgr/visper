@@ -1,0 +1,120 @@
+#cp-home-faq {
+  .faq {
+    &__phone {
+      font-weight: $weight-Medium;
+      font-size: 22px;
+      line-height: 1.2;
+      text-align: right;
+    }
+
+    &__categories {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 38px;
+      margin-bottom: 40px;
+    }
+
+    &__category {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 54px;
+      padding: 12px 20px;
+
+      border: 0;
+
+      font-weight: $weight-Medium;
+      text-align: center;
+
+      cursor: pointer;
+      transition: $transition-time ease;
+
+      @media (hover: hover) {
+        &:hover {
+          color: $palette-blue;
+        }
+      }
+
+      &--active {
+        color: $palette-blue;
+        font-weight: $weight-Bold;
+      }
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 60px;
+    }
+
+    &__item {
+      padding: 0;
+      border-bottom: 1px solid $palette-gray;
+
+      &.is-open {
+        .faq__button {
+          span {
+            &:last-child {
+              transform: translate(-50%, -50%) rotate(0deg);
+            }
+          }
+        }
+      }
+    }
+
+    &__header {
+      min-height: 86px;
+
+      cursor: pointer;
+    }
+
+    &__question {
+      max-width: 560px;
+      padding: 20px 0;
+
+      font-weight: $weight-Medium;
+      font-size: var(--font-text-big);
+      line-height: var(--line-height-medium);
+    }
+
+    &__button {
+      position: relative;
+      flex: 0 0 auto;
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid $palette-blue;
+      border-radius: 50%;
+
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 10px;
+        height: 1px;
+
+        background: $palette-blue;
+
+        transform: translate(-50%, -50%);
+
+        transition: transform $transition-time ease;
+
+        &:last-child {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+      }
+    }
+
+    &__body {
+      color: $color-text__gray;
+    }
+
+    &__answer {
+      padding: 0 50px 20px 0;
+      line-height: var(--line-height-medium);
+    }
+  }
+}
