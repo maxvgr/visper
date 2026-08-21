@@ -1,0 +1,225 @@
+#cp-home-news {
+  .news {
+    // overflow: hidden;
+
+    margin-top: 40px;
+
+    .swiper {
+      overflow: visible;
+    }
+
+    .swiper-slide {
+      width: calc(33.3333% - 6.6667px);
+      height: auto;
+      transition: transform 0.6s ease;
+
+      &-active {
+        z-index: 2;
+
+        .news__item {
+          width: 200%;
+        }
+
+        .news__button {
+          display: none;
+        }
+
+        .news__button-more {
+          display: flex;
+        }
+      }
+
+      &-active ~ .swiper-slide {
+        transform: translateX(100%);
+      }
+    }
+
+    &__item {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+
+      width: 100%;
+      padding: 1px;
+
+      background: $palette-gray;
+      transition:
+        width 0.6s ease,
+        background $transition-time ease;
+
+      clip-path: polygon(
+        12px 0,
+        calc(100% - 12px) 0,
+        100% 12px,
+        100% calc(100% - 12px),
+        calc(100% - 12px) 100%,
+        12px 100%,
+        0 calc(100% - 12px),
+        0 12px
+      );
+
+      @media (hover: hover) {
+        &:hover {
+          background: $palette-blue;
+
+          .news__content {
+            background: $palette-blue;
+          }
+
+          .news__date,
+          .news__title,
+          .news__text,
+          .news__button {
+            color: $palette-white;
+          }
+
+          .news__button-more {
+            border: 1px solid $palette-white;
+            background: $palette-white;
+            color: $palette-blue;
+          }
+        }
+      }
+    }
+
+    &__image,
+    &__content {
+      background: $palette-white;
+      transition: $transition-time ease;
+    }
+
+    &__image {
+      height: 375px;
+      background: $palette-lightgray;
+
+      clip-path: polygon(11px 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%, 0 11px);
+
+      picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
+        display: block;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__content {
+      display: flex;
+      gap: 20px;
+      align-items: flex-end;
+      justify-content: space-between;
+      box-sizing: border-box;
+
+      min-height: 130px;
+      padding: 20px;
+
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 11px 100%, 0 calc(100% - 11px));
+    }
+
+    &__info {
+      min-width: 0;
+    }
+
+    &__date {
+      display: block;
+      margin-bottom: 9px;
+
+      color: $palette-blue;
+      font-weight: $weight-Medium;
+      font-size: var(--font-text-small);
+      line-height: var(--line-height-small);
+      transition: $transition-time ease;
+    }
+
+    &__title {
+      display: -webkit-box;
+      overflow: hidden;
+
+      margin: 0 0 6px;
+
+      font-weight: $weight-Bold;
+      font-size: var(--font-text-big);
+      line-clamp: 1;
+
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+    }
+
+    &__text {
+      display: -webkit-box;
+      overflow: hidden;
+
+      color: $color-text__gray;
+      line-clamp: 2;
+
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    &__button {
+      flex: 0 0 auto;
+
+      width: 32px;
+      height: 32px;
+
+      color: $palette-blue;
+      transition: $transition-time ease;
+
+      &-icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__button-more {
+      display: none;
+      flex: 0 0 auto;
+    }
+
+    &__navigation {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+
+        flex: 0 0 auto;
+
+        width: 40px;
+        height: 40px;
+        margin: 0;
+
+        svg {
+          display: none;
+        }
+
+        &::after {
+          display: none;
+        }
+
+        picture,
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .swiper-pagination {
+        position: static;
+        width: auto;
+      }
+    }
+  }
+}

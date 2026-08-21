@@ -64,7 +64,7 @@ if (heroTarget) {
 const switchSlider = document.querySelector("#cp-home-switch .switch");
 const switchTarget = switchSlider?.querySelector(".swiper");
 
-if (heroTarget) {
+if (switchTarget) {
   new Swiper(switchTarget, {
     modules: [Navigation, Pagination, Autoplay],
 
@@ -91,54 +91,6 @@ if (heroTarget) {
     },
   });
 }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const indicator = document.querySelector(".timeline-indicator");
-//   const points = [...document.querySelectorAll(".timeline-point")];
-//   const timeline = document.querySelector(".timeline-container");
-
-//   if (!indicator || points.length === 0 || !timeline) {
-//     console.warn("Не найдены необходимые элементы для таймлайна");
-//     return;
-//   }
-
-//   // Получаем позиции точек относительно документа
-//   let pointsPositions = points.map((p) => {
-//     const rect = p.getBoundingClientRect();
-//     return rect.top + window.pageYOffset;
-//   });
-
-//   function updateIndicator() {
-//     const scrollY = window.pageYOffset + window.innerHeight / 2;
-//     let closestIndex = 0;
-//     let minDist = Number.POSITIVE_INFINITY;
-
-//     for (const [i, pos] of pointsPositions.entries()) {
-//       const dist = Math.abs(pos - scrollY);
-//       if (dist < minDist) {
-//         minDist = dist;
-//         closestIndex = i;
-//       }
-//     }
-
-//     // Позиция выбранной точки относительно контейнера
-//     const topRelative = points[closestIndex].offsetTop;
-
-//     indicator.style.top = topRelative + "px";
-//   }
-
-//   // Инициализируем позицию
-//   updateIndicator();
-
-//   window.addEventListener("scroll", updateIndicator);
-//   window.addEventListener("resize", () => {
-//     pointsPositions = points.map((p) => {
-//       const rect = p.getBoundingClientRect();
-//       return rect.top + window.pageYOffset;
-//     });
-//     updateIndicator();
-//   });
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
   const indicator = document.querySelector(".timeline-indicator");
@@ -184,3 +136,34 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", updateIndicator);
   window.addEventListener("resize", updateIndicator);
 });
+
+const newsSlider = document.querySelector("#cp-home-news");
+const newsTarget = newsSlider?.querySelector(".swiper");
+
+if (newsTarget) {
+  const newsSwiper = new Swiper(newsTarget, {
+    modules: [Navigation, Pagination],
+
+    slidesPerView: "auto",
+    spaceBetween: 20,
+    slidesOffsetAfter: newsTarget.clientWidth / 3,
+    speed: 600,
+    grabCursor: true,
+    centeredSlides: false,
+
+    navigation: {
+      prevEl: newsSlider.querySelector(".swiper-button-prev"),
+      nextEl: newsSlider.querySelector(".swiper-button-next"),
+    },
+
+    pagination: {
+      el: newsSlider.querySelector(".swiper-pagination"),
+      type: "fraction",
+    },
+  });
+
+  window.addEventListener("resize", () => {
+    newsSwiper.params.slidesOffsetAfter = newsTarget.clientWidth / 3;
+    newsSwiper.update();
+  });
+}
