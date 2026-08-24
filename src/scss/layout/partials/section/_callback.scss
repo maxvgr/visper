@@ -1,0 +1,223 @@
+#s-callback {
+  .callback {
+    margin-top: 38px;
+
+    &__note {
+      font-weight: $weight-Medium;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    &__frame {
+      overflow: visible;
+
+      padding: 1px;
+
+      background: $palette-gray;
+
+      clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px),
+        0 18px
+      );
+    }
+
+    &__body {
+      position: relative;
+
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      overflow: visible;
+
+      min-height: 535px;
+
+      background: $palette-white;
+
+      clip-path: polygon(
+        17px 0,
+        calc(100% - 17px) 0,
+        100% 17px,
+        100% calc(100% - 17px),
+        calc(100% - 17px) 100%,
+        17px 100%,
+        0 calc(100% - 17px),
+        0 17px
+      );
+    }
+
+    &__picture {
+      position: relative;
+      z-index: 2;
+
+      width: calc(100% + 18px);
+
+      background: $palette-gray;
+
+      clip-path: polygon(0 0, calc(100% - 18px) 0, calc(100% - 18px) 48%, 100% 51%, 100% 100%, 0 100%);
+
+      picture {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        width: calc(100% - 1px);
+        height: 100%;
+
+        background: $palette-lightgray;
+
+        clip-path: polygon(0 0, calc(100% - 18px) 0, calc(100% - 18px) 48%, 100% 51%, 100% 100%, 0 100%);
+      }
+
+      img {
+        object-fit: contain;
+
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+      }
+    }
+
+    &__form {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 50px 70px;
+
+      background: $palette-white;
+    }
+
+    &__form .form {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    &__fields {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    &__message {
+      .input__field {
+        min-height: 175px;
+        padding-top: 16px;
+
+        resize: none;
+      }
+
+      .input__label {
+        top: 16px;
+
+        transform: none;
+      }
+
+      .input__field:focus + .input__label,
+      .input__field:not(:placeholder-shown) + .input__label {
+        top: 0;
+
+        transform: translateY(-50%);
+      }
+    }
+
+    &__agreements {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      margin-top: 28px;
+    }
+
+    &__submit {
+      width: 100%;
+      height: 52px;
+      margin-top: 34px;
+    }
+  }
+
+  .input {
+    position: relative;
+
+    &__field {
+      min-height: 52px;
+      padding: 14px 16px;
+
+      border: 1px solid $palette-gray;
+      border-radius: 4px;
+      outline: none;
+
+      &:focus {
+        border-color: $palette-blue;
+      }
+
+      &:focus + .input__label,
+      &:not(:placeholder-shown) + .input__label {
+        top: 0;
+
+        padding: 0 4px;
+
+        background: $palette-white;
+        color: $palette-blue;
+
+        transform: translateY(-50%);
+      }
+    }
+
+    &__label {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+
+      padding: 0 4px;
+
+      background: transparent;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: $transition-time ease;
+    }
+  }
+
+  .checkbox {
+    gap: 10px;
+    align-items: center;
+
+    &__mark {
+      width: 24px;
+      height: 24px;
+      margin-top: 0;
+
+      border-color: $palette-gray;
+      background-color: $palette-white;
+    }
+
+    input {
+      &:checked ~ .checkbox__mark {
+        border-color: $palette-blue;
+        background-color: $palette-white;
+      }
+
+      &:checked ~ .checkbox__mark::after {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M5.83145 8.84855L11.1937 3.48633L12.0186 4.31128L5.83145 10.4985L2.11914 6.78618L2.9441 5.96123L5.83145 8.84855Z' fill='%230033AB'/%3E%3C/svg%3E");
+        opacity: 1;
+      }
+    }
+
+    &__label {
+      font-weight: $weight-Regular;
+      line-height: var(--line-height-small);
+
+      a {
+        color: $palette-blue;
+      }
+    }
+  }
+}
