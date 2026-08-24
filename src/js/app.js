@@ -12,3 +12,5 @@ import './layout/menu';
 
 /* Подключение cnhfybw */
 import './layout/page/home';
+
+import './layout/section/contacts-map';

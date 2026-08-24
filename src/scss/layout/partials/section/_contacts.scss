@@ -1,0 +1,208 @@
+#s-contacts {
+  .contacts {
+    margin-top: 38px;
+
+    &__city {
+      font-weight: $weight-Medium;
+      font-size: 22px;
+      line-height: 1.2;
+      text-align: right;
+    }
+
+    &__map {
+      overflow: hidden;
+
+      height: 580px;
+
+      background: $palette-lightgray;
+
+      clip-path: polygon(
+        12px 0,
+        calc(100% - 12px) 0,
+        100% 12px,
+        100% calc(100% - 12px),
+        calc(100% - 12px) 100%,
+        12px 100%,
+        0 calc(100% - 12px),
+        0 12px
+      );
+    }
+
+    &__map-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__marker {
+      transform: translate(-50%, -100%);
+    }
+
+    &__marker-image {
+      display: block;
+
+      width: 70px;
+      height: auto;
+    }
+
+    &__info {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 22px;
+
+      margin-top: 22px;
+    }
+
+    &__card {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      align-items: center;
+
+      min-height: 150px;
+      padding: 1px;
+
+      background: $palette-gray;
+
+      transition: $transition-time ease;
+
+      clip-path: polygon(
+        12px 0,
+        calc(100% - 12px) 0,
+        100% 12px,
+        100% calc(100% - 12px),
+        calc(100% - 12px) 100%,
+        12px 100%,
+        0 calc(100% - 12px),
+        0 12px
+      );
+
+      @media (hover: hover) {
+        &:hover {
+          background: $palette-blue;
+
+          &::before {
+            background: $palette-lightblue;
+          }
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+
+        inset: 1px;
+
+        background: $palette-white;
+
+        transition: $transition-time ease;
+
+        clip-path: polygon(
+          11px 0,
+          calc(100% - 11px) 0,
+          100% 11px,
+          100% calc(100% - 11px),
+          calc(100% - 11px) 100%,
+          11px 100%,
+          0 calc(100% - 11px),
+          0 11px
+        );
+      }
+
+      &--address {
+        padding: 28px 30px;
+
+        .contacts__row {
+          align-items: flex-start;
+          transform: translateY(-14px);
+        }
+
+        .contacts__icon {
+          margin-top: -6px;
+        }
+      }
+
+      &--communication,
+      &--schedule {
+        flex-direction: column;
+        gap: 18px;
+        align-items: flex-start;
+        justify-content: center;
+
+        padding: 28px 30px;
+      }
+    }
+
+    &__row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+
+      width: 100%;
+    }
+
+    &__icon {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+
+      width: 33px;
+      height: 33px;
+
+      &--calendar {
+        border-radius: 50%;
+
+        background: $palette-blue;
+      }
+    }
+
+    &__icon-svg {
+      width: 33px;
+      height: 33px;
+
+      color: $palette-blue;
+
+      &--calendar {
+        width: 16px;
+        height: 19px;
+
+        color: $palette-white;
+      }
+    }
+
+    &__content {
+      min-width: 0;
+    }
+
+    &__text {
+      color: $color-text__primary;
+      font-weight: $weight-Regular;
+      font-size: var(--font-text-regular);
+      line-height: var(--line-height-small);
+
+      transition: $transition-time ease;
+
+      &.link {
+        color: $color-text__primary;
+
+        @media (hover: hover) {
+          &:hover {
+            color: $palette-blue;
+          }
+        }
+      }
+    }
+
+    &__link {
+      display: inline-block;
+
+      margin-top: 8px;
+
+      color: $palette-blue;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}

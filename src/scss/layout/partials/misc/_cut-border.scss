@@ -1,13 +1,15 @@
 .cut-border {
   --cut-size: 12px;
   --cut-inner-size: 11px;
+  --cut-border-color: #{$palette-gray};
+  --cut-background-color: #{$palette-white};
 
   position: relative;
   z-index: 1;
 
   padding: 1px;
 
-  background: $palette-gray;
+  background: var(--cut-border-color);
   isolation: isolate;
 
   clip-path: polygon(
@@ -28,7 +30,9 @@
 
     inset: 1px;
 
-    background: $palette-white;
+    background: var(--cut-background-color);
+
+    transition: $transition-time ease;
 
     clip-path: polygon(
       var(--cut-inner-size) 0,
