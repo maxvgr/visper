@@ -33,13 +33,23 @@
 
       @media (hover: hover) {
         &:hover {
+          background: $palette-blue;
           color: $palette-blue;
+
+          &::before {
+            background: $palette-lightblue;
+          }
         }
       }
 
-      &--active {
+      &.is-active {
+        background: $palette-blue;
         color: $palette-blue;
         font-weight: $weight-Bold;
+
+        &::before {
+          background: $palette-lightblue;
+        }
       }
     }
 

@@ -2,7 +2,7 @@
 
 // import ScrollTop from '../utils/scroll-top';
 // import Gallery from '../component/gallery';
-// import Tab from '../component/tabs';
+import Tab from '../component/tabs';
 
 import LazyLoad from 'vanilla-lazyload';
 import Modal from '../component/modal';
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.App.numberInput = new NumberInput();
 
   // window.App.gallery = new Gallery();
-  // window.App.tab = new Tab();
+  window.App.tab = new Tab();
   // window.App.scrollTop = new ScrollTop();
 
   PlayVideoInViewport();
