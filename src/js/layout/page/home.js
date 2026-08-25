@@ -92,6 +92,7 @@ if (switchTarget) {
   });
 }
 
+// Time Line
 document.addEventListener("DOMContentLoaded", () => {
   const indicator = document.querySelector(".timeline-indicator");
   const points = [...document.querySelectorAll(".timeline-point")];
@@ -102,39 +103,106 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const spacing = 200; // расстояние между точками в пикселях
-  const neededHeight = spacing * (points.length - 1) + 250; // высота контейнера
-  timeline.style.height = neededHeight + "px";
+  const spacing = 200;
+  const snapRadius = 35;
+  const releaseRadius = 75;
+  const neededHeight = spacing * (points.length - 1) + 250;
 
-  // Располагаем точки
+  timeline.style.height = `${neededHeight}px`;
+
   for (const [i, point] of points.entries()) {
     point.style.position = "absolute";
-    point.style.top = spacing * i + "px";
+    point.style.top = `${spacing * i}px`;
   }
 
-  function updateIndicator() {
-    const scrollY = window.pageYOffset + window.innerHeight / 2;
-    let closestIndex = 0;
-    let minDist = Number.POSITIVE_INFINITY;
+  const pointPositions = points.map((point) => point.offsetTop);
+  const firstPoint = pointPositions[0];
+  const lastPoint = pointPositions.at(-1);
 
-    for (const [i, point] of points.entries()) {
-      const rect = point.getBoundingClientRect();
-      const pointY = rect.top + window.pageYOffset;
-      const dist = Math.abs(pointY - scrollY);
-      if (dist < minDist) {
-        minDist = dist;
-        closestIndex = i;
+  let currentPosition = 0;
+  let targetPosition = 0;
+  let activeSnapIndex = -1;
+  let animationFrame;
+
+  const getTargetPosition = () => {
+    const timelineRect = timeline.getBoundingClientRect();
+    const viewportCenter = window.innerHeight / 2;
+
+    const rawPosition = viewportCenter - timelineRect.top;
+
+    const clampedPosition = Math.min(
+      Math.max(rawPosition, firstPoint),
+      lastPoint,
+    );
+
+    if (activeSnapIndex >= 0) {
+      const snappedPosition = pointPositions[activeSnapIndex];
+      const distanceFromSnap = Math.abs(clampedPosition - snappedPosition);
+
+      if (distanceFromSnap <= releaseRadius) {
+        targetPosition = snappedPosition;
+        return;
+      }
+
+      activeSnapIndex = -1;
+    }
+
+    let nearestIndex = -1;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+
+    for (const [index, pointPosition] of pointPositions.entries()) {
+      const distance = Math.abs(clampedPosition - pointPosition);
+
+      if (distance < nearestDistance) {
+        nearestIndex = index;
+        nearestDistance = distance;
       }
     }
 
-    const topRelative = points[closestIndex].offsetTop;
-    indicator.style.top = topRelative + "px";
-  }
+    if (nearestDistance <= snapRadius) {
+      activeSnapIndex = nearestIndex;
+      targetPosition = pointPositions[nearestIndex];
+      return;
+    }
 
-  updateIndicator();
+    targetPosition = clampedPosition;
+  };
 
-  window.addEventListener("scroll", updateIndicator);
-  window.addEventListener("resize", updateIndicator);
+  const animateIndicator = () => {
+    const difference = targetPosition - currentPosition;
+
+    currentPosition += difference * 0.14;
+
+    currentPosition =
+      Math.abs(difference) < 0.1 ? targetPosition : currentPosition;
+
+    indicator.style.top = `${currentPosition}px`;
+
+    animationFrame =
+      Math.abs(targetPosition - currentPosition) > 0.1
+        ? requestAnimationFrame(animateIndicator)
+        : undefined;
+  };
+
+  const updateIndicator = () => {
+    getTargetPosition();
+
+    if (!animationFrame) {
+      animationFrame = requestAnimationFrame(animateIndicator);
+    }
+  };
+
+  getTargetPosition();
+  currentPosition = targetPosition;
+  indicator.style.top = `${currentPosition}px`;
+
+  window.addEventListener("scroll", updateIndicator, {
+    passive: true,
+  });
+
+  window.addEventListener("resize", updateIndicator, {
+    passive: true,
+  });
 });
 
 const newsSlider = document.querySelector("#cp-home-news");

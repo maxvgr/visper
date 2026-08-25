@@ -2,97 +2,167 @@
   .production {
     &__grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
+
+      margin-top: 38px;
     }
 
     &__item {
-      position: relative;
-      z-index: 1;
-      padding: 1px;
-      background: $palette-gray;
-      transition: $transition-time ease;
+      --cut-border-color: #{$palette-gray};
+      --cut-background-color: #{$palette-white};
 
-      clip-path: polygon(
-        20px 0%,
-        calc(100% - 20px) 0%,
-        100% 20px,
-        100% calc(100% - 20px),
-        calc(100% - 20px) 100%,
-        20px 100%,
-        0% calc(100% - 20px),
-        0% 20px
-      );
+      position: relative;
+
+      min-width: 0;
+      height: 292px;
+
+      transition: transform $transition-time ease;
 
       @media (hover: hover) {
         &:hover {
-          background: $palette-blue;
+          --cut-border-color: #{$palette-blue};
 
-          .production__info {
-            background-color: $palette-blue;
-            color: $palette-white;
-
-            svg {
-              path,
-              circle {
-                stroke: $palette-white;
-              }
-            }
-          }
+          transform: translateY(-8px);
 
           .production__number {
             color: $palette-blue;
           }
+
+          .production__info {
+            border-color: $palette-blue;
+
+            background: $palette-blue;
+            color: $palette-white;
+          }
+
+          .production__icon {
+            color: $palette-white;
+          }
+        }
+      }
+
+      &:first-child,
+      &:nth-child(2) {
+        height: 382px;
+      }
+
+      &:first-child {
+        grid-column: 1 / 3;
+
+        .production__image {
+          padding: 30px 50px 20px;
+        }
+
+        .production__image picture {
+          width: 100%;
+        }
+
+        .production__image img {
+          object-fit: contain;
+
+          width: 100%;
+          max-height: 270px;
         }
       }
 
       &--wrapper {
         position: relative;
-        z-index: 2;
-        padding: 0;
-        background: $palette-white;
-        clip-path: inherit;
-      }
 
-      &:first-child {
-        grid-column: 1/3;
+        display: flex;
+        flex-direction: column;
+
+        height: 100%;
       }
     }
 
     &__number {
       position: absolute;
+      z-index: 2;
       top: 20px;
       left: 20px;
-      transition: $transition-time ease;
+
+      color: $color-text__primary;
+      font-weight: $weight-Medium;
+      font-size: var(--font-text-small);
+      line-height: var(--line-height-small);
+
+      transition: color $transition-time ease;
     }
 
     &__image {
       display: flex;
+      flex: 1 1 auto;
+      align-items: center;
       justify-content: center;
-      height: 211px;
-      padding: 20px;
+
+      min-height: 0;
+      padding: 45px 24px 20px;
 
       picture {
-        max-width: 450px;
-        max-height: 235px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
+        object-fit: contain;
+
+        width: auto;
+        height: auto;
+        max-height: 256px;
       }
     }
 
     &__info {
       display: flex;
+      flex: 0 0 auto;
+      gap: 20px;
       align-items: center;
       justify-content: space-between;
-      height: 80px;
+
+      min-height: 82px;
       padding: 20px;
       border-top: 1px solid $palette-gray;
-      transition: $transition-time ease;
 
-      svg {
-        flex-shrink: 0;
-        width: initial;
-        height: initial;
-        transition: $transition-time ease;
+      background: $palette-white;
+      color: $color-text__primary;
+      font-weight: $weight-Medium;
+      font-size: var(--font-text-big);
+      line-height: var(--line-height-small);
+
+      transition:
+        border-color $transition-time ease,
+        background $transition-time ease,
+        color $transition-time ease;
+
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px));
+
+      span {
+        display: -webkit-box;
+        flex: 1 1 auto;
+        overflow: hidden;
+
+        min-width: 0;
+
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
       }
+    }
+
+    &__icon {
+      flex: 0 0 auto;
+
+      width: 32px;
+      height: 32px;
+
+      color: $palette-blue;
+
+      transition: color $transition-time ease;
     }
   }
 }
