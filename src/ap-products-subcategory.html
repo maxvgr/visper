@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<include src="layout/head.html"></include>
+
+<body class="page">
+  <include src="layout/header.html"></include>
+
+  <main>
+    <div id="ap-products-subcategory" class="page__body">
+      <section id="ap-products-subcategory-hero" class="section">
+        <div class="container">
+          <include src="layout/block/breadcrumbs.html">
+            {
+            "items": [
+            {
+            "title": "Оборудование КРУ и КСО",
+            "href": "ap-products.html"
+            },
+            {
+            "title": "Контактная группа",
+            "href": "ap-products-category.html"
+            },
+            {
+            "title": "Силиконовый кожух"
+            }
+            ]
+            }
+          </include>
+
+          <div class="products-subcategory">
+            <div class="products-subcategory__header">
+              <h1 class="products-subcategory__title">
+                Силиконовый кожух
+              </h1>
+
+              <div class="products-subcategory__filters">
+                <button class="products-subcategory__filter" type="button">
+                  1250А
+                </button>
+
+                <button class="products-subcategory__filter" type="button">
+                  1600А
+                </button>
+
+                <button class="products-subcategory__filter" type="button">
+                  2000А
+                </button>
+              </div>
+              <!-- /.products-subcategory__filters -->
+            </div>
+            <!-- /.products-subcategory__header -->
+
+            <div class="section__line section__line--edges"></div>
+
+            <div class="products-subcategory__grid">
+              <div class="products-subcategory__grid">
+                <include src="layout/template/card/product-model.html">
+                  {
+                  "title": "ИС-190-50",
+                  "subtitle": "Номинальный ток до 1250А",
+                  "picture": "assets/images/layout/pages/ap-products-subcategory/01.png",
+                  "href": "sp-product.html",
+                  "modifier": " c-product-model--wide"
+                  }
+                </include>
+
+                <include src="layout/template/card/product-model.html">
+                  {
+                  "title": "ИС-315-50",
+                  "subtitle": "Номинальный ток до 1250А",
+                  "picture": "assets/images/layout/pages/ap-products-subcategory/02.png",
+                  "href": "sp-product.html",
+                  "modifier": " c-product-model--wide"
+                  }
+                </include>
+
+                <include src="layout/template/card/product-model.html">
+                  {
+                  "title": "ИС-320-50-S",
+                  "subtitle": "Номинальный ток до 1250А",
+                  "picture": "assets/images/layout/pages/ap-products-subcategory/03.png",
+                  "href": "sp-product.html",
+                  "modifier": ""
+                  }
+                </include>
+
+                <include src="layout/template/card/product-model.html">
+                  {
+                  "title": "ИС-200-55",
+                  "subtitle": "Номинальный ток 1600А",
+                  "picture": "assets/images/layout/pages/ap-products-subcategory/04.png",
+                  "href": "sp-product.html",
+                  "modifier": ""
+                  }
+                </include>
+
+                <include src="layout/template/card/product-model.html">
+                  {
+                  "title": "ИС-195-79",
+                  "subtitle": "Номинальный ток 2000А",
+                  "picture": "assets/images/layout/pages/ap-products-subcategory/05.png",
+                  "href": "sp-product.html",
+                  "modifier": ""
+                  }
+                </include>
+              </div>
+              <!-- /.products-subcategory__grid -->
+            </div>
+            <!-- /.products-subcategory__grid -->
+          </div>
+          <!-- /.products-subcategory -->
+        </div>
+        <!-- /.container -->
+      </section>
+
+      <include src="layout/section/marquee.html"></include>
+
+      <section id="ap-products-subcategory-related" class="section">
+        <div class="container">
+          <div class="products-related">
+            <div class="section__header">
+              <div class="section__line section__line--edges"></div>
+
+              <h2 class="section__title">
+                Еще продукция
+              </h2>
+            </div>
+            <!-- /.section__header -->
+
+            <div class="products-related__slider">
+            </div>
+            <!-- /.products-related__slider -->
+          </div>
+          <!-- /.products-related -->
+        </div>
+        <!-- /.container -->
+      </section>
+    </div>
+    <!-- /.page__body -->
+  </main>
+
+  <include src="layout/footer.html"></include>
+</body>
+
+</html>

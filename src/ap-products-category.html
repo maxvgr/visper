@@ -10,7 +10,19 @@
     <div id="ap-products-category" class="page__body">
       <section id="ap-products-category-hero" class="section">
         <div class="container">
-          <include src="layout/block/breadcrumbs.html"></include>
+          <include src="layout/block/breadcrumbs.html">
+            {
+            "items": [
+            {
+            "title": "Оборудование КРУ и КСО",
+            "href": "ap-products.html"
+            },
+            {
+            "title": "Контактная группа"
+            }
+            ]
+            }
+          </include>
 
           <div class="products-category">
             <div class="products-category__header">
