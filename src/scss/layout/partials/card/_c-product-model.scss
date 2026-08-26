@@ -1,6 +1,10 @@
 .c-product-model {
+  --cut-size: 16px;
+  --cut-inner-size: 15px;
   --cut-border-color: #{$palette-gray};
   --cut-background-color: #{$palette-white};
+
+  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -29,12 +33,16 @@
   }
 
   &__image {
+    position: relative;
+    z-index: 1;
+
     display: flex;
     flex: 0 0 289px;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 
+    min-height: 0;
     border-bottom: 1px solid $palette-gray;
 
     background: $palette-lightgray;
@@ -62,6 +70,7 @@
 
   &__content {
     position: relative;
+    z-index: 1;
 
     display: flex;
     flex: 1 1 auto;
@@ -102,8 +111,19 @@
     transition: color $transition-time ease;
   }
 
-  &__icon {
+  &__arrow {
+    position: relative;
+
     flex: 0 0 auto;
+
+    width: 32px;
+    height: 32px;
+  }
+
+  &__icon {
+    position: absolute;
+
+    inset: 0;
 
     width: 32px;
     height: 32px;

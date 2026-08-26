@@ -24,36 +24,57 @@
 
     &__filters {
       display: flex;
-      gap: 18px;
+      gap: 20px;
       align-items: center;
     }
 
     &__filter {
-      --cut-size: 7px;
-      --cut-inner-size: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      min-width: 82px;
+      width: 82px;
       height: 32px;
-      padding: 7px 16px;
+      padding: 0;
+      border: 1px solid $palette-gray;
 
+      background: $palette-white;
       font-size: var(--font-text-small);
       line-height: var(--line-height-small);
       white-space: nowrap;
 
-      transition: color $transition-time ease;
+      cursor: pointer;
+
+      transition:
+        border-color $transition-time ease,
+        background $transition-time ease,
+        color $transition-time ease;
+
+      clip-path: polygon(
+        7px 0,
+        calc(100% - 7px) 0,
+        100% 7px,
+        100% calc(100% - 7px),
+        calc(100% - 7px) 100%,
+        7px 100%,
+        0 calc(100% - 7px),
+        0 7px
+      );
 
       @media (hover: hover) {
         &:hover {
-          --cut-border-color: #{$palette-blue};
-          --cut-background-color: #{$palette-lightblue};
-
+          border-color: $palette-blue;
+          background: $palette-lightblue;
           color: $palette-blue;
         }
       }
     }
 
-    .section__line {
-      margin-top: 16px;
+    &__divider {
+      height: 1px;
+      margin-top: 20px;
+
+      background: $palette-gray;
     }
 
     &__grid {
