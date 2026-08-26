@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<include src="layout/head.html"></include>
+
+<body class="page">
+  <include src="layout/header.html"></include>
+
+  <main>
+    <div id="ap-products-category" class="page__body">
+      <section id="ap-products-category-hero" class="section">
+        <div class="container">
+          <include src="layout/block/breadcrumbs.html"></include>
+
+          <div class="products-category">
+            <div class="products-category__header">
+              <h1 class="products-category__title">
+                Контактная группа
+              </h1>
+
+              <nav class="products-category__navigation" aria-label="Категории контактной группы">
+                <a href="#silicone-cover" class="products-category__navigation-link">
+                  Силиконовый кожух
+                </a>
+
+                <a href="#moving-contact" class="products-category__navigation-link">
+                  Контакт подвижный
+                </a>
+
+                <a href="#lamella-contact" class="products-category__navigation-link">
+                  Контакт ламельный
+                </a>
+
+                <a href="#fixed-contact" class="products-category__navigation-link">
+                  Контакт неподвижный
+                </a>
+
+                <a href="#boot-insulator" class="products-category__navigation-link">
+                  Изолятор типа «сапог»
+                </a>
+              </nav>
+            </div>
+            <!-- /.products-category__header -->
+
+            <div class="section__line section__line--edges"></div>
+
+            <div class="products-category__content">
+              <section id="silicone-cover" class="products-category__section">
+                <h2 class="products-category__section-title">
+                  Силиконовый кожух
+                </h2>
+
+                <include src="layout/template/card/subproduct.html">
+                  {
+                  "subtitle": "Диэлектрическая защита",
+                  "text": "Выполняет функцию диэлектрической защиты токоведущих частей, предотвращая перекрытия и коронные разряды при рабочем напряжении. Кожух изготовлен из силиконовой резины с диэлектрической прочностью более 10кВ/мм, диапазон рабочих температур: от -50 до +240°C.",
+                  "material": "силиконовая резина",
+                  "picture": "assets/images/layout/pages/ap-products-category/01.png"
+                  }
+                </include>
+              </section>
+
+              <section id="moving-contact" class="products-category__section">
+                <div class="section__line section__line--edges"></div>
+
+                <h2 class="products-category__section-title">
+                  Контакт подвижный
+                </h2>
+
+                <include src="layout/template/card/subproduct.html">
+                  {
+                  "subtitle": "Проводимость токов высоких значений",
+                  "text": "Подвижный контакт устанавливается на силовые выводы коммутационного оборудования и обеспечивает протекание токов высоких номинальных значений. Также контакт служит основой для установки ламельного контакта типа «тюльпан» и силиконового кожуха (при токовых значениях ниже 1600А).",
+                  "material": "медь М1 с серебряным покрытием 9 µ",
+                  "picture": "assets/images/layout/pages/ap-products-category/02.png"
+                  }
+                </include>
+              </section>
+
+              <section id="lamella-contact" class="products-category__section">
+                <div class="section__line section__line--edges"></div>
+
+                <h2 class="products-category__section-title">
+                  Контакт ламельный
+                </h2>
+
+                <include src="layout/template/card/subproduct.html">
+                  {
+                  "subtitle": "Соединение токоведущих частей",
+                  "text": "Ламельные контакты типа «тюльпан» предназначены для обеспечения соединения между токоведущими частями распределительного устройства и оборудования на выкатном элементе. За счет стягивающих пружин обеспечивается плавность соединения, а также компенсируется несоосность выводов электрооборудования и ответной части.",
+                  "material": "медь М1 с серебряным покрытием 9 µ",
+                  "picture": "assets/images/layout/pages/ap-products-category/03.png"
+                  }
+                </include>
+              </section>
+
+              <section id="fixed-contact" class="products-category__section">
+                <div class="section__line section__line--edges"></div>
+
+                <h2 class="products-category__section-title">
+                  Контакт неподвижный
+                </h2>
+
+                <include src="layout/template/card/subproduct.html">
+                  {
+                  "subtitle": "Соединение токоведущих частей, ответная часть",
+                  "text": "Неподвижный контакт предназначен для обеспечения соединения между токоведущими частями распределительного устройства и коммутационного оборудования на выкатном элементе. Устанавливается в проходной изолятор типа «сапог» и служит ответной частью для ламельного контакта типа «тюльпан».",
+                  "material": "медь М1 с серебряным покрытием 9 µ",
+                  "picture": "assets/images/layout/pages/ap-products-category/04.png"
+                  }
+                </include>
+              </section>
+
+              <section id="boot-insulator" class="products-category__section">
+                <div class="section__line section__line--edges"></div>
+
+                <h2 class="products-category__section-title">
+                  Изолятор проходного типа «сапог»
+                </h2>
+
+                <include src="layout/template/card/subproduct.html">
+                  {
+                  "subtitle": "Изоляция и крепление для токоведущих частей",
+                  "text": "Изоляторы проходные предназначены для изоляции и крепления токоведущих частей распределительных устройств закрытого типа электрических станций и подстанций, а также комплектных распределительных устройств напряжением до 40,5 кВ и частотой 50 Гц. Кроме того, они устанавливаются и в закрытых токопроводах. Конструкционно изоляторы серии ИПС (тип «сапог») служат для организации изолированного разъемного соединения.",
+                  "material": "эпоксидный компаунд",
+                  "picture": "assets/images/layout/pages/ap-products-category/05.png"
+                  }
+                </include>
+              </section>
+            </div>
+            <!-- /.products-category__content -->
+          </div>
+          <!-- /.products-category -->
+        </div>
+        <!-- /.container -->
+      </section>
+    </div>
+    <!-- /.page__body -->
+  </main>
+
+  <include src="layout/footer.html"></include>
+</body>
+
+</html>

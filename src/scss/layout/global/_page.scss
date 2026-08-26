@@ -9,6 +9,8 @@ body.page {
   overflow-x: hidden;
   min-height: 100vh;
 
+  scroll-behavior: smooth;
+
   & > main {
     flex-grow: 1;
   }

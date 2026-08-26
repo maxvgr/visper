@@ -55,5 +55,11 @@
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='64' height='6' viewBox='0 0 64 6' fill='none'%3e%3cpath d='M57.5006 6L24 5.99999L24 3.17786e-07L64 2.24113e-05L57.5006 6Z' fill='%230033AB'/%3e%3cpath d='M6.4994 6L40 5.99999L40 3.17786e-07L-5.24535e-07 2.24113e-05L6.4994 6Z' fill='%230033AB'/%3e%3c/svg%3e");
       transform: translateX(-50%);
     }
+
+    &--edges {
+      &::before {
+        display: none;
+      }
+    }
   }
 }

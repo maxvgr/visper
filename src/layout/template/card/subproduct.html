@@ -1,0 +1,59 @@
+<div class="c-subproduct">
+  <div class="c-subproduct__image cut-border">
+    <picture class="lazy">
+      <img class="image lazy__item" data-src="{{picture}}" alt="">
+    </picture>
+  </div>
+  <!-- /.c-subproduct__image -->
+
+  <div class="c-subproduct__content cut-border">
+    <div class="c-subproduct__head">
+      <svg class="c-subproduct__mark" aria-hidden="true">
+        <use href="assets/images/icons/package.svg#misc-document"></use>
+      </svg>
+
+      <div class="c-subproduct__subtitle">
+        {{subtitle}}
+      </div>
+    </div>
+    <!-- /.c-subproduct__head -->
+
+    <div class="c-subproduct__text">
+      {{text}}
+    </div>
+
+    <div class="c-subproduct__footer">
+      <div class="c-subproduct__properties">
+        <div class="c-subproduct__property">
+          <span class="c-subproduct__property-name">
+            Номинальный ток:
+          </span>
+
+          <span class="c-subproduct__property-value">
+            {{current}}
+          </span>
+        </div>
+
+        <div class="c-subproduct__property">
+          <span class="c-subproduct__property-name">
+            Материал:
+          </span>
+
+          <span class="c-subproduct__property-value">
+            {{material}}
+          </span>
+        </div>
+      </div>
+      <!-- /.c-subproduct__properties -->
+
+      <svg class="c-subproduct__arrow" aria-hidden="true">
+        <use href="assets/images/icons/package.svg#arrow-circle"></use>
+      </svg>
+    </div>
+    <!-- /.c-subproduct__footer -->
+  </div>
+  <!-- /.c-subproduct__content -->
+
+  <a href="#" class="link-stretched"></a>
+</div>
+<!-- /.c-subproduct -->
