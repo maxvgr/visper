@@ -50,4 +50,12 @@
     --cut-size: 16px;
     --cut-inner-size: 15px;
   }
+
+  &--content {
+    padding: 0;
+
+    &::before {
+      inset: 1px;
+    }
+  }
 }

@@ -9,6 +9,7 @@ import './global/init';
 
 import './layout/header';
 import './layout/menu';
+import './layout/products-category-nav';
 
 /* Подключение cnhfybw */
 import './layout/page/home';

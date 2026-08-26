@@ -94,14 +94,15 @@ if (switchTarget) {
 
 // Time Line
 document.addEventListener("DOMContentLoaded", () => {
-  const indicator = document.querySelector(".timeline-indicator");
-  const points = [...document.querySelectorAll(".timeline-point")];
-  const timeline = document.querySelector(".timeline-container");
+  const section = document.querySelector("#cp-home-about");
 
-  if (!indicator || points.length === 0 || !timeline) {
-    console.warn("Не найдены необходимые элементы для таймлайна");
-    return;
-  }
+  if (!section) return;
+
+  const indicator = section.querySelector(".timeline-indicator");
+  const points = [...section.querySelectorAll(".timeline-point")];
+  const timeline = section.querySelector(".timeline-container");
+
+  if (!indicator || points.length === 0 || !timeline) return;
 
   const spacing = 200;
   const snapRadius = 35;
@@ -193,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   getTargetPosition();
+
   currentPosition = targetPosition;
   indicator.style.top = `${currentPosition}px`;
 

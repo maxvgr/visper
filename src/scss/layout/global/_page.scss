@@ -2,6 +2,10 @@
 // В этом файле прописываются стили относящиеся ко всем страницам
 // -----------------------------------------------------------------------------
 
+html {
+  scroll-behavior: smooth;
+}
+
 body.page {
   display: flex;
   flex-direction: column;
@@ -9,7 +13,7 @@ body.page {
   overflow-x: hidden;
   min-height: 100vh;
 
-  scroll-behavior: smooth;
+
 
   & > main {
     flex-grow: 1;
@@ -19,3 +23,5 @@ body.page {
     overflow: clip;
   }
 }
+
+

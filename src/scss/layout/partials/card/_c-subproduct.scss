@@ -7,20 +7,43 @@
 
   height: 290px;
 
+  @media (hover: hover) {
+    &:hover {
+      .c-subproduct__image,
+      .c-subproduct__content {
+        --cut-border-color: #{$palette-blue};
+        --cut-background-color: #f3f6ff;
+      }
+
+      .c-subproduct__arrow-icon--default {
+        opacity: 0;
+      }
+
+      .c-subproduct__arrow-icon--active {
+        opacity: 1;
+      }
+    }
+  }
+
   &__image,
   &__content {
     --cut-border-color: #{$palette-gray};
     --cut-background-color: #{$palette-white};
+
+    min-width: 0;
+
+    transition: background $transition-time ease;
   }
 
-  &__image {
+  &__image-inner {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 
-    min-width: 0;
-    padding: 24px 30px;
+    width: 100%;
+    height: 100%;
+    padding: 35px 40px;
 
     picture {
       display: flex;
@@ -37,16 +60,17 @@
       width: auto;
       max-width: 100%;
       height: auto;
-      max-height: 205px;
+      max-height: 220px;
     }
   }
 
-  &__content {
+  &__content-inner {
     display: flex;
     flex-direction: column;
 
-    min-width: 0;
-    padding: 30px 32px 28px;
+    width: 100%;
+    height: 100%;
+    padding: 32px 34px 30px;
   }
 
   &__head {
@@ -127,11 +151,32 @@
   }
 
   &__arrow {
+    position: relative;
+
     flex: 0 0 auto;
 
     width: 32px;
     height: 32px;
+  }
 
-    color: $palette-blue;
+  &__arrow-icon {
+    position: absolute;
+
+    inset: 0;
+
+    width: 32px;
+    height: 32px;
+
+    transition: opacity $transition-time ease;
+
+    &--default {
+      color: $palette-blue;
+      opacity: 1;
+    }
+
+    &--active {
+      color: $palette-blue;
+      opacity: 0;
+    }
   }
 }
