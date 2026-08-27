@@ -71,7 +71,20 @@
 
       cursor: pointer;
 
+      transition:
+        border-color $transition-time ease,
+        background $transition-time ease,
+        color $transition-time ease;
+
       appearance: none;
+
+      @media (hover: hover) {
+        &:hover {
+          border-color: $palette-blue;
+
+          background: $palette-lightblue;
+        }
+      }
 
       &--minus {
         border-right: 0;
@@ -128,7 +141,15 @@
 
       transform: translateY(-50%);
 
+      transition: transform $transition-time ease;
+
       appearance: none;
+
+      @media (hover: hover) {
+        &:hover {
+          transform: translateY(-50%) scale(1.08);
+        }
+      }
 
       picture {
         display: block;
@@ -215,6 +236,18 @@
       font-size: var(--font-text-small);
       line-height: var(--line-height-small);
       text-decoration: underline;
+
+      transition: color $transition-time ease;
+
+      @media (hover: hover) {
+        &:hover {
+          text-decoration: none;
+
+          .product-detail__download-icon {
+            transform: translateY(-2px);
+          }
+        }
+      }
     }
 
     &__download-icon {
@@ -227,6 +260,8 @@
       border-radius: $border-radius-round;
 
       background: $palette-blue;
+
+      transition: transform $transition-time ease;
 
       &::before {
         content: "";
@@ -286,11 +321,30 @@
 
       color: $palette-blue;
 
+      transition: color $transition-time ease;
+
+      @media (hover: hover) {
+        &:hover {
+          --cut-border-color: #{$palette-blue};
+          --cut-background-color: #{$palette-lightblue};
+
+          color: $palette-blue;
+        }
+      }
+
       &--phone {
         --cut-border-color: #{$palette-blue};
         --cut-background-color: #{$palette-blue};
 
         color: $palette-white;
+
+        @media (hover: hover) {
+          &:hover {
+            --cut-background-color: #{$palette-white};
+
+            color: $palette-blue;
+          }
+        }
       }
     }
 
@@ -338,6 +392,8 @@
 
       cursor: pointer;
 
+      transition: color $transition-time ease;
+
       appearance: none;
 
       @media (hover: hover) {
@@ -373,11 +429,36 @@
       --cut-size: 10px;
       --cut-inner-size: 9px;
 
+      position: relative;
+
       overflow: hidden;
 
       height: 609px;
 
+      background: $palette-white;
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+
+        inset: 1px;
+
+        background-image: url("../assets/images/logo.png"), url("../assets/images/logo.png");
+        background-position:
+          40px 32px,
+          135px 118px;
+        background-size: 150px auto;
+        background-repeat: repeat;
+
+        opacity: 0.04;
+        pointer-events: none;
+      }
+
       picture {
+        position: relative;
+        z-index: 1;
+
         display: block;
 
         width: 100%;
