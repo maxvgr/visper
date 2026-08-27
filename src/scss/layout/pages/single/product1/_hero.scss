@@ -211,7 +211,9 @@
     }
 
     &__downloads {
-      display: flex;
+      display: grid;
+      grid-template-columns: max-content 1px max-content 1px max-content;
+      gap: 31px;
       align-items: center;
 
       width: 690px;
@@ -236,6 +238,7 @@
       font-size: var(--font-text-small);
       line-height: var(--line-height-small);
       text-decoration: underline;
+      white-space: nowrap;
 
       transition: color $transition-time ease;
 
@@ -273,11 +276,8 @@
     }
 
     &__downloads-divider {
-      flex: 0 0 auto;
-
       width: 1px;
       height: 26px;
-      margin: 0 35px;
 
       background: $palette-gray;
     }
@@ -289,6 +289,8 @@
     }
 
     &__contact {
+      --product-mail-detail: #{$palette-white};
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -307,6 +309,8 @@
 
       @media (hover: hover) {
         &:hover {
+          --product-mail-detail: #{$palette-blue};
+
           background: $palette-blue;
           color: $palette-white;
         }
