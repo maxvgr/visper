@@ -176,6 +176,12 @@
         <!-- /.container -->
       </article>
 
+      <!-- Следующая новость: JS загружает страницу из href .news-next__preview -->
+      <!--
+        Следующая новость для бесконечной подгрузки.
+        В href .news-next__preview указывается URL следующей страницы новости.
+        На последней новости оставить href="#" или убрать href.
+      -->
       <section class="news-next">
         <div class="container">
           <div class="section__line"></div>
@@ -189,6 +195,7 @@
             в литом корпусе серии TGM1NL(A)
           </h2>
 
+          <!-- URL следующей новости для последовательной подгрузки -->
           <a href="#" class="news-next__preview cut-border cut-border--large">
             <picture class="lazy">
               <img class="image image--contain lazy__item" data-src="assets/images/layout/pages/sp-news/hero.png" alt="">

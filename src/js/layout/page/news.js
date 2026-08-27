@@ -156,6 +156,9 @@ class NewsShare {
   }
 }
 
+// Последовательная подгрузка новостей.
+// URL следующей страницы берётся из href .news-next__preview.
+// На последней новости href должен быть "#" или отсутствовать.
 class NewsInfinite {
   constructor(page, onArticleAdded) {
     this.page = page;
