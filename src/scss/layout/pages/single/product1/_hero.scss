@@ -140,7 +140,6 @@
       cursor: pointer;
 
       transform: translateY(-50%);
-
       transition: transform $transition-time ease;
 
       appearance: none;
@@ -212,15 +211,16 @@
     }
 
     &__downloads {
-      --cut-size: 8px;
-      --cut-inner-size: 7px;
-
       display: flex;
       align-items: center;
 
       width: 690px;
       height: 54px;
-      padding: 0 36px;
+      padding: 0 37px;
+      border: 1px solid $palette-gray;
+      border-radius: 6px;
+
+      background: $palette-white;
     }
 
     &__download {
@@ -251,45 +251,25 @@
     }
 
     &__download-icon {
-      position: relative;
-
+      display: flex;
       flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
 
       width: 28px;
       height: 28px;
       border-radius: $border-radius-round;
 
       background: $palette-blue;
+      color: $palette-white;
 
+      transform: translateY(0);
       transition: transform $transition-time ease;
+    }
 
-      &::before {
-        content: "";
-        position: absolute;
-
-        top: 7px;
-        left: 13px;
-
-        width: 2px;
-        height: 9px;
-
-        background: $palette-white;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-
-        top: 9px;
-        left: 10px;
-
-        width: 7px;
-        height: 7px;
-        border-right: 2px solid $palette-white;
-        border-bottom: 2px solid $palette-white;
-
-        transform: rotate(45deg);
-      }
+    &__download-icon-svg {
+      width: 14px;
+      height: 14px;
     }
 
     &__downloads-divider {
@@ -297,51 +277,48 @@
 
       width: 1px;
       height: 26px;
-      margin: 0 30px;
+      margin: 0 35px;
 
       background: $palette-gray;
     }
 
     &__contacts {
       display: flex;
-      gap: 20px;
+      gap: 21px;
       align-items: center;
     }
 
     &__contact {
-      --cut-size: 8px;
-      --cut-inner-size: 7px;
-
       display: flex;
       align-items: center;
       justify-content: center;
 
       width: 98px;
       height: 54px;
+      border: 1px solid $palette-blue;
+      border-radius: 6px;
 
+      background: $palette-white;
       color: $palette-blue;
 
-      transition: color $transition-time ease;
+      transition:
+        background $transition-time ease,
+        color $transition-time ease;
 
       @media (hover: hover) {
         &:hover {
-          --cut-border-color: #{$palette-blue};
-          --cut-background-color: #{$palette-lightblue};
-
-          color: $palette-blue;
+          background: $palette-blue;
+          color: $palette-white;
         }
       }
 
       &--phone {
-        --cut-border-color: #{$palette-blue};
-        --cut-background-color: #{$palette-blue};
-
+        background: $palette-blue;
         color: $palette-white;
 
         @media (hover: hover) {
           &:hover {
-            --cut-background-color: #{$palette-white};
-
+            background: $palette-white;
             color: $palette-blue;
           }
         }
@@ -349,8 +326,8 @@
     }
 
     &__contact-icon {
-      width: 33px;
-      height: 33px;
+      width: 28px;
+      height: 28px;
     }
 
     &__tabs {
@@ -382,8 +359,6 @@
       height: 48px;
       padding: 0 20px;
       border: 0;
-
-      background: transparent;
 
       font-weight: $weight-Medium;
       font-size: var(--font-text-big);
@@ -428,6 +403,8 @@
     &__drawing {
       --cut-size: 10px;
       --cut-inner-size: 9px;
+      --cut-border-color: #{$palette-gray};
+      --cut-background-color: #{$palette-white};
 
       position: relative;
 
@@ -435,9 +412,7 @@
 
       height: 609px;
 
-      background: $palette-white;
-
-      &::before {
+      &::after {
         content: "";
         position: absolute;
         z-index: 0;
