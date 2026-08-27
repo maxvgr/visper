@@ -1,0 +1,45 @@
+<section id="{{id}}" class="section products-related">
+  <div class="container">
+    <div class="section__line"></div>
+
+    <div class="section__header products-related__header">
+      <h2 class="section__title products-related__title">
+        {{title}}
+      </h2>
+
+      <div class="products-related__navigation">
+        <button class="products-related__button products-related__button--prev" type="button" aria-label="Предыдущий слайд">
+          <picture>
+            <img class="image" src="assets/images/arrow-left.png" alt="">
+          </picture>
+        </button>
+
+        <button class="products-related__button products-related__button--next" type="button" aria-label="Следующий слайд">
+          <picture>
+            <img class="image" src="assets/images/arrow-right.png" alt="">
+          </picture>
+        </button>
+      </div>
+      <!-- /.products-related__navigation -->
+    </div>
+    <!-- /.section__header -->
+  </div>
+  <!-- /.container -->
+
+  <div class="products-related__slider">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <each loop="item in items">
+          <div class="swiper-slide">
+            <scope with="item">
+              <include src="layout/template/card/related-product.html"></include>
+            </scope>
+          </div>
+        </each>
+      </div>
+      <!-- /.swiper-wrapper -->
+    </div>
+    <!-- /.swiper -->
+  </div>
+  <!-- /.products-related__slider -->
+</section>

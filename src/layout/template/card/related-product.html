@@ -7,9 +7,18 @@
   <!-- /.c-related-product__image -->
 
   <div class="c-related-product__content">
-    <div class="c-related-product__title">
-      {{title}}
+    <div class="c-related-product__info">
+      <div class="c-related-product__title">
+        {{title}}
+      </div>
+
+      <if condition="typeof subtitle !== 'undefined' && subtitle">
+        <div class="c-related-product__subtitle">
+          {{subtitle}}
+        </div>
+      </if>
     </div>
+    <!-- /.c-related-product__info -->
 
     <svg class="c-related-product__icon" aria-hidden="true">
       <use href="assets/images/icons/package.svg#arrow-circle"></use>

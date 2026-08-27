@@ -13,6 +13,7 @@ import './layout/products-category-nav';
 
 /* Подключение cnhfybw */
 import './layout/page/home';
-import './layout/page/products-subcategory';
+// import './layout/page/products-subcategory';
 
 import './layout/section/contacts-map';
+import './layout/section/products-related';

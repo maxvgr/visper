@@ -103,11 +103,15 @@
       color $transition-time ease;
   }
 
-  &__title {
+  &__info {
     min-width: 0;
 
     font-size: var(--font-text-regular);
     line-height: var(--line-height-small);
+  }
+
+  &__subtitle {
+    margin-top: 2px;
   }
 
   &__icon {

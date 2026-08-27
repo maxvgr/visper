@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<include src="layout/head.html"></include>
+
+<body class="page">
+  <include src="layout/header.html"></include>
+
+  <main>
+    <div id="sp-product-1" class="page__body">
+      <section id="sp-product-1-main" class="section">
+        <div class="container">
+          <include src="layout/block/breadcrumbs.html">
+            {
+            "items": [
+            {
+            "title": "Оборудование КРУ и КСО",
+            "href": "ap-products.html"
+            },
+            {
+            "title": "Контактная группа",
+            "href": "ap-products-category.html"
+            },
+            {
+            "title": "Силиконовый кожух",
+            "href": "ap-products-subcategory.html"
+            },
+            {
+            "title": "ИС-190-50"
+            }
+            ]
+            }
+          </include>
+
+          <div class="product-detail">
+            <h1 class="product-detail__title">
+              ИС-190-50
+            </h1>
+
+            <div class="product-detail__viewer cut-border">
+              <div class="product-detail__scale" aria-label="Масштаб изображения">
+                <button class="product-detail__scale-button product-detail__scale-button--minus" type="button" aria-label="Уменьшить">
+                  −
+                </button>
+
+                <button class="product-detail__scale-button product-detail__scale-button--plus" type="button" aria-label="Увеличить">
+                  +
+                </button>
+              </div>
+              <!-- /.product-detail__scale -->
+
+              <button class="product-detail__viewer-button product-detail__viewer-button--prev" type="button" aria-label="Предыдущий вид">
+                <picture>
+                  <img class="image" src="assets/images/arrow-left.png" alt="">
+                </picture>
+              </button>
+
+              <div class="product-detail__viewer-image">
+                <picture class="lazy">
+                  <img class="image lazy__item" data-src="assets/images/layout/pages/ap-products-subcategory/01.png" alt="ИС-190-50">
+                </picture>
+              </div>
+
+              <button class="product-detail__viewer-button product-detail__viewer-button--next" type="button" aria-label="Следующий вид">
+                <picture>
+                  <img class="image" src="assets/images/arrow-right.png" alt="">
+                </picture>
+              </button>
+
+              <div class="product-detail__rotation">
+                <div class="product-detail__rotation-line"></div>
+                <span class="product-detail__rotation-text">360°</span>
+              </div>
+            </div>
+            <!-- /.product-detail__viewer -->
+
+            <div class="product-detail__toolbar">
+              <div class="product-detail__downloads cut-border">
+                <a href="#" class="product-detail__download">
+                  <span class="product-detail__download-icon"></span>
+                  <span class="product-detail__download-text">Паспорт</span>
+                </a>
+
+                <div class="product-detail__downloads-divider"></div>
+
+                <a href="#" class="product-detail__download">
+                  <span class="product-detail__download-icon"></span>
+                  <span class="product-detail__download-text">3D-Модель, чертежи</span>
+                </a>
+
+                <div class="product-detail__downloads-divider"></div>
+
+                <a href="#" class="product-detail__download">
+                  <span class="product-detail__download-icon"></span>
+                  <span class="product-detail__download-text">Каталог аксессуаров</span>
+                </a>
+              </div>
+              <!-- /.product-detail__downloads -->
+
+              <div class="product-detail__contacts">
+                <a href="mailto:office@w-av.ru" class="product-detail__contact product-detail__contact--mail cut-border" aria-label="Написать">
+                  <svg class="product-detail__contact-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#contacts-mail"></use>
+                  </svg>
+                </a>
+
+                <a href="tel:+79216427858" class="product-detail__contact product-detail__contact--phone cut-border" aria-label="Позвонить">
+                  <svg class="product-detail__contact-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#contacts-phone"></use>
+                  </svg>
+                </a>
+              </div>
+              <!-- /.product-detail__contacts -->
+            </div>
+            <!-- /.product-detail__toolbar -->
+
+            <div class="product-detail__tabs">
+              <div class="section__line"></div>
+
+              <div class="product-detail__tabs-navigation">
+                <button class="product-detail__tab" type="button" data-product-tab="purpose">
+                  Назначение и устройство
+                </button>
+
+                <button class="product-detail__tab product-detail__tab--active" type="button" data-product-tab="specifications">
+                  Характеристики и чертежи
+                </button>
+
+                <button class="product-detail__tab" type="button" data-product-tab="service">
+                  Гарантия и сервис
+                </button>
+              </div>
+              <!-- /.product-detail__tabs-navigation -->
+
+              <div class="product-detail__tabs-content">
+                <div class="product-detail__panel" data-product-panel="purpose">
+                </div>
+
+                <div class="product-detail__panel product-detail__panel--active" data-product-panel="specifications">
+                  <div class="product-detail__drawing cut-border">
+                    <picture class="lazy">
+                      <img class="image image--contain lazy__item" data-src="assets/images/layout/pages/sp-product-1/drawing.png" alt="Чертёж ИС-190-50">
+                    </picture>
+                  </div>
+                  <!-- /.product-detail__drawing -->
+                </div>
+
+                <div class="product-detail__panel" data-product-panel="service">
+                </div>
+              </div>
+              <!-- /.product-detail__tabs-content -->
+            </div>
+            <!-- /.product-detail__tabs -->
+          </div>
+          <!-- /.product-detail -->
+        </div>
+        <!-- /.container -->
+      </section>
+
+      <include src="layout/section/marquee.html"></include>
+
+      <include src="layout/section/products-related.html">
+        {
+        "id": "sp-product-1-related",
+        "title": "Похожие модели",
+        "items": [
+        {
+        "title": "ИС-315-50",
+        "subtitle": "Номинальный ток до 1250А",
+        "picture": "assets/images/layout/pages/ap-products-subcategory/02.png",
+        "href": "sp-product-1.html"
+        },
+        {
+        "title": "ИС-320-50-S",
+        "subtitle": "Номинальный ток до 1250А",
+        "picture": "assets/images/layout/pages/ap-products-subcategory/03.png",
+        "href": "sp-product-1.html"
+        },
+        {
+        "title": "ИС-200-55",
+        "subtitle": "Номинальный ток до 1600А",
+        "picture": "assets/images/layout/pages/ap-products-subcategory/04.png",
+        "href": "sp-product-1.html"
+        },
+        {
+        "title": "ИС-195-79",
+        "subtitle": "Номинальный ток до 2000А",
+        "picture": "assets/images/layout/pages/ap-products-subcategory/05.png",
+        "href": "sp-product-1.html"
+        }
+        ]
+        }
+      </include>
+    </div>
+    <!-- /.page__body -->
+  </main>
+
+  <include src="layout/footer.html"></include>
+</body>
+
+</html>

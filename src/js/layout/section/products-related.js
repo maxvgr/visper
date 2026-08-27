@@ -2,13 +2,16 @@ import { Swiper } from "swiper";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
 
-const relatedSection = document.querySelector(
-  "#ap-products-subcategory-related",
-);
-const relatedTarget = relatedSection?.querySelector(".swiper");
+const getSliderOffset = () => Math.max(16, (window.innerWidth - 1760) / 2);
 
-if (relatedTarget) {
-  const getSliderOffset = () => Math.max(16, (window.innerWidth - 1760) / 2);
+const relatedSections = document.querySelectorAll(".products-related");
+
+for (const relatedSection of relatedSections) {
+  const relatedTarget = relatedSection.querySelector(".swiper");
+
+  if (!relatedTarget) {
+    continue;
+  }
 
   const relatedSwiper = new Swiper(relatedTarget, {
     modules: [Navigation],

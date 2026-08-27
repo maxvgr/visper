@@ -112,106 +112,44 @@
 
       <include src="layout/section/marquee.html"></include>
 
-      <section id="ap-products-subcategory-related" class="section">
-        <div class="products-related">
-          <div class="container">
-            <div class="section__line"></div>
-
-            <div class="section__header products-related__header">
-              <h2 class="section__title products-related__title">
-                Еще продукция
-              </h2>
-
-              <div class="products-related__navigation">
-                <button class="products-related__button products-related__button--prev" type="button" aria-label="Предыдущий слайд">
-                  <picture>
-                    <img class="image" src="assets/images/arrow-left.png" alt="">
-                  </picture>
-                </button>
-
-                <button class="products-related__button products-related__button--next" type="button" aria-label="Следующий слайд">
-                  <picture>
-                    <img class="image" src="assets/images/arrow-right.png" alt="">
-                  </picture>
-                </button>
-              </div>
-              <!-- /.products-related__navigation -->
-            </div>
-            <!-- /.products-related__header -->
-          </div>
-          <!-- /.container -->
-
-          <div class="products-related__slider">
-            <div class="swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <include src="layout/template/card/related-product.html">
-                    {
-                    "title": "Контакт подвижный",
-                    "picture": "assets/images/layout/pages/ap-products-category/02.png",
-                    "href": "#"
-                    }
-                  </include>
-                </div>
-
-                <div class="swiper-slide">
-                  <include src="layout/template/card/related-product.html">
-                    {
-                    "title": "Контакт ламельный",
-                    "picture": "assets/images/layout/pages/ap-products-category/03.png",
-                    "href": "#"
-                    }
-                  </include>
-                </div>
-
-                <div class="swiper-slide">
-                  <include src="layout/template/card/related-product.html">
-                    {
-                    "title": "Контакт неподвижный",
-                    "picture": "assets/images/layout/pages/ap-products-category/04.png",
-                    "href": "#"
-                    }
-                  </include>
-                </div>
-
-                <div class="swiper-slide">
-                  <include src="layout/template/card/related-product.html">
-                    {
-                    "title": "Изолятор проходного типа «сапог»",
-                    "picture": "assets/images/layout/pages/ap-products-category/05.png",
-                    "href": "#"
-                    }
-                  </include>
-                </div>
-
-                <div class="swiper-slide">
-                  <include src="layout/template/card/related-product.html">
-                    {
-                    "title": "Контакт подвижный",
-                    "picture": "assets/images/layout/pages/ap-products-category/02.png",
-                    "href": "#"
-                    }
-                  </include>
-                </div>
-
-                <div class="swiper-slide">
-                  <include src="layout/template/card/related-product.html">
-                    {
-                    "title": "Контакт ламельный",
-                    "picture": "assets/images/layout/pages/ap-products-category/03.png",
-                    "href": "#"
-                    }
-                  </include>
-                </div>
-              </div>
-              <!-- /.swiper-wrapper -->
-            </div>
-            <!-- /.swiper -->
-          </div>
-          <!-- /.products-related__slider -->
-        </div>
-        <!-- /.products-related -->
-      </section>
+      <include src="layout/section/products-related.html">
+        {
+        "id": "ap-products-subcategory-related",
+        "title": "Еще продукция",
+        "items": [
+        {
+        "title": "Контакт подвижный",
+        "picture": "assets/images/layout/pages/ap-products-category/02.png",
+        "href": "#"
+        },
+        {
+        "title": "Контакт ламельный",
+        "picture": "assets/images/layout/pages/ap-products-category/03.png",
+        "href": "#"
+        },
+        {
+        "title": "Контакт неподвижный",
+        "picture": "assets/images/layout/pages/ap-products-category/04.png",
+        "href": "#"
+        },
+        {
+        "title": "Изолятор проходного типа «сапог»",
+        "picture": "assets/images/layout/pages/ap-products-category/05.png",
+        "href": "#"
+        },
+        {
+        "title": "Контакт подвижный",
+        "picture": "assets/images/layout/pages/ap-products-category/02.png",
+        "href": "#"
+        },
+        {
+        "title": "Контакт ламельный",
+        "picture": "assets/images/layout/pages/ap-products-category/03.png",
+        "href": "#"
+        }
+        ]
+        }
+      </include>
     </div>
     <!-- /.page__body -->
   </main>
