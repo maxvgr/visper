@@ -1,5 +1,6 @@
 #ap-products-subcategory-related {
   overflow: hidden;
+  padding-top: 80px;
 
   .products-related {
     &__title {
@@ -40,9 +41,8 @@
       &::before,
       &::after {
         content: "";
-
-        z-index: 2;
         position: absolute;
+        z-index: 2;
 
         top: 0;
         bottom: 0;
