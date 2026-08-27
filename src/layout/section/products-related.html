@@ -31,9 +31,37 @@
       <div class="swiper-wrapper">
         <each loop="item in items">
           <div class="swiper-slide">
-            <scope with="item">
-              <include src="layout/template/card/related-product.html"></include>
-            </scope>
+            <article class="c-related-product cut-border cut-border--content">
+              <div class="c-related-product__image">
+                <picture class="lazy">
+                  <img class="image lazy__item" data-src="{{item.picture}}" alt="{{item.title}}">
+                </picture>
+              </div>
+              <!-- /.c-related-product__image -->
+
+              <div class="c-related-product__content">
+                <div class="c-related-product__info">
+                  <div class="c-related-product__title">
+                    {{item.title}}
+                  </div>
+
+                  <if condition="typeof item.subtitle !== 'undefined' && item.subtitle">
+                    <div class="c-related-product__subtitle">
+                      {{item.subtitle}}
+                    </div>
+                  </if>
+                </div>
+                <!-- /.c-related-product__info -->
+
+                <svg class="c-related-product__icon" aria-hidden="true">
+                  <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                </svg>
+              </div>
+              <!-- /.c-related-product__content -->
+
+              <a href="{{item.href}}" class="c-related-product__link link-stretched" aria-label="{{item.title}}"></a>
+            </article>
+            <!-- /.c-related-product -->
           </div>
         </each>
       </div>
