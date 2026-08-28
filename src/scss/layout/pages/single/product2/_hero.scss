@@ -534,12 +534,12 @@
     }
 
     &__specs {
-      --cut-size: 10px;
-      --cut-inner-size: 9px;
+      --cut-size: 12px;
+      --cut-inner-size: 11px;
 
       overflow: hidden;
 
-      width: 100%;
+      width: calc(100% - 1px);
       height: 376px;
       padding: 1px;
     }
@@ -552,6 +552,15 @@
       border-bottom: 1px solid $palette-gray;
 
       background: $palette-lightgray;
+
+      clip-path: polygon(
+        var(--cut-inner-size) 0,
+        calc(100% - var(--cut-inner-size)) 0,
+        100% var(--cut-inner-size),
+        100% 100%,
+        0 100%,
+        0 var(--cut-inner-size)
+      );
     }
 
     &__specs-header-item {
@@ -617,40 +626,50 @@
     }
 
     &__standards {
-      --cut-size: 10px;
-      --cut-inner-size: 9px;
+      --cut-size: 12px;
+      --cut-inner-size: 11px;
 
       display: flex;
       align-items: center;
-
-      width: 100%;
+      box-sizing: border-box;
+      width: calc(100% - 1px);
       height: 80px;
       margin-top: 30px;
       padding: 0 49px;
-
       color: $color-text__gray;
-
       line-height: 1.5;
     }
 
     &__elements {
-      --cut-size: 10px;
-      --cut-inner-size: 9px;
+      --cut-size: 12px;
+      --cut-inner-size: 11px;
 
       overflow: hidden;
 
-      width: 100%;
+      width: calc(100% - 1px);
       height: 512px;
+      padding: 1px;
     }
 
     &__elements-table {
       width: 100%;
-      height: calc(100% - 1px);
+      height: calc(100% - 2px);
       border-collapse: collapse;
 
       background: $palette-white;
 
       table-layout: fixed;
+
+      clip-path: polygon(
+        var(--cut-inner-size) 0,
+        calc(100% - var(--cut-inner-size)) 0,
+        100% var(--cut-inner-size),
+        100% calc(100% - var(--cut-inner-size)),
+        calc(100% - var(--cut-inner-size)) 100%,
+        var(--cut-inner-size) 100%,
+        0 calc(100% - var(--cut-inner-size)),
+        0 var(--cut-inner-size)
+      );
 
       th,
       td {
