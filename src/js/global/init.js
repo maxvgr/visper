@@ -1,7 +1,7 @@
 /* Прописываются все инициализации и первичные параметры для скриптов */
 
-// import ScrollTop from '../utils/scroll-top';
-// import Gallery from '../component/gallery';
+import ScrollTop from '../utils/scroll-top';
+import Gallery from '../component/gallery';
 import Tab from '../component/tabs';
 
 import LazyLoad from 'vanilla-lazyload';
@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.App.form = new Form();
   window.App.numberInput = new NumberInput();
 
-  // window.App.gallery = new Gallery();
+  window.App.gallery = new Gallery();
   window.App.tab = new Tab();
-  // window.App.scrollTop = new ScrollTop();
+  window.App.scrollTop = new ScrollTop();
 
   PlayVideoInViewport();
 });
