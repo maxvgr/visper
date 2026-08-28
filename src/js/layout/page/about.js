@@ -1,0 +1,93 @@
+import { Swiper } from "swiper";
+import "swiper/css";
+import { Navigation } from "swiper/modules";
+
+const aboutHero = document.querySelector("#cp-about-hero");
+
+if (aboutHero) {
+  const sliderTarget = aboutHero.querySelector(".about-hero__slider");
+  const counter = aboutHero.querySelector(".about-hero__counter");
+
+  if (sliderTarget) {
+    const slides = sliderTarget.querySelectorAll(".swiper-slide");
+
+    if (slides.length > 1) {
+      new Swiper(sliderTarget, {
+        modules: [Navigation],
+
+        slidesPerView: 1,
+        speed: 600,
+        grabCursor: true,
+
+        navigation: {
+          prevEl: aboutHero.querySelector(".about-hero__navigation-button--prev"),
+          nextEl: aboutHero.querySelector(".about-hero__navigation-button--next"),
+        },
+
+        on: {
+          init(swiper) {
+            if (counter) {
+              counter.textContent = `${swiper.activeIndex + 1} / ${swiper.slides.length}`;
+            }
+          },
+
+          slideChange(swiper) {
+            if (counter) {
+              counter.textContent = `${swiper.activeIndex + 1} / ${swiper.slides.length}`;
+            }
+          },
+        },
+      });
+    }
+  }
+
+  const stats = aboutHero.querySelector(".about-hero__stats");
+  const counters = [...aboutHero.querySelectorAll("[data-counter]")];
+
+  if (stats && counters.length > 0) {
+    const duration = 1000;
+
+    const animateCounter = (element) => {
+      const target = Number(element.dataset.counter);
+
+      if (!Number.isFinite(target)) return;
+
+      const startedAt = performance.now();
+
+      const update = (currentTime) => {
+        const elapsed = currentTime - startedAt;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * easedProgress);
+
+        element.textContent = `${value}+`;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      };
+
+      requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (!entry?.isIntersecting) return;
+
+        for (const counterElement of counters) {
+          counterElement.textContent = "0+";
+          animateCounter(counterElement);
+        }
+
+        observer.disconnect();
+      },
+      {
+        threshold: 0.35,
+      },
+    );
+
+    observer.observe(stats);
+  }
+}

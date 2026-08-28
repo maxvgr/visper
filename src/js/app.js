@@ -14,6 +14,7 @@ import './layout/products-category-nav';
 /* Подключение cnhfybw */
 import './layout/page/home';
 import './layout/page/news';
+import './layout/page/about';
 
 import './layout/section/contacts-map';
 import './layout/section/products-related';

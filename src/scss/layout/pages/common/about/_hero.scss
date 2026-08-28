@@ -31,6 +31,17 @@
       padding: 26px 31px 32px;
     }
 
+    &__slider {
+      overflow: hidden;
+
+      width: 100%;
+      min-width: 0;
+    }
+
+    &__slide {
+      height: auto;
+    }
+
     &__subtitle {
       margin: 0;
 
