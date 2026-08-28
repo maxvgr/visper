@@ -96,4 +96,9 @@
     fill="currentColor"
   />
 </symbol>
+<symbol id="certificate-download" viewBox="0 0 28 28">
+  <path d="M8.0078 12.8125V18.2108H19.996V12.8125" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M13.9453 8.78906V15.503" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <path d="M11.2031 12.6875L13.9498 15.5063L16.6964 12.6875" fill="none" stroke="currentColor" stroke-width="1.4"/>
+</symbol>
 </svg>
