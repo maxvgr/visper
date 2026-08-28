@@ -25,9 +25,12 @@ export default class Gallery {
     }
 
     const galleries = document.querySelectorAll(this.options.selector);
+
     for (const gallery of galleries) {
       if (this.instances.has(gallery)) continue;
+
       const instance = this.createInstance(gallery);
+
       if (instance) {
         this.instances.set(gallery, instance);
       }
@@ -36,6 +39,7 @@ export default class Gallery {
 
   createInstance(gallery) {
     const mainEl = gallery.querySelector('.b-gallery__slider .swiper');
+
     if (!mainEl) return;
 
     const isVerticalGallery = gallery.classList.contains('b-gallery--vertical');
@@ -52,6 +56,7 @@ export default class Gallery {
     };
 
     this.initGallery(instance);
+
     return instance;
   }
 
@@ -75,10 +80,12 @@ export default class Gallery {
 
     if (!isVertical) {
       instance.el.style.removeProperty('--b-thumb-height');
+
       return;
     }
 
     const viewport = instance.mainEl.closest('.b-gallery__viewport');
+
     if (!viewport) return;
 
     const height = viewport.clientHeight || Math.round(viewport.offsetWidth * 3 / 4);
@@ -93,6 +100,25 @@ export default class Gallery {
 
     const isVertical = instance.isVerticalGallery && MediaQuery(breakpoint.tablet);
 
+    let navigation;
+
+    if (isVertical) {
+      navigation = {
+        prevEl: instance.el.querySelector('.b-gallery__thumb .b-gallery__button--prev'),
+        nextEl: instance.el.querySelector('.b-gallery__thumb .b-gallery__button--next'),
+      };
+    }
+
+    let breakpoints;
+
+    if (!instance.isVerticalGallery) {
+      breakpoints = {
+        800: { slidesPerView: 3 },
+        1200: { slidesPerView: 4 },
+        1480: { slidesPerView: 5 },
+      };
+    }
+
     const swiperInstance = new Swiper(instance.thumbEl, {
       modules: isVertical ? [Navigation] : [],
       direction: isVertical ? 'vertical' : 'horizontal',
@@ -101,19 +127,8 @@ export default class Gallery {
       slideToClickedSlide: true,
       centerInsufficientSlides: false,
       watchSlidesProgress: true,
-      navigation: isVertical
-        ? {
-            prevEl: instance.el.querySelector('.b-gallery__thumb .swiper-button-prev'),
-            nextEl: instance.el.querySelector('.b-gallery__thumb .swiper-button-next'),
-          }
-        : undefined,
-      breakpoints: instance.isVerticalGallery
-        ? undefined
-        : {
-            800: { slidesPerView: 3 },
-            1200: { slidesPerView: 4 },
-            1480: { slidesPerView: 5 },
-          },
+      navigation,
+      breakpoints,
     });
 
     /* Автоматическая прокрутка превью при клике на крайний видимый слайд */
@@ -137,7 +152,9 @@ export default class Gallery {
           clickedIndex === undefined ||
           clickedIndex < 0 ||
           (clickedSlide && clickedSlide.classList.contains('swiper-slide-thumb-active'))
-        ) return;
+        ) {
+          return;
+        }
 
         const lastVisibleIndex = activeIndex + slidesPerView - 1;
         const maxIndex = slides.length - slidesPerView;
@@ -171,10 +188,14 @@ export default class Gallery {
     /* Остановка видео только на предыдущем активном слайде */
     mainSlider.on('slideChangeTransitionStart', () => {
       const prevSlide = mainSlider.slides[mainSlider.previousIndex];
+
       if (!prevSlide) return;
 
       const videos = prevSlide.querySelectorAll('video');
-      for (const video of videos) video.pause();
+
+      for (const video of videos) {
+        video.pause();
+      }
     });
 
     return mainSlider;
@@ -189,6 +210,7 @@ export default class Gallery {
       if (instance.previewSwiper && !instance.previewSwiper.destroyed) {
         instance.previewSwiper.update();
       }
+
       return;
     }
 
