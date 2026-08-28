@@ -129,43 +129,85 @@
             </div>
             <!-- /.product-detail__toolbar -->
 
-            <div class="product-detail__tabs">
+            <div class="product-detail__tabs b-tabs">
               <div class="section__line"></div>
 
-              <div class="product-detail__tabs-navigation">
-                <button class="product-detail__tab cut-border" type="button" data-product-tab="purpose">
+              <div class="product-detail__tabs-navigation b-tabs__action">
+                <button class="product-detail__tab cut-border" type="button">
                   Назначение и устройство
                 </button>
 
-                <button class="product-detail__tab product-detail__tab--active cut-border" type="button" data-product-tab="specifications">
+                <button class="product-detail__tab cut-border is-active" type="button">
                   Характеристики и чертежи
                 </button>
 
-                <button class="product-detail__tab cut-border" type="button" data-product-tab="service">
+                <button class="product-detail__tab cut-border" type="button">
                   Гарантия и сервис
                 </button>
               </div>
               <!-- /.product-detail__tabs-navigation -->
 
-              <div class="product-detail__tabs-content">
-                <div class="product-detail__panel" data-product-panel="purpose">
-                </div>
+              <div class="product-detail__tabs-content swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="product-detail__panel product-detail__panel--text cut-border">
+                      <h3 class="product-detail__panel-title">
+                        Назначение и устройство
+                      </h3>
 
-                <div class="product-detail__panel product-detail__panel--active" data-product-panel="specifications">
-                  <div class="product-detail__drawing cut-border">
-                    <picture class="lazy">
-                      <img class="image image--contain lazy__item" data-src="assets/images/layout/pages/sp-product-1/drawing.webp" alt="Чертёж ИС-190-50">
-                    </picture>
+                      <p>
+                        Здесь будет размещено описание назначения изделия, особенностей его конструкции и основных областей применения.
+                        Текст является временным и будет заменён на актуальную техническую информацию.
+                      </p>
+
+                      <p>
+                        В разделе можно рассказать об устройстве модели, применяемых материалах, конструктивных особенностях,
+                        вариантах исполнения и условиях эксплуатации.
+                      </p>
+                    </div>
+                    <!-- /.product-detail__panel -->
                   </div>
-                  <!-- /.product-detail__drawing -->
-                </div>
+                  <!-- /.swiper-slide -->
 
-                <div class="product-detail__panel" data-product-panel="service">
+                  <div class="swiper-slide">
+                    <div class="product-detail__panel">
+                      <div class="product-detail__drawing cut-border">
+                        <picture class="lazy">
+                          <img class="image image--contain lazy__item" data-src="assets/images/layout/pages/sp-product-1/drawing.webp" alt="Чертёж ИС-190-50">
+                        </picture>
+                      </div>
+                      <!-- /.product-detail__drawing -->
+                    </div>
+                    <!-- /.product-detail__panel -->
+                  </div>
+                  <!-- /.swiper-slide -->
+
+                  <div class="swiper-slide">
+                    <div class="product-detail__panel product-detail__panel--text cut-border">
+                      <h3 class="product-detail__panel-title">
+                        Гарантия и сервис
+                      </h3>
+
+                      <p>
+                        Здесь будет размещена информация о гарантийных обязательствах, сроках обслуживания и порядке обращения
+                        по вопросам эксплуатации продукции.
+                      </p>
+
+                      <p>
+                        Также в этом разделе можно будет указать условия поставки запасных частей, технической поддержки,
+                        ремонта и сервисного сопровождения оборудования.
+                      </p>
+                    </div>
+                    <!-- /.product-detail__panel -->
+                  </div>
+                  <!-- /.swiper-slide -->
                 </div>
+                <!-- /.swiper-wrapper -->
               </div>
               <!-- /.product-detail__tabs-content -->
             </div>
             <!-- /.product-detail__tabs -->
+
           </div>
           <!-- /.product-detail -->
         </div>

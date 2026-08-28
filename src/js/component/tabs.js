@@ -4,7 +4,7 @@ import { EffectFade } from "swiper/modules";
 export default class Tab {
   constructor(options = {}) {
     this.options = {
-      selector: '.b-tabs',
+      selector: ".b-tabs",
       ...options,
     };
     this.instances = new Map();
@@ -23,9 +23,12 @@ export default class Tab {
     }
 
     const tabs = document.querySelectorAll(this.options.selector);
+
     for (const tab of tabs) {
       if (this.instances.has(tab)) continue;
+
       const instance = this.createInstance(tab);
+
       if (instance) {
         this.instances.set(tab, instance);
       }
@@ -33,8 +36,20 @@ export default class Tab {
   }
 
   createInstance(tab) {
-    const swiperEl = tab.querySelector('.swiper');
+    const swiperEl = tab.querySelector(".swiper");
+
     if (!swiperEl) return;
+
+    const controls = tab.querySelectorAll(".b-tabs__action button");
+
+    let initialSlide = 0;
+
+    for (const [index, control] of controls.entries()) {
+      if (control.classList.contains("is-active")) {
+        initialSlide = index;
+        break;
+      }
+    }
 
     const slider = new Swiper(swiperEl, {
       modules: [EffectFade],
@@ -43,8 +58,9 @@ export default class Tab {
       speed: 300,
       allowTouchMove: false,
       autoHeight: true,
+      initialSlide,
 
-      effect: 'fade',
+      effect: "fade",
       fadeEffect: {
         crossFade: true,
       },
@@ -53,36 +69,49 @@ export default class Tab {
     const abortController = new AbortController();
     const { signal } = abortController;
 
-    const controls = tab.querySelectorAll('.b-tabs__action button');
     for (const [index, control] of controls.entries()) {
-      control.addEventListener('click', () => {
-        const currentActive = tab.querySelector('.b-tabs__action .is-active');
-        if (currentActive) currentActive.classList.remove('is-active');
+      control.addEventListener(
+        "click",
+        () => {
+          const currentActive = tab.querySelector(".b-tabs__action .is-active");
 
-        control.classList.add('is-active');
-        slider.slideTo(index);
-      }, { signal });
+          if (currentActive) {
+            currentActive.classList.remove("is-active");
+          }
+
+          control.classList.add("is-active");
+          slider.slideTo(index);
+        },
+        { signal },
+      );
     }
 
-    // Обновление высоты Swiper при открытии/закрытии аккордеона внутри табов
-    const accordions = tab.querySelectorAll('.b-accordion__body, .c-accordion__body');
+    const accordions = tab.querySelectorAll(
+      ".b-accordion__body, .c-accordion__body",
+    );
+
     for (const accordionBody of accordions) {
-      accordionBody.addEventListener('dropdownToggleStart', () => {
-        const duration = 600;
-        const startTime = performance.now();
+      accordionBody.addEventListener(
+        "dropdownToggleStart",
+        () => {
+          const duration = 600;
+          const startTime = performance.now();
 
-        const updateHeight = (currentTime) => {
-          const elapsed = currentTime - startTime;
-          if (elapsed < duration) {
-            slider.update();
-            requestAnimationFrame(updateHeight);
-          } else {
-            slider.update();
-          }
-        };
+          const updateHeight = (currentTime) => {
+            const elapsed = currentTime - startTime;
 
-        requestAnimationFrame(updateHeight);
-      }, { signal });
+            if (elapsed < duration) {
+              slider.update();
+              requestAnimationFrame(updateHeight);
+            } else {
+              slider.update();
+            }
+          };
+
+          requestAnimationFrame(updateHeight);
+        },
+        { signal },
+      );
     }
 
     return {
