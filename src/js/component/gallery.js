@@ -170,6 +170,14 @@ export default class Gallery {
     return swiperInstance;
   }
 
+  setActiveThumb(instance, activeIndex) {
+    if (!instance.previewSwiper || instance.previewSwiper.destroyed) return;
+
+    for (const [index, slide] of instance.previewSwiper.slides.entries()) {
+      slide.classList.toggle('is-active', index === activeIndex);
+    }
+  }
+
   createMainSlider(instance) {
     const mainSlider = new Swiper(instance.mainEl, {
       modules: [Thumbs, EffectFade],
@@ -183,6 +191,12 @@ export default class Gallery {
       thumbs: {
         swiper: instance.previewSwiper,
       },
+    });
+
+    this.setActiveThumb(instance, mainSlider.activeIndex);
+
+    mainSlider.on('slideChange', () => {
+      this.setActiveThumb(instance, mainSlider.activeIndex);
     });
 
     /* Остановка видео только на предыдущем активном слайде */
@@ -226,6 +240,7 @@ export default class Gallery {
       instance.mainSlider.thumbs.swiper = instance.previewSwiper;
       instance.mainSlider.thumbs.init();
       instance.mainSlider.thumbs.update(true);
+      this.setActiveThumb(instance, instance.mainSlider.activeIndex);
     }
   }
 
