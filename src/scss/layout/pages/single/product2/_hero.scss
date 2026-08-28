@@ -72,14 +72,15 @@
           position: absolute;
           z-index: 3;
 
-          left: 50%;
+          inset: auto auto auto 50%;
 
           display: flex;
           align-items: center;
           justify-content: center;
 
-          width: 15px;
-          height: 15px;
+          width: 24px;
+          height: 14px;
+          margin-top: 0;
           padding: 0;
           border: 0;
 
@@ -88,42 +89,49 @@
           opacity: 1;
           cursor: pointer;
 
-          transform: translateX(-50%) rotate(90deg);
+          transform: translateX(-50%);
           transition: opacity $transition-time ease;
 
           appearance: none;
+
+          &::before {
+            content: "";
+
+            width: 15px;
+            height: 7px;
+
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='15' height='7' viewBox='0 0 15 7' fill='none'%3e%3cpath d='M1 6L7.5 1L14 6' stroke='%230033AB' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+
+          &::after {
+            content: none;
+
+            display: none;
+          }
+
+          > picture {
+            display: none;
+          }
         }
 
         .swiper-button-prev {
-          top: -15px;
+          top: -17px;
         }
 
         .swiper-button-next {
-          bottom: -15px;
+          bottom: -17px;
+
+          &::before {
+            transform: rotate(180deg);
+          }
         }
 
         .swiper-button-disabled {
           opacity: 0.25;
           pointer-events: none;
-        }
-
-        .swiper-button-prev::after,
-        .swiper-button-next::after {
-          display: none;
-        }
-
-        .swiper-button-prev picture,
-        .swiper-button-next picture {
-          display: block;
-
-          width: 100%;
-          height: 100%;
-        }
-
-        .swiper-button-prev img,
-        .swiper-button-next img {
-          width: 100%;
-          height: 100%;
         }
       }
 
@@ -434,7 +442,7 @@
       margin-top: 40px;
 
       .swiper-slide {
-        padding-right: 1px;
+        padding: 0 2px 2px 0;
       }
     }
 
@@ -648,7 +656,7 @@
 
     &__elements-table {
       width: 100%;
-      height: 100%;
+      height: calc(100% - 1px);
       border-collapse: collapse;
 
       background: $palette-white;
@@ -657,7 +665,6 @@
 
       th,
       td {
-        height: 59px;
         padding: 0 20px;
         border-right: 1px solid $palette-gray;
         border-bottom: 1px solid $palette-gray;
@@ -672,9 +679,11 @@
       }
 
       thead {
-        th {
+        tr {
           height: 39px;
+        }
 
+        th {
           background: $palette-lightgray;
 
           font-weight: $weight-Medium;
@@ -683,6 +692,10 @@
       }
 
       tbody {
+        tr {
+          height: 58px;
+        }
+
         td {
           line-height: 1.2;
         }
