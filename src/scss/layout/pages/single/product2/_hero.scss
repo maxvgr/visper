@@ -187,6 +187,10 @@
         height: 100%;
         max-height: 92px;
       }
+
+      .swiper-slide-thumb-active & {
+        --cut-border-color: #{$palette-blue};
+      }
     }
 
     &__summary {
@@ -306,7 +310,7 @@
       gap: 12px;
       justify-content: center;
 
-      & + & {
+      .product-detail__downloads-divider + & {
         padding-left: 39px;
       }
     }
