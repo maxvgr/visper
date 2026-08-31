@@ -330,92 +330,139 @@
       }
     }
   }
+}
 
-  .modal--success {
-    .modal__overlay {
-      padding: 20px;
+.modal--success {
+  .modal__overlay {
+    padding: 20px;
 
-      background-color: rgba($color: $palette-black, $alpha: 0.4);
+    background-color: rgba($color: $palette-black, $alpha: 0.4);
 
-      backdrop-filter: blur(5px);
-    }
+    backdrop-filter: blur(5px);
+  }
 
-    .modal__container {
-      max-width: 763px;
-      min-height: 382px;
-      margin: auto;
-      padding-top: 0;
+  .modal__container {
+    max-width: 763px;
+    min-height: 382px;
+    margin: auto;
+    // padding-top: 0;
+  }
+}
+
+.success-modal {
+  @include mq($until: tablet) {
+    max-width: 362px;
+    min-height: 382px;
+    padding: 50px 20px;
+  }
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  overflow: hidden;
+
+  min-height: 382px;
+  padding: 63px 40px;
+
+  background:
+    linear-gradient(160deg, $palette-lightblue 0 18%, transparent 18% 78%, $palette-lightblue 78% 100%), $palette-white;
+
+  &__icon {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 69px;
+    height: 69px;
+    border: 2px solid #c3d5ff;
+    border-radius: 50%;
+
+    background: $palette-lightblue;
+    color: $palette-blue;
+
+    svg {
+      width: 34px;
+      height: 34px;
     }
   }
 
-  .success-modal {
-    @include mq($until: tablet) {
-      max-width: 362px;
-      min-height: 382px;
-      padding: 50px 20px;
+  &__title {
+    position: relative;
+    z-index: 1;
+
+    margin-top: 23px;
+
+    color: $palette-blue;
+
+    font-weight: $weight-Bold;
+    font-size: 32px;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  &__text {
+    position: relative;
+    z-index: 1;
+
+    max-width: 371px;
+    margin-top: 13px;
+
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  &__button {
+    position: relative;
+    z-index: 1;
+
+    width: 232px;
+    height: 44px;
+    margin-top: 34px;
+  }
+
+  &__corner {
+    position: absolute;
+    z-index: 1;
+
+    width: 19px;
+    height: 19px;
+
+    color: $palette-blue;
+
+    pointer-events: none;
+
+    &--top-left {
+      top: 21px;
+      left: 21px;
     }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    &--top-right {
+      top: 21px;
+      right: 21px;
 
-    padding: 63px 40px;
-
-    background:
-      linear-gradient($palette-blue, $palette-blue) 11px 11px / 10px 1px no-repeat,
-      linear-gradient($palette-blue, $palette-blue) 11px 11px / 1px 10px no-repeat,
-      linear-gradient($palette-blue, $palette-blue) calc(100% - 11px) 11px / 10px 1px no-repeat,
-      linear-gradient($palette-blue, $palette-blue) calc(100% - 11px) 11px / 1px 10px no-repeat,
-      linear-gradient($palette-blue, $palette-blue) 11px calc(100% - 11px) / 10px 1px no-repeat,
-      linear-gradient($palette-blue, $palette-blue) 11px calc(100% - 11px) / 1px 10px no-repeat,
-      linear-gradient($palette-blue, $palette-blue) calc(100% - 11px) calc(100% - 11px) / 10px 1px no-repeat,
-      linear-gradient($palette-blue, $palette-blue) calc(100% - 11px) calc(100% - 11px) / 1px 10px no-repeat,
-      linear-gradient(160deg, $palette-lightblue 0 18%, transparent 18% 78%, $palette-lightblue 78% 100%),
-      $palette-white;
-
-    &__icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 69px;
-      height: 69px;
-      border: 2px solid #c3d5ff;
-      border-radius: 50%;
-
-      background: $palette-lightblue;
-      color: $palette-blue;
-
-      svg {
-        width: 34px;
-        height: 34px;
-      }
+      transform: rotate(90deg);
     }
 
-    &__title {
-      margin-top: 23px;
+    &--bottom-right {
+      right: 21px;
+      bottom: 21px;
 
-      color: $palette-blue;
-
-      font-weight: $weight-Bold;
-      font-size: 32px;
-      line-height: 1.1;
-      text-align: center;
+      transform: rotate(180deg);
     }
 
-    &__text {
-      max-width: 371px;
-      margin-top: 13px;
+    &--bottom-left {
+      bottom: 21px;
+      left: 21px;
 
-      line-height: 1.3;
-      text-align: center;
-    }
-
-    &__button {
-      width: 232px;
-      height: 44px;
-      margin-top: 34px;
+      transform: rotate(270deg);
     }
   }
 }
