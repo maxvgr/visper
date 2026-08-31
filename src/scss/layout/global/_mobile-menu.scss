@@ -27,6 +27,11 @@
   }
 
   &__wrapper {
+    @include mq($from: tablet, $until: laptop) {
+      max-width: 768px;
+      margin-left: auto;
+    }
+
     position: relative;
     z-index: 2;
 
@@ -261,13 +266,16 @@
     @include mq($until: laptop) {
       overflow-y: auto;
 
-      max-width: none;
       max-height: calc(100vh - var(--header-height, 76px) - 40px);
       padding: 0;
 
       background: $palette-white;
       box-shadow: 0 4px 12px rgba($color: $palette-black, $alpha: 0.3);
       transform: translateY(-12px);
+    }
+    @include mq($from: tablet, $until: laptop) {
+      max-width: 768px;
+      margin-left: auto;
     }
 
     position: relative;
@@ -344,8 +352,8 @@
 
   &__image {
     @include mq($until: laptop) {
-      --products-frame-color: {$palette-gray};
-      --products-arrow-color: {$palette-gray};
+      --products-frame-color: #{$palette-gray};
+      --products-arrow-color: #{$palette-gray};
 
       height: 91px;
       padding: 6px 10px;
