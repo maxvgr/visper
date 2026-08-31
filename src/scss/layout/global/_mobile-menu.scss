@@ -2,10 +2,6 @@
 // В этом файле прописываются стили для мобильного меню
 // -----------------------------------------------------------------------------
 
-// -----------------------------------------------------------------------------
-// В этом файле прописываются стили для мобильного меню
-// -----------------------------------------------------------------------------
-
 .mobile-menu {
   position: fixed;
   z-index: 40;
@@ -207,6 +203,118 @@
     }
 
     .mobile-menu__wrapper {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+.mobile-products {
+  position: fixed;
+  z-index: 40;
+  inset: var(--header-height, 76px) 0 0;
+
+  visibility: hidden;
+  pointer-events: none;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+
+    background-color: rgba($color: $palette-black, $alpha: 0.4);
+    opacity: 0;
+    visibility: hidden;
+
+    transition: $transition-time ease;
+    backdrop-filter: blur(5px);
+  }
+
+  &__wrapper {
+    position: relative;
+    z-index: 2;
+
+    overflow-y: auto;
+
+    width: 100%;
+    max-height: calc(100vh - var(--header-height, 76px) - 40px);
+
+    background: $palette-white;
+    box-shadow: 0 4px 12px rgba($color: $palette-black, $alpha: 0.3);
+    opacity: 0;
+    transform: translateY(-12px);
+
+    transition:
+      opacity $transition-time ease,
+      transform $transition-time ease;
+  }
+
+  &__content {
+    padding: 31px 20px 27px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 27px 17px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+
+    min-width: 0;
+  }
+
+  &__image {
+    height: 91px;
+    padding: 6px 10px;
+
+    background:
+      linear-gradient($palette-gray, $palette-gray) top left / 38px 1px no-repeat,
+      linear-gradient($palette-gray, $palette-gray) top left / 1px 34px no-repeat,
+      linear-gradient($palette-gray, $palette-gray) top right / 38px 1px no-repeat,
+      linear-gradient($palette-gray, $palette-gray) top right / 1px 34px no-repeat,
+      linear-gradient($palette-gray, $palette-gray) bottom left / 38px 1px no-repeat,
+      linear-gradient($palette-gray, $palette-gray) bottom left / 1px 34px no-repeat,
+      linear-gradient($palette-gray, $palette-gray) bottom right / 38px 1px no-repeat,
+      linear-gradient($palette-gray, $palette-gray) bottom right / 1px 34px no-repeat;
+
+    picture {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      object-fit: contain;
+
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    margin-top: 11px;
+
+    font-size: 13px;
+    line-height: 1.15;
+  }
+
+  &--open {
+    visibility: visible;
+    pointer-events: auto;
+
+    .mobile-products__overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-products__wrapper {
       opacity: 1;
       transform: none;
     }
