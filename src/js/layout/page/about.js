@@ -139,3 +139,37 @@ if (aboutRegions) {
     point.addEventListener("blur", () => hideTooltip(point));
   }
 }
+
+
+const aboutProjects = document.querySelector("#cp-about-projects");
+
+if (aboutProjects) {
+  const items = [...aboutProjects.querySelectorAll(".about-projects__item")];
+  const image = aboutProjects.querySelector(".about-projects__image");
+  const description = aboutProjects.querySelector(".about-projects__description");
+
+  const setProject = (item) => {
+    const imagePath = item.dataset.image;
+    const projectDescription = item.dataset.description;
+
+    for (const projectItem of items) {
+      const isActive = projectItem === item;
+
+      projectItem.classList.toggle("is-active", isActive);
+      projectItem.setAttribute("aria-pressed", String(isActive));
+    }
+
+    if (image && imagePath) {
+      image.dataset.src = imagePath;
+      image.src = imagePath;
+    }
+
+    if (description && projectDescription) {
+      description.textContent = projectDescription;
+    }
+  };
+
+  for (const item of items) {
+    item.addEventListener("click", () => setProject(item));
+  }
+}
