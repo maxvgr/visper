@@ -1,0 +1,67 @@
+<div class="modal modal--contact modal--write-us" data-modal="write-us">
+  <div class="modal__overlay">
+    <div class="modal__container cut-corners">
+      <div class="modal__wrapper">
+        <div class="modal__header">
+          <p class="modal__title">Напишите нам</p>
+          <button class="modal__close" type="button" data-modal-close aria-label="Закрыть"></button>
+        </div>
+        <!-- /.modal__header -->
+
+        <div class="modal__content">
+          <form class="form form-custom contact-modal" action="">
+            <div class="contact-modal__fields">
+              <label class="contact-modal__field">
+                <span class="contact-modal__label">ФИО (полностью)</span>
+                <span class="contact-modal__input cut-border">
+                  <input type="text" name="user_name" placeholder="Введите ФИО" autocomplete="name">
+                </span>
+              </label>
+
+              <label class="contact-modal__field">
+                <span class="contact-modal__label">Почта</span>
+                <span class="contact-modal__input cut-border">
+                  <input type="email" name="user_email" placeholder="Имя ящика" autocomplete="email">
+                </span>
+              </label>
+
+              <label class="contact-modal__field">
+                <span class="contact-modal__label">Капча</span>
+                <span class="contact-modal__input contact-modal__input--captcha cut-border">
+                  <input type="text" name="captcha" placeholder="0000" inputmode="numeric" autocomplete="off">
+                  <span class="contact-modal__captcha">5442</span>
+                </span>
+              </label>
+            </div>
+            <!-- /.contact-modal__fields -->
+
+            <div class="contact-modal__checks">
+              <label class="checkbox contact-modal__checkbox">
+                <input type="checkbox" name="privacy" data-privacy>
+                <span class="checkbox__mark"></span>
+                <span class="checkbox__label">Даю согласие на обработку <a href="">персональных данных</a></span>
+              </label>
+
+              <label class="checkbox contact-modal__checkbox">
+                <input type="checkbox" name="marketing" checked>
+                <span class="checkbox__mark"></span>
+                <span class="checkbox__label">Согласны получать <a href="">рекламно-информационные</a> рассылки</span>
+              </label>
+            </div>
+            <!-- /.contact-modal__checks -->
+
+            <div class="form__action contact-modal__action">
+              <button class="button button-secondary contact-modal__submit" type="submit">Отправить</button>
+            </div>
+            <!-- /.form__action -->
+          </form>
+        </div>
+        <!-- /.modal__content -->
+      </div>
+      <!-- /.modal__wrapper -->
+    </div>
+    <!-- /.modal__container -->
+  </div>
+  <!-- /.modal__overlay -->
+</div>
+<!-- /.modal -->

@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.App.modal = new Modal({
     activeClass: 'is-show',
-    scrollLockClass: 'is-scroll-locked',
+    // scrollLockClass: 'is-scroll-locked',
+    scrollLockClass: 'scroll-lock',
     scrollLock: true,
 
     closeOnEsc: true,
