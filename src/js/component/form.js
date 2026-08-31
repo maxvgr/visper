@@ -1,10 +1,10 @@
-import IMask from 'imask';
+import IMask from "imask";
 
 // Глобальные маски для телефона
 const PHONE_MASKS = {
-  7: '+{7} (000) 000-00-00', // Россия
-  1: '+{1} (000) 000-0000', // США
-  49: '+{49} 0000 0000', // Германия
+  7: "+{7} (000) 000-00-00", // Россия
+  1: "+{1} (000) 000-0000", // США
+  49: "+{49} 0000 0000", // Германия
 };
 
 const phoneMasks = new WeakMap();
@@ -12,16 +12,18 @@ const phoneMasks = new WeakMap();
 /**
  * Инициализирует маску для конкретного поля телефона
  */
-export function initPhoneMask(phoneInput, countryCode = '7') {
-  if (!phoneInput || phoneMasks.has(phoneInput)) return phoneMasks.get(phoneInput);
+export function initPhoneMask(phoneInput, countryCode = "7") {
+  if (!phoneInput || phoneMasks.has(phoneInput)) {
+    return phoneMasks.get(phoneInput);
+  }
 
   const maskController = IMask(phoneInput, {
     mask: PHONE_MASKS[countryCode] || PHONE_MASKS[7],
 
     dispatch: (appended, dynamicMasked) => {
-      const number = (dynamicMasked.value + appended).replaceAll(/\D/g, '');
-      if (number.startsWith('8') && number.length === 1) {
-        dynamicMasked.value = '+7';
+      const number = (dynamicMasked.value + appended).replaceAll(/\D/g, "");
+      if (number.startsWith("8") && number.length === 1) {
+        dynamicMasked.value = "+7";
       }
       return dynamicMasked;
     },
@@ -38,17 +40,19 @@ export function updatePhoneMask(phoneInput, countryCode) {
   const maskController = phoneMasks.get(phoneInput);
 
   if (!maskController) {
-    console.warn('Маска для поля телефона не найдена');
+    console.warn("Маска для поля телефона не найдена");
     return;
   }
 
   const maskPattern = PHONE_MASKS[countryCode];
   if (!maskPattern) {
-    console.warn(`Для кода страны не определена маска телефона: ${countryCode}`);
+    console.warn(
+      `Для кода страны не определена маска телефона: ${countryCode}`,
+    );
     return;
   }
 
-  maskController.value = '';
+  maskController.value = "";
   maskController.updateOptions({ mask: maskPattern });
 }
 
@@ -83,7 +87,7 @@ export default class Form {
      * @type {FormOptions}
      */
     this.options = {
-      selector: '.form-custom',
+      selector: ".form-custom",
       onSubmit: () => {},
       onReset: () => {},
       onValidate: () => {},
@@ -125,33 +129,45 @@ export default class Form {
     const instance = {
       form,
       options: { ...this.options },
-      submit: form.querySelector('button[type=submit]'),
-      fields: form.querySelectorAll('input, select, textarea'),
-      phone: form.querySelector('input[type=tel]'),
-      email: form.querySelector('input[type=email]'),
-      name: form.querySelector('input[name=user_name]'),
-      privacy: [...form.querySelectorAll('[data-privacy]')],
+      submit: form.querySelector("button[type=submit]"),
+      fields: form.querySelectorAll("input, select, textarea"),
+      phone: form.querySelector("input[type=tel]"),
+      email: form.querySelector("input[type=email]"),
+      name: form.querySelector("input[name=user_name]"),
+      privacy: [...form.querySelectorAll("[data-privacy]")],
       country: form.querySelector('select[data-target="country"]'),
       nameMask: undefined,
+      validation: Object.hasOwn(form.dataset, 'validation'),
+      validationFields: [...form.querySelectorAll("[data-validate]")],
+      validationAttempted: false,
     };
 
     instance.onSubmit = (event) => {
+      if (instance.validation) {
+        instance.validationAttempted = true;
+
+        if (!this.validateInstance(instance)) {
+          event.preventDefault();
+          return;
+        }
+      }
+
       instance.options.onSubmit(instance.form, event);
     };
 
     instance.onClick = (event) => {
-      const button = event.target.closest('.button');
+      const button = event.target.closest(".button");
       if (!button) return;
 
       const action = button.dataset.action;
-      if (action === 'reset') {
+      if (action === "reset") {
         event.preventDefault();
         this.resetInstance(instance);
       }
     };
 
     instance.onPrivacyChange = (event) => {
-      if (Object.hasOwn(event.target.dataset, 'privacy')) {
+      if (Object.hasOwn(event.target.dataset, "privacy")) {
         this.updateSubmitState(instance);
       }
     };
@@ -160,6 +176,15 @@ export default class Form {
       if (instance.phone) {
         updatePhoneMask(instance.phone, instance.country.value);
       }
+    };
+
+    instance.onFieldInput = (event) => {
+      if (!instance.validation || !instance.validationAttempted) return;
+
+      const field = event.target.closest("[data-validate]");
+      if (!field) return;
+
+      this.validateField(field);
     };
 
     this.initInstance(instance);
@@ -173,11 +198,12 @@ export default class Form {
     this.initNameMask(instance);
     this.initPhone(instance);
     this.initPrivacyListener(instance);
+    this.initValidation(instance);
 
     if (instance.country) this.initCountrySelect(instance);
 
-    instance.form.addEventListener('submit', instance.onSubmit);
-    instance.form.addEventListener('click', instance.onClick);
+    instance.form.addEventListener("submit", instance.onSubmit);
+    instance.form.addEventListener("click", instance.onClick);
   }
 
   initNameMask(instance) {
@@ -190,7 +216,8 @@ export default class Form {
 
   initPhone(instance) {
     if (!instance.phone) return;
-    const countryCode = instance.phone.dataset.countryCode || (instance.country?.value) || '7';
+    const countryCode =
+      instance.phone.dataset.countryCode || instance.country?.value || "7";
     initPhoneMask(instance.phone, countryCode);
   }
 
@@ -198,7 +225,98 @@ export default class Form {
     if (instance.privacy.length === 0 || !instance.submit) return;
 
     this.updateSubmitState(instance);
-    instance.form.addEventListener('change', instance.onPrivacyChange);
+    instance.form.addEventListener("change", instance.onPrivacyChange);
+  }
+
+  initValidation(instance) {
+    if (!instance.validation) return;
+
+    instance.form.addEventListener("input", instance.onFieldInput);
+  }
+
+  validateInstance(instance) {
+    let isValid = true;
+    let firstInvalidField;
+
+    for (const field of instance.validationFields) {
+      if (!this.validateField(field)) {
+        isValid = false;
+
+        if (!firstInvalidField) {
+          firstInvalidField = field;
+        }
+      }
+    }
+
+    if (firstInvalidField) {
+      firstInvalidField.focus();
+    }
+
+    instance.options.onValidate(instance.form, isValid);
+
+    return isValid;
+  }
+
+  validateField(field) {
+    const value = field.value.trim();
+    let errorMessage = "";
+
+    if (field.required && value.length === 0) {
+      errorMessage = field.dataset.errorRequired || "Необходимо заполнить поле";
+    } else if (field.minLength > 0 && value.length < field.minLength) {
+      errorMessage =
+        field.dataset.errorMinlength || `Минимум ${field.minLength} символов`;
+    } else if (field.type === "email" && !field.validity.valid) {
+      errorMessage = field.dataset.errorFormat || "Неверный формат";
+    } else if (
+      field.dataset.captchaValue &&
+      value !== field.dataset.captchaValue
+    ) {
+      errorMessage = field.dataset.errorCaptcha || "Неверно указаны символы";
+    }
+
+    this.setFieldError(field, errorMessage);
+
+    return errorMessage.length === 0;
+  }
+
+  setFieldError(field, message) {
+    const wrapper = field.closest("[data-field]");
+    if (!wrapper) return;
+
+    let error = wrapper.querySelector("[data-field-error]");
+
+    if (!message) {
+      wrapper.classList.remove("is-error");
+      field.removeAttribute("aria-invalid");
+
+      if (error) {
+        error.remove();
+      }
+
+      return;
+    }
+
+    wrapper.classList.add("is-error");
+    field.setAttribute("aria-invalid", "true");
+
+    if (!error) {
+      error = document.createElement("span");
+      error.classList.add("form__error");
+      error.dataset.fieldError = "";
+      error.setAttribute("role", "alert");
+      wrapper.append(error);
+    }
+
+    error.textContent = message;
+  }
+
+  clearValidation(instance) {
+    instance.validationAttempted = false;
+
+    for (const field of instance.validationFields) {
+      this.setFieldError(field, "");
+    }
   }
 
   /**
@@ -217,7 +335,7 @@ export default class Form {
    * @param {FormInstance} instance
    */
   initCountrySelect(instance) {
-    instance.country.addEventListener('change', instance.onCountryChange);
+    instance.country.addEventListener("change", instance.onCountryChange);
   }
 
   /**
@@ -228,9 +346,11 @@ export default class Form {
 
     if (instance.phone && phoneMasks.has(instance.phone)) {
       const mask = phoneMasks.get(instance.phone);
-      mask.value = '';
+      mask.value = "";
       mask.updateValue();
     }
+
+    this.clearValidation(instance);
 
     this.updateSubmitState(instance);
     instance.options.onReset(instance.form);
@@ -242,12 +362,13 @@ export default class Form {
   destroyInstance(instance) {
     if (!instance.form) return;
 
-    instance.form.removeEventListener('submit', instance.onSubmit);
-    instance.form.removeEventListener('click', instance.onClick);
-    instance.form.removeEventListener('change', instance.onPrivacyChange);
+    instance.form.removeEventListener("submit", instance.onSubmit);
+    instance.form.removeEventListener("click", instance.onClick);
+    instance.form.removeEventListener("change", instance.onPrivacyChange);
+    instance.form.removeEventListener("input", instance.onFieldInput);
 
     if (instance.country) {
-      instance.country.removeEventListener('change', instance.onCountryChange);
+      instance.country.removeEventListener("change", instance.onCountryChange);
     }
 
     if (instance.phone && phoneMasks.has(instance.phone)) {
@@ -270,7 +391,8 @@ export default class Form {
    * @returns {FormInstance | undefined}
    */
   get(form) {
-    const element = typeof form === 'string' ? document.querySelector(form) : form;
+    const element =
+      typeof form === "string" ? document.querySelector(form) : form;
     return this.instances.get(element);
   }
 

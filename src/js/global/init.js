@@ -1,40 +1,40 @@
 /* Прописываются все инициализации и первичные параметры для скриптов */
 
-import ScrollTop from '../utils/scroll-top';
-import Gallery from '../component/gallery';
-import Tab from '../component/tabs';
+import ScrollTop from "../utils/scroll-top";
+import Gallery from "../component/gallery";
+import Tab from "../component/tabs";
 
-import LazyLoad from 'vanilla-lazyload';
-import Modal from '../component/modal';
-import Submenu from '../component/submenu';
-import Accordion from '../component/accordion';
-import Form from '../component/form';
-import NumberInput from '../component/input';
+import LazyLoad from "vanilla-lazyload";
+import Modal from "../component/modal";
+import Submenu from "../component/submenu";
+import Accordion from "../component/accordion";
+import Form from "../component/form";
+import NumberInput from "../component/input";
 
-import { PlayVideoInViewport } from '../utils/video-optimization';
+import { PlayVideoInViewport } from "../utils/video-optimization";
 
 window.App = window.App || {};
 
 /* --------- */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   window.App.lazyImage = new LazyLoad({
-    elements_selector: '.lazy__item:not([data-custom-lazy])',
+    elements_selector: ".lazy__item:not([data-custom-lazy])",
 
     callback_loaded: (trigger) => {
-      const container = trigger.closest('.lazy');
-      container.classList.remove('lazy--preloader');
+      const container = trigger.closest(".lazy");
+      container.classList.remove("lazy--preloader");
     },
   });
 
   window.App.lazyBackground = new LazyLoad({
-    elements_selector: '.lazy-simple',
+    elements_selector: ".lazy-simple",
   });
 
   window.App.modal = new Modal({
-    activeClass: 'is-show',
+    activeClass: "is-show",
     // scrollLockClass: 'is-scroll-locked',
-    scrollLockClass: 'scroll-lock',
+    scrollLockClass: "scroll-lock",
     scrollLock: true,
 
     closeOnEsc: true,
@@ -43,26 +43,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     awaitCloseAnimation: true,
 
-    modalSelector: 'data-modal',
-    openSelector: 'data-modal-open',
-    closeSelector: 'data-modal-close',
+    modalSelector: "data-modal",
+    openSelector: "data-modal-open",
+    closeSelector: "data-modal-close",
 
-    onShow: (modal) => { },
-    onClose: (modal) => { },
-    onCloseAll: () => { }
+    onShow: (modal) => {},
+    onClose: (modal) => {},
+    onCloseAll: () => {},
   });
 
   window.App.submenu = new Submenu({
     single: false,
-    duration: 300
+    duration: 300,
   });
 
   window.App.accordion = new Accordion({
     single: false,
-    duration: 600
+    duration: 600,
   });
 
-  window.App.form = new Form();
+  // window.App.form = new Form();
+
+  window.App.form = new Form({
+    onSubmit: (form, event) => {
+      const successModal = form.dataset.successModal;
+
+      if (!successModal) return;
+
+      event.preventDefault();
+
+      window.App.modal.close();
+      window.App.modal.open(successModal);
+    },
+  });
   window.App.numberInput = new NumberInput();
 
   window.App.gallery = new Gallery();

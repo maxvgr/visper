@@ -1,9 +1,44 @@
 .form {
   &__wrapper {
-
   }
 
   &__action {
+  }
 
+  &__error {
+    position: relative;
+
+    display: block;
+
+    min-height: 19px;
+    margin-top: 6px;
+    padding-left: 27px;
+
+    color: $color-text__gray;
+
+    font-size: 12px;
+    line-height: 19px;
+
+    &::before {
+      content: "!";
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+
+      background: $palette-red;
+      color: $palette-white;
+
+      font-weight: $weight-Bold;
+      font-size: 12px;
+      line-height: 1;
+    }
   }
 }
