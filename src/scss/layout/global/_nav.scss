@@ -22,6 +22,10 @@
 
   &--header {
     .nav__list {
+      @include mq($until: desktop) {
+        justify-content: flex-start;
+      }
+
       display: flex;
       gap: 20px;
       justify-content: space-between;
@@ -57,10 +61,6 @@
         position: absolute;
         left: 0;
         counter-increment: my-counter; /* Увеличиваем счетчик */
-
-
-
-
       }
     }
 

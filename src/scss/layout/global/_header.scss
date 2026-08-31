@@ -13,6 +13,10 @@
   background: $palette-white;
 
   &__logo {
+    @include mq($until: laptop) {
+      z-index: 50;
+    }
+
     position: relative;
     z-index: 20;
 
@@ -33,6 +37,11 @@
   }
 
   &__wrapper {
+    @include mq($until: laptop) {
+      margin-right: 4px;
+      margin-left: 4px;
+    }
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,9 +54,15 @@
   }
 
   &__nav {
+    @include mq($until: laptop) {
+      display: none;
+    }
+
     min-width: 468px;
     margin-left: 55px;
     padding-bottom: 5px;
+
+    font-size: var(--font-text-small);
   }
 
   &__action {
@@ -55,14 +70,22 @@
     align-items: center;
 
     &-callback {
+      @include mq($until: laptop) {
+        display: none;
+      }
+
       display: flex;
       gap: 22px;
       align-items: center;
+
+      font-size: var(--font-text-small);
 
       & .link {
         display: flex;
         gap: 10px;
         align-items: center;
+
+        white-space: nowrap;
 
         @media (hover: hover) {
           &:hover {
@@ -79,11 +102,83 @@
 
       & .button {
         margin-left: 40px;
+
+        font-size: var(--font-text-small);
+      }
+    }
+
+    &-mobile {
+      @include mq($until: laptop) {
+        display: flex;
+      }
+
+      display: none;
+      gap: 12px;
+      align-items: center;
+    }
+
+    &-icon {
+      display: flex;
+      flex: 0 0 26px;
+      align-items: center;
+      justify-content: center;
+
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 0;
+
+      background: transparent;
+      color: $palette-blue;
+
+      cursor: pointer;
+      transition: opacity $transition-time ease;
+
+      @media (hover: hover) {
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+
+      svg {
+        width: 26px;
+        height: 26px;
       }
     }
 
     &-burger {
+      @include mq($until: laptop) {
+        display: block;
+      }
+
       display: none;
+      margin-left: 10px;
+
+      .hamburger-box {
+        width: 32px;
+        height: 24px;
+      }
+
+      .hamburger-inner,
+      .hamburger-inner::before,
+      .hamburger-inner::after {
+        width: 32px;
+        height: 2px;
+
+        background-color: $palette-blue;
+      }
+
+      .hamburger-inner {
+        margin-top: -1px;
+
+        &::before {
+          top: -9px;
+        }
+
+        &::after {
+          bottom: -9px;
+        }
+      }
     }
   }
 }

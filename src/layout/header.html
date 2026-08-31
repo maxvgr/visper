@@ -54,7 +54,7 @@
             office@w-av.ru
           </a>
           <a class="link" href="tel:89216427858">
-                        <picture>
+            <picture>
               <img class="image image--cover" src="assets/images/phone.png" alt="">
             </picture>
             8 (921) 642-78-58
@@ -63,8 +63,29 @@
         </div>
         <!-- /.header__action-callback -->
 
+        <div class="header__action-mobile">
+          <button class="header__action-icon header__action-icon--products" type="button" aria-label="Продукция">
+            <svg aria-hidden="true">
+              <use href="assets/images/icons/package.svg#about-advantage-storage"></use>
+            </svg>
+          </button>
+
+          <a class="header__action-icon" href="tel:89216427858" aria-label="Позвонить">
+            <svg aria-hidden="true">
+              <use href="assets/images/icons/package.svg#contacts-phone"></use>
+            </svg>
+          </a>
+
+          <a class="header__action-icon" href="mailto:office@w-av.ru" aria-label="Написать нам">
+            <svg aria-hidden="true">
+              <use href="assets/images/icons/package.svg#contacts-mail"></use>
+            </svg>
+          </a>
+        </div>
+        <!-- /.header__action-mobile -->
+
         <div class="header__action-burger">
-          <button class="hamburger hamburger--spin" type="button">
+          <button class="hamburger hamburger--spin" type="button" aria-label="Открыть меню" aria-expanded="false">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
             </span>
@@ -79,4 +100,145 @@
     <!-- /.header__wrapper -->
 
   </div>
+
+  <div class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__overlay"></div>
+
+    <div class="mobile-menu__wrapper">
+      <div class="mobile-menu__content">
+        <nav class="mobile-menu__nav">
+          <ul class="mobile-menu__list">
+            <li class="mobile-menu__item">
+              <a class="mobile-menu__link" href="">Главная</a>
+            </li>
+
+            <li class="mobile-menu__item mobile-menu__submenu nav__submenu">
+              <button class="mobile-menu__toggle" type="button">
+                <span>Продукция</span>
+                <span class="mobile-menu__toggle-icon"></span>
+              </button>
+
+              <ul class="mobile-menu__products">
+                <li class="mobile-menu__product">
+                  <span class="mobile-menu__product-number">[ 01 ]</span>
+                  <a class="mobile-menu__product-link nav__link" href="">Оборудование для производства ячеек КРУ и КСО</a>
+                  <svg class="mobile-menu__product-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                  </svg>
+                </li>
+
+                <li class="mobile-menu__product">
+                  <span class="mobile-menu__product-number">[ 02 ]</span>
+                  <a class="mobile-menu__product-link nav__link" href="">Вакуумные выключатели серии ВВ/FE</a>
+                  <svg class="mobile-menu__product-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                  </svg>
+                </li>
+
+                <li class="mobile-menu__product">
+                  <span class="mobile-menu__product-number">[ 03 ]</span>
+                  <a class="mobile-menu__product-link nav__link" href="">Вакуумные выключатели наружного исполнения серии ВВН/FE</a>
+                  <svg class="mobile-menu__product-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                  </svg>
+                </li>
+
+                <li class="mobile-menu__product">
+                  <span class="mobile-menu__product-number">[ 04 ]</span>
+                  <a class="mobile-menu__product-link nav__link" href="">Вакуумные контакторы серий BK/FE и BK/FM</a>
+                  <svg class="mobile-menu__product-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                  </svg>
+                </li>
+
+                <li class="mobile-menu__product">
+                  <span class="mobile-menu__product-number">[ 05 ]</span>
+                  <a class="mobile-menu__product-link nav__link" href="">Выключатели нагрузки автогазовые серии ВНА/W-10</a>
+                  <svg class="mobile-menu__product-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                  </svg>
+                </li>
+
+                <li class="mobile-menu__product">
+                  <span class="mobile-menu__product-number">[ 06 ]</span>
+                  <a class="mobile-menu__product-link nav__link" href="">Разъединители серии РВ/W-10</a>
+                  <svg class="mobile-menu__product-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                  </svg>
+                </li>
+
+                <li class="mobile-menu__product">
+                  <span class="mobile-menu__product-number">[ 07 ]</span>
+                  <a class="mobile-menu__product-link nav__link" href="">Воздушные автоматические выключатели серии WGS</a>
+                  <svg class="mobile-menu__product-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                  </svg>
+                </li>
+
+                <li class="mobile-menu__product">
+                  <span class="mobile-menu__product-number">[ 08 ]</span>
+                  <a class="mobile-menu__product-link nav__link" href="">Автоматические выключатели в литом корпусе серии WGM</a>
+                  <svg class="mobile-menu__product-icon" aria-hidden="true">
+                    <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                  </svg>
+                </li>
+              </ul>
+            </li>
+
+            <li class="mobile-menu__item">
+              <a class="mobile-menu__link" href="">Контакты</a>
+            </li>
+
+            <li class="mobile-menu__item">
+              <a class="mobile-menu__link" href="">Новости</a>
+            </li>
+
+            <li class="mobile-menu__item">
+              <a class="mobile-menu__link" href="">О нас</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="mobile-menu__contacts">
+          <div class="mobile-menu__company">
+            Импортер в Российскую Федерацию:<br>
+            ООО «Виспер»
+          </div>
+
+          <div class="mobile-menu__contacts-links">
+            <a href="tel:89216427858">8 (921) 642-78-58</a>
+            <a href="mailto:office@w-av.ru">office@w-av.ru</a>
+          </div>
+
+          <div class="mobile-menu__social social">
+            <a href="#" target="_blank" rel="nofollow">
+              <picture>
+                <img class="image image--cover" src="assets/images/social-tg.png" alt="">
+              </picture>
+            </a>
+            <a href="#" target="_blank" rel="nofollow">
+              <picture>
+                <img class="image image--cover" src="assets/images/social-wa.png" alt="">
+              </picture>
+            </a>
+            <a href="#" target="_blank" rel="nofollow">
+              <picture>
+                <img class="image image--cover" src="assets/images/social-max.png" alt="">
+              </picture>
+            </a>
+            <a href="#" target="_blank" rel="nofollow">
+              <picture>
+                <img class="image image--cover" src="assets/images/social-vk.png" alt="">
+              </picture>
+            </a>
+          </div>
+          <!-- /.mobile-menu__social -->
+        </div>
+        <!-- /.mobile-menu__contacts -->
+      </div>
+      <!-- /.mobile-menu__content -->
+    </div>
+    <!-- /.mobile-menu__wrapper -->
+  </div>
+  <!-- /.mobile-menu -->
 </header>
