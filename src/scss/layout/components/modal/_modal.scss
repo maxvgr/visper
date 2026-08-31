@@ -190,14 +190,17 @@
   }
 
   &__input {
-    --cut-size: 4px;
-    --cut-inner-size: 3px;
-
     display: flex;
 
     height: 44px;
 
-    input {
+    &.cut-border {
+      --cut-size: 4px;
+      --cut-inner-size: 3px;
+    }
+
+    input,
+    textarea {
       flex: 1 1 auto;
 
       min-width: 0;
@@ -210,6 +213,17 @@
 
       &::placeholder {
         color: $palette-gray;
+      }
+    }
+
+    &--textarea {
+      height: 96px;
+
+      textarea {
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+        resize: none;
       }
     }
 
