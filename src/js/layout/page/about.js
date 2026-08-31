@@ -20,8 +20,12 @@ if (aboutHero) {
         grabCursor: true,
 
         navigation: {
-          prevEl: aboutHero.querySelector(".about-hero__navigation-button--prev"),
-          nextEl: aboutHero.querySelector(".about-hero__navigation-button--next"),
+          prevEl: aboutHero.querySelector(
+            ".about-hero__navigation-button--prev",
+          ),
+          nextEl: aboutHero.querySelector(
+            ".about-hero__navigation-button--next",
+          ),
         },
 
         on: {
@@ -89,5 +93,49 @@ if (aboutHero) {
     );
 
     observer.observe(stats);
+  }
+}
+
+const aboutRegions = document.querySelector("#cp-about-regions");
+
+if (aboutRegions) {
+  const points = aboutRegions.querySelectorAll(
+    ".about-regions__point[data-region]",
+  );
+  const tooltip = aboutRegions.querySelector(".about-regions__tooltip");
+  const tooltipTitle = aboutRegions.querySelector(
+    ".about-regions__tooltip-title",
+  );
+  const tooltipValue = aboutRegions.querySelector(
+    ".about-regions__tooltip-value",
+  );
+  const tooltipLabel = aboutRegions.querySelector(
+    ".about-regions__tooltip-label",
+  );
+
+  const showTooltip = (point) => {
+    if (!tooltip || !tooltipTitle || !tooltipValue || !tooltipLabel) return;
+
+    tooltipTitle.textContent = point.dataset.region;
+    tooltipValue.textContent = point.dataset.value;
+    tooltipLabel.textContent = point.dataset.label;
+
+    tooltip.style.left = `${point.offsetLeft + 18}px`;
+    tooltip.style.top = `${point.offsetTop - 115}px`;
+
+    point.classList.add("is-active");
+    tooltip.classList.add("is-visible");
+  };
+
+  const hideTooltip = (point) => {
+    point.classList.remove("is-active");
+    tooltip?.classList.remove("is-visible");
+  };
+
+  for (const point of points) {
+    point.addEventListener("mouseenter", () => showTooltip(point));
+    point.addEventListener("mouseleave", () => hideTooltip(point));
+    point.addEventListener("focus", () => showTooltip(point));
+    point.addEventListener("blur", () => hideTooltip(point));
   }
 }

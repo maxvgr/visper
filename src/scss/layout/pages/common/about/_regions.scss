@@ -1,0 +1,236 @@
+#cp-about-regions {
+  padding-top: 120px;
+
+  .section__header {
+    align-items: flex-start;
+  }
+
+  .about-regions {
+    &__count {
+      margin-top: 19px;
+
+      font-weight: $weight-Medium;
+      font-size: 22px;
+      line-height: var(--line-height-small);
+    }
+
+    &__body {
+      position: relative;
+      z-index: 1;
+
+      height: 583px;
+      margin-top: 8px;
+
+      background: $palette-gray;
+      isolation: isolate;
+
+      clip-path: polygon(
+        9px 0,
+        calc(100% - 9px) 0,
+        100% 9px,
+        100% calc(100% - 9px),
+        calc(100% - 9px) 100%,
+        9px 100%,
+        0 calc(100% - 9px),
+        0 9px
+      );
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+
+        inset: 1px;
+
+        background: #e8e8e8;
+
+        clip-path: polygon(
+          8px 0,
+          calc(100% - 8px) 0,
+          100% 8px,
+          100% calc(100% - 8px),
+          calc(100% - 8px) 100%,
+          8px 100%,
+          0 calc(100% - 8px),
+          0 8px
+        );
+      }
+    }
+
+    &__map {
+      position: absolute;
+      top: 36px;
+      left: 50%;
+
+      width: 1025px;
+      height: 512.5px;
+
+      transform: translateX(-50%);
+    }
+
+    &__image,
+    &__map picture {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    &__image {
+      object-fit: contain;
+    }
+
+    &__corner {
+      position: absolute;
+      z-index: 2;
+
+      width: 28px;
+      height: 28px;
+
+      border-width: 0;
+      border-style: solid;
+      border-color: $palette-blue;
+
+      pointer-events: none;
+
+      &--top-left {
+        top: 52px;
+        left: 53px;
+
+        border-top-width: 4px;
+        border-left-width: 4px;
+      }
+
+      &--top-right {
+        top: 52px;
+        right: 53px;
+
+        border-top-width: 4px;
+        border-right-width: 4px;
+      }
+
+      &--bottom-left {
+        bottom: 52px;
+        left: 53px;
+
+        border-bottom-width: 4px;
+        border-left-width: 4px;
+      }
+
+      &--bottom-right {
+        right: 53px;
+        bottom: 52px;
+
+        border-right-width: 4px;
+        border-bottom-width: 4px;
+      }
+    }
+
+    &__point {
+      position: absolute;
+      z-index: 2;
+      top: var(--point-y);
+      left: var(--point-x);
+
+      width: 21px;
+      height: 21px;
+      padding: 0;
+      border: 1px solid $palette-red;
+      border-radius: $border-radius-round;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      transition: border-color $transition-time ease;
+
+      @media (hover: hover) {
+        &:hover {
+          border-color: $palette-blue;
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+
+        width: 13px;
+        height: 13px;
+        border-radius: $border-radius-round;
+
+        background: $palette-red;
+      }
+
+      &:focus-visible,
+      &.is-active {
+        border-color: $palette-blue;
+        outline: none;
+      }
+    }
+
+    &__tooltip {
+      position: absolute;
+      z-index: 3;
+
+      display: none;
+
+      width: 190px;
+      height: 117px;
+      padding: 14px 14px 10px 20px;
+
+      background: $palette-blue;
+      color: $palette-white;
+
+      pointer-events: none;
+
+      clip-path: polygon(
+        9px 0,
+        calc(100% - 9px) 0,
+        100% 9px,
+        100% calc(100% - 9px),
+        calc(100% - 9px) 100%,
+        9px 100%,
+        0 calc(100% - 9px),
+        0 9px
+      );
+
+
+
+      &.is-visible {
+        display: block;
+      }
+    }
+
+    &__tooltip-title {
+      padding-bottom: 11px;
+      border-bottom: 1px solid $palette-white;
+
+      font-weight: $weight-Bold;
+      line-height: var(--line-height-small);
+    }
+
+    &__tooltip-content {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+
+      margin-top: 4px;
+    }
+
+    &__tooltip-value {
+      flex: 0 0 auto;
+
+      font-weight: $weight-Bold;
+      font-size: 45px;
+      line-height: var(--line-height-small);
+    }
+
+    &__tooltip-label {
+      font-weight: $weight-Medium;
+      font-size: var(--font-text-small);
+      line-height: 1;
+    }
+  }
+}
