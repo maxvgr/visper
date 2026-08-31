@@ -173,3 +173,44 @@ if (aboutProjects) {
     item.addEventListener("click", () => setProject(item));
   }
 }
+
+
+const aboutReviews = document.querySelector("#cp-about-reviews");
+
+if (aboutReviews) {
+  const sliderTarget = aboutReviews.querySelector(".about-reviews__slider");
+  const counter = aboutReviews.querySelector(".about-reviews__counter");
+
+  const updateCounter = (swiper) => {
+    if (counter) {
+      counter.textContent = `${swiper.snapIndex + 1} / ${swiper.snapGrid.length}`;
+    }
+  };
+
+  if (sliderTarget) {
+    new Swiper(sliderTarget, {
+      modules: [Navigation],
+
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+      spaceBetween: 20,
+      speed: 600,
+      grabCursor: true,
+
+      navigation: {
+        prevEl: aboutReviews.querySelector(".about-reviews__navigation-button--prev"),
+        nextEl: aboutReviews.querySelector(".about-reviews__navigation-button--next"),
+      },
+
+      on: {
+        init(swiper) {
+          updateCounter(swiper);
+        },
+
+        slideChange(swiper) {
+          updateCounter(swiper);
+        },
+      },
+    });
+  }
+}

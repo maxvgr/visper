@@ -1,0 +1,108 @@
+#cp-about-reviews {
+  margin-bottom: -20px;
+  padding-top: 120px;
+
+  .about-reviews {
+    &__header {
+      align-items: flex-start;
+    }
+
+    &__navigation {
+      display: flex;
+      align-items: center;
+
+      width: 157px;
+      height: 46px;
+      margin-top: 3px;
+    }
+
+    &__navigation-button {
+      flex: 0 0 auto;
+
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border: 0;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      picture,
+      img {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__counter {
+      display: flex;
+      flex: 0 0 65px;
+      align-items: center;
+      justify-content: center;
+
+      height: 46px;
+
+      font-size: 20px;
+      line-height: var(--line-height-large);
+      text-align: center;
+    }
+
+    &__slider {
+      overflow: hidden;
+
+      width: 100%;
+      margin-top: 7px;
+    }
+
+    &__card {
+      --cut-size: 9px;
+      --cut-inner-size: 8px;
+      --cut-border-color: #{$palette-gray};
+      --cut-background-color: #{$palette-white};
+
+      display: flex;
+      flex-direction: column;
+
+      box-sizing: border-box;
+      height: 360px;
+      padding: 40px 40px 35px;
+    }
+
+    &__quote {
+      flex: 0 0 auto;
+
+      width: 24px;
+      height: 19px;
+    }
+
+    &__text {
+      margin: 15px 0 0;
+
+      line-height: 1.4;
+
+      strong {
+        font-weight: $weight-Bold;
+      }
+    }
+
+    &__author {
+      margin-top: auto;
+      padding-left: 10px;
+      border-left: 2px solid $palette-blue;
+    }
+
+    &__author-name {
+      font-weight: $weight-Medium;
+      line-height: var(--line-height-small);
+    }
+
+    &__author-position {
+      margin-top: 4px;
+
+      line-height: var(--line-height-small);
+    }
+  }
+}

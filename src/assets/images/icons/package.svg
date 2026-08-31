@@ -131,4 +131,10 @@
   <circle cx="15.6445" cy="26.1836" r="1.375" fill="#fff"/>
   <circle cx="23.8945" cy="26.1836" r="1.375" fill="#fff"/>
 </symbol>
+<symbol id="about-review-quote" viewBox="0 0 24 19">
+  <path d="M3 0H7L4 9H0L3 0Z" fill="#0033AB"/>
+  <rect y="9" width="10" height="10" fill="#0033AB"/>
+  <path d="M17 0H21L18 9H14L17 0Z" fill="#EC1C24"/>
+  <rect x="14" y="9" width="10" height="10" fill="#EC1C24"/>
+</symbol>
 </svg>
