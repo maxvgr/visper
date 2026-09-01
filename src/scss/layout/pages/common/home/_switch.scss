@@ -105,6 +105,19 @@
         }
       }
 
+      @include mq($until: mobile) {
+        width: 142px;
+        height: 142px;
+
+        picture {
+          max-height: 98px;
+
+          .image {
+            height: 98px;
+          }
+        }
+      }
+
       position: relative;
       display: flex;
       flex-direction: column;
@@ -128,6 +141,14 @@
       }
 
       &::after {
+        @include mq($until: mobile) {
+          top: 8px;
+          width: 7px;
+          height: 6px;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+        }
+
         content: "";
         position: absolute;
         top: 17px;
@@ -149,6 +170,10 @@
     }
 
     &__title {
+      @include mq($until: mobile) {
+        font-size: 7px;
+      }
+
       color: $color-text__gray;
       font-weight: $weight-Bold;
       font-size: 12px;
@@ -158,6 +183,24 @@
     &__controls {
       @include mq($until: tablet) {
         right: 20px;
+      }
+
+      @include mq($until: mobile) {
+        top: -75px;
+        right: 20px;
+        height: auto;
+
+        .swiper-button-prev,
+        .swiper-button-next {
+          display: none;
+        }
+
+        .swiper-pagination {
+          max-width: none;
+          margin-top: 0;
+
+          font-size: 13px;
+        }
       }
 
       position: absolute;
@@ -194,13 +237,20 @@
           height: 340px;
           margin-top: 50px;
         }
+
         @include mq($until: notebook) {
           height: 310px;
           margin-top: 45px;
         }
+
         @include mq($until: tablet) {
           height: 265px;
           margin-top: 35px;
+        }
+
+        @include mq($until: mobile) {
+          height: 230px;
+          margin-top: 30px;
         }
 
         height: 430px;
@@ -212,6 +262,7 @@
           margin-right: 0;
           margin-left: 0;
         }
+
         @include mq($until: notebook) {
           &-prev {
             transform: translateX(-20px);
@@ -221,15 +272,13 @@
             transform: translateX(20px);
           }
         }
-        // @include mq($until: tablet) {
-        //   &-prev {
-        //     transform: translateX(-80px);
-        //   }
 
-        //   &-next {
-        //     transform: translateX(80px);
-        //   }
-        // }
+        @include mq($until: mobile) {
+          &-prev,
+          &-next {
+            transform: none;
+          }
+        }
 
         margin: 0 10px 10px;
         transition: $transition-time ease;
@@ -249,7 +298,7 @@
             }
 
             100% {
-              transform: scale(1.3);
+              transform: scale(var(--switch-active-scale, 1.3));
             }
           }
 
@@ -265,8 +314,11 @@
             margin-bottom: 35px;
           }
 
+          @include mq($until: mobile) {
+          }
+
           margin: 0 70px 70px;
-          transform: scale(1.3);
+          transform: scale(var(--switch-active-scale, 1.3));
           animation: pulsescale 0.8s forwards;
 
           .switch__title {
@@ -287,10 +339,19 @@
     }
 
     &__action {
+      @include mq($until: mobile) {
+        margin-top: -20px;
+      }
+
       display: flex;
       justify-content: center;
 
       .button {
+        @include mq($until: mobile) {
+          width: 334px;
+          max-width: calc(100% - 68px);
+        }
+
         gap: 15px;
         width: 216px;
         height: 44px;
@@ -300,8 +361,6 @@
             span {
               &::before {
                 background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='2' height='25' viewBox='0 0 2 25' fill='none'%3e%3cpath d='M0.75 0V24.969' stroke='%230033AB' stroke-width='1.5'/%3e%3c/svg%3e");
-
-                // background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='2' height='25' viewBox='0 0 2 25' fill='none'%3e%3cpath d='M0.75 0V24.969' stroke='%230033AB' stroke-width='1.5'/%3e%3c/svg%3e");
               }
             }
           }
@@ -332,6 +391,11 @@
   }
 
   .wave-container {
+    @include mq($until: mobile) {
+      height: 140px;
+      padding: 0;
+    }
+
     position: absolute;
     z-index: -1;
     top: 50%;

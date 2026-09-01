@@ -68,21 +68,19 @@ if (switchTarget) {
   new Swiper(switchTarget, {
     modules: [Navigation, Pagination, Autoplay],
 
-    slidesPerView: 3,
+    slidesPerView: 2.2,
     centeredSlides: true, // центральный слайд по центру
     spaceBetween: 30,
 
     speed: 600,
     grabCursor: true,
 
-    // breakpoints: {
-    //   816: {
-    //     spaceBetween: 20,
-    //   },
-    //   1248: {
-    //     spaceBetween: 30,
-    //   },
-    // },
+    breakpoints: {
+      540: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
 
     navigation: {
       prevEl: switchSlider.querySelector(".swiper-button-prev"),
