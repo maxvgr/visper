@@ -1,6 +1,33 @@
 #cp-home-faq {
+  .section__header {
+    @include mq($until: notebook) {
+      align-items: flex-end;
+    }
+  }
+
+  .section__title {
+    @include mq($until: notebook) {
+      padding-bottom: 0;
+
+      font-size: var(--font-title-small);
+    }
+
+    @include mq($until: tablet) {
+      font-size: 26px;
+    }
+  }
+
   .faq {
     &__phone {
+      @include mq($until: notebook) {
+        font-size: var(--font-text-big);
+        white-space: nowrap;
+      }
+
+      @include mq($until: tablet) {
+        font-size: 13px;
+      }
+
       font-weight: $weight-Medium;
       font-size: 22px;
       line-height: 1.2;
@@ -8,6 +35,29 @@
     }
 
     &__categories {
+      @include mq($until: notebook) {
+        display: flex;
+        gap: 20px;
+        overflow: auto hidden;
+
+        margin-top: 28px;
+        margin-bottom: 30px;
+
+        scrollbar-width: none;
+
+        -webkit-mask-image: linear-gradient(to right, $palette-black 0, $palette-black calc(100% - 70px), transparent 100%);
+        mask-image: linear-gradient(to right, $palette-black 0, $palette-black calc(100% - 70px), transparent 100%);
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      @include mq($until: tablet) {
+        margin-right: -$container-padding;
+        margin-bottom: 24px;
+      }
+
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 22px;
@@ -16,6 +66,25 @@
     }
 
     &__category {
+      @include mq($until: notebook) {
+        flex: 0 0 auto;
+
+        min-height: 42px;
+        padding: 8px 16px;
+
+        font-size: var(--font-text-small);
+        white-space: nowrap;
+      }
+
+      @include mq($until: tablet) {
+        flex-basis: 192px;
+
+        min-height: 34px;
+        padding: 6px 10px;
+
+        font-size: 13px;
+      }
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -54,6 +123,11 @@
     }
 
     &__list {
+      @include mq($until: notebook) {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+      }
+
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: 60px;
@@ -75,12 +149,40 @@
     }
 
     &__header {
+      @include mq($until: notebook) {
+        gap: 20px;
+        min-height: 64px;
+      }
+
+      @include mq($until: tablet) {
+        gap: 17px;
+        min-height: 50px;
+      }
+
       min-height: 86px;
 
       cursor: pointer;
     }
 
     &__question {
+      @include mq($until: notebook) {
+        flex: 1 1 auto;
+
+        min-width: 0;
+        max-width: none;
+        padding: 16px 0;
+
+        font-size: var(--font-text-regular);
+      }
+
+      @include mq($until: tablet) {
+        padding: 11px 0;
+
+        font-weight: $weight-Regular;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
       max-width: 560px;
       padding: 20px 0;
 
@@ -90,6 +192,11 @@
     }
 
     &__button {
+      @include mq($until: notebook) {
+        width: 30px;
+        height: 30px;
+      }
+
       position: relative;
       flex: 0 0 auto;
 
@@ -123,6 +230,17 @@
     }
 
     &__answer {
+      @include mq($until: notebook) {
+        padding: 0 50px 18px 0;
+      }
+
+      @include mq($until: tablet) {
+        padding: 0 47px 16px 0;
+
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
       padding: 0 50px 20px 0;
       line-height: var(--line-height-medium);
     }
