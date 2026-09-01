@@ -123,6 +123,11 @@
     }
 
     &__slide {
+      @include mq($from: laptop) {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(20px, 1.6vw, 30px);
+      }
+
       @include mq($until: laptop) {
         grid-template-rows: auto auto auto auto auto;
         grid-template-columns: 1fr;
@@ -130,19 +135,26 @@
       }
 
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
     }
 
     &__info {
+      @include mq($from: laptop) {
+        min-width: 0;
+        max-width: 590px;
+      }
+
       @include mq($until: laptop) {
         display: contents;
       }
-
-      max-width: 590px;
     }
 
     &__title {
+      @include mq($from: laptop) {
+        padding-top: 40px;
+
+        font-size: clamp(36px, 2.5vw, 42px);
+      }
+
       @include mq($until: laptop) {
         grid-row: 1;
 
@@ -154,14 +166,17 @@
         font-size: clamp(26px, 4vw, 36px);
       }
 
-      padding-top: 40px;
       color: $color-text__white;
       font-weight: $weight-Bold;
-      font-size: 42px;
       line-height: 120%; /* 50.4px */
     }
 
     &__line {
+      @include mq($from: laptop) {
+        width: 100%;
+        max-width: 572px;
+      }
+
       @include mq($until: laptop) {
         grid-row: 2;
 
@@ -170,7 +185,6 @@
         margin: 18px auto 0;
       }
 
-      width: 572px;
       height: 1px;
       margin-top: 18px;
       margin-bottom: 16px;
@@ -178,6 +192,11 @@
     }
 
     &__text {
+      @include mq($from: laptop) {
+        width: 100%;
+        max-width: 509px;
+      }
+
       @include mq($until: laptop) {
         grid-row: 3;
 
@@ -215,6 +234,22 @@
     }
 
     &__image {
+      @include mq($from: laptop) {
+        min-width: 0;
+
+        picture {
+          display: block;
+
+          width: 100%;
+        }
+
+        img {
+          object-fit: contain;
+
+          height: auto;
+        }
+      }
+
       @include mq($until: laptop) {
         position: relative;
 
