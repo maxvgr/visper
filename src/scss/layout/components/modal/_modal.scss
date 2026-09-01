@@ -177,6 +177,22 @@
   }
 }
 
+.modal--callback {
+  .modal__overlay {
+    @include mq($from: laptop) {
+      align-items: flex-start;
+    }
+  }
+
+  .modal__container {
+    @include mq($from: laptop) {
+      margin-left: min(calc(50% + 342px), calc(100% - 462px));
+    }
+
+    flex-shrink: 0;
+  }
+}
+
 .contact-modal {
   &__fields {
     display: flex;

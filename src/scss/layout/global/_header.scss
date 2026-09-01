@@ -144,6 +144,12 @@
         margin-left: 40px;
 
         font-size: var(--font-text-small);
+
+        &.is-active {
+          color: rgba($color: $palette-white, $alpha: 0.5);
+
+          pointer-events: none;
+        }
       }
     }
 

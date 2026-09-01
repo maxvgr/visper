@@ -66,6 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.App.form = new Form({
     onSubmit: (form, event) => {
+      if (process.env.NODE_ENV !== "development") return;
+
       const successModal = form.dataset.successModal;
 
       if (!successModal) return;

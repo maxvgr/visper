@@ -137,7 +137,7 @@ export default class Form {
       privacy: [...form.querySelectorAll("[data-privacy]")],
       country: form.querySelector('select[data-target="country"]'),
       nameMask: undefined,
-      validation: Object.hasOwn(form.dataset, 'validation'),
+      validation: Object.hasOwn(form.dataset, "validation"),
       validationFields: [...form.querySelectorAll("[data-validate]")],
       validationAttempted: false,
     };
@@ -269,6 +269,7 @@ export default class Form {
     } else if (field.type === "email" && !field.validity.valid) {
       errorMessage = field.dataset.errorFormat || "Неверный формат";
     } else if (
+      process.env.NODE_ENV === "development" &&
       field.dataset.captchaValue &&
       value !== field.dataset.captchaValue
     ) {

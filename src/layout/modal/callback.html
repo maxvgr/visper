@@ -1,39 +1,59 @@
-<div class="modal mw-callback" data-modal="callback">
+<div class="modal modal--contact modal--callback" data-modal="callback">
   <div class="modal__overlay">
-    <div class="modal__container">
+    <div class="modal__container cut-corners">
       <div class="modal__wrapper">
         <div class="modal__header">
-          <p class="modal__title">Заголовок формы</p>
-          <div class="modal__close" data-modal-close></div>
+          <p class="modal__title">Заявка на звонок</p>
+          <button class="modal__close" type="button" data-modal-close aria-label="Закрыть"></button>
         </div>
         <!-- /.modal__header -->
 
         <div class="modal__content">
-          <form class="form form-custom" action="">
-            <div class="form__wrapper">
-              <div class="input">
-                <input placeholder="" autocomplete="off" type="text" name="user_name" class="input__field">
-                <span class="input__label">Имя</span>
-              </div>
-              <!-- /.input -->
+          <form class="form form-custom contact-modal" action="" data-validation data-success-modal="success" novalidate>
+            <div class="contact-modal__fields">
+              <label class="contact-modal__field" data-field>
+                <span class="contact-modal__label">ФИО (полностью)</span>
+                <span class="contact-modal__input cut-border">
+                  <input type="text" name="user_name" placeholder="Введите ФИО" autocomplete="name" required minlength="4" data-validate data-error-required="Необходимо заполнить поле" data-error-minlength="Необходимо заполнить поле [минимум 4 символа]">
+                </span>
+              </label>
 
-              <div class="input input--box">
-                <textarea placeholder="" class="input__field" name="user_message"></textarea>
-                <span class="input__label">Комментарий</span>
-              </div>
-              <!-- /.input -->
+              <label class="contact-modal__field" data-field>
+                <span class="contact-modal__label">Телефон</span>
+                <span class="contact-modal__input cut-border">
+                  <input type="tel" name="user_phone" placeholder="+7 (000) 000-00-00" autocomplete="tel" required minlength="18" data-validate data-country-code="7" data-error-required="Необходимо заполнить поле" data-error-minlength="Необходимо заполнить поле [минимум 10 символов]">
+                </span>
+              </label>
+
+              <label class="contact-modal__field" data-field>
+                <span class="contact-modal__label">Капча</span>
+                <span class="contact-modal__input contact-modal__input--captcha cut-border">
+                  <input type="text" name="captcha" placeholder="0000" inputmode="numeric" autocomplete="off" required data-validate data-captcha-value="5442" data-error-required="Необходимо заполнить поле" data-error-captcha="Неверно указаны символы">
+                  <span class="contact-modal__captcha">5442</span>
+                </span>
+              </label>
             </div>
-            <!-- /.form__wrapper -->
+            <!-- /.contact-modal__fields -->
 
-            <div class="form__action">
-              <button class="button button-primary"><span>Отправить</span></button>
+            <div class="contact-modal__checks">
+              <label class="checkbox contact-modal__checkbox">
+                <input type="checkbox" name="privacy" data-privacy>
+                <span class="checkbox__mark"></span>
+                <span class="checkbox__label">Даю согласие на обработку <a href="">персональных данных</a></span>
+              </label>
+
+              <label class="checkbox contact-modal__checkbox">
+                <input type="checkbox" name="marketing" checked>
+                <span class="checkbox__mark"></span>
+                <span class="checkbox__label">Согласны получать <a href="">рекламно-информационные</a> рассылки</span>
+              </label>
+            </div>
+            <!-- /.contact-modal__checks -->
+
+            <div class="form__action contact-modal__action">
+              <button class="button button-secondary contact-modal__submit" type="submit">Отправить</button>
             </div>
             <!-- /.form__action -->
-
-            <div class="form__privacy">
-              <p>Нажимая на кнопку, вы соглашаетесь с условиями обработки персональных данных и <span><a class="link" href="">политикой конфиденциальности</a></span></p>
-            </div>
-            <!-- /.form__privacy -->
           </form>
         </div>
         <!-- /.modal__content -->
