@@ -78,6 +78,16 @@ document.addEventListener("DOMContentLoaded", () => {
       window.App.modal.open(successModal);
     },
   });
+  window.addEventListener("formSuccess", (event) => {
+    const form = event.detail?.form;
+    const successModal =
+      event.detail?.successModal || form?.dataset.successModal;
+
+    if (!successModal) return;
+
+    window.App.modal.close();
+    window.App.modal.open(successModal);
+  });
   window.App.numberInput = new NumberInput();
 
   window.App.gallery = new Gallery();

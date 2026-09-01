@@ -238,7 +238,10 @@ module.exports = (env, argv) => {
 
       new MiniCssExtractPlugin({ filename: "css/[name].css" }),
       new CopyWebpackPlugin({
-        patterns: [{ from: "./src/assets", to: "assets/" }],
+        patterns: [
+          { from: "./src/assets", to: "assets/" },
+          { from: "./BACKEND.md", to: "BACKEND.md" },
+        ],
       }),
 
       isProduction &&
