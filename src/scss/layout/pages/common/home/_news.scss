@@ -1,5 +1,37 @@
 #cp-home-news {
+  .section__line {
+    @include mq($until: notebook) {
+      margin-bottom: 20px;
+    }
+
+    @include mq($until: tablet) {
+      margin-bottom: 14px;
+    }
+  }
+
+  .section__header {
+    .section__title {
+      @include mq($until: notebook) {
+        padding-bottom: 0;
+
+        font-size: var(--font-title-small);
+      }
+
+      @include mq($until: tablet) {
+        font-size: 26px;
+      }
+    }
+  }
+
   .news {
+    @include mq($until: notebook) {
+      margin-top: 24px;
+    }
+
+    @include mq($until: tablet) {
+      margin-top: 14px;
+    }
+
     // overflow: hidden;
 
     margin-top: 40px;
@@ -9,11 +41,35 @@
     }
 
     .swiper-slide {
+      @include mq($until: notebook) {
+        width: calc(50% - 10px);
+      }
+
+      @include mq($until: tablet) {
+        width: calc(100% - 31px);
+      }
+
       width: calc(33.3333% - 6.6667px);
       height: auto;
       transition: transform 0.6s ease;
 
       &-active {
+        @include mq($until: notebook) {
+          z-index: 1;
+
+          .news__item {
+            width: 100%;
+          }
+
+          .news__button {
+            display: block;
+          }
+
+          .news__button-more {
+            display: none;
+          }
+        }
+
         z-index: 2;
 
         .news__item {
@@ -30,11 +86,19 @@
       }
 
       &-active ~ .swiper-slide {
+        @include mq($until: notebook) {
+          transform: none;
+        }
+
         transform: translateX(100%);
       }
     }
 
     &__item {
+      @include mq($until: notebook) {
+        width: 100%;
+      }
+
       position: relative;
       z-index: 1;
       overflow: hidden;
@@ -89,6 +153,11 @@
     }
 
     &__image {
+      @include mq($until: notebook) {
+        height: auto;
+        aspect-ratio: 331 / 226.57;
+      }
+
       height: 375px;
       background: $palette-lightgray;
 
@@ -109,6 +178,14 @@
     }
 
     &__content {
+      @include mq($until: notebook) {
+        position: relative;
+        display: block;
+
+        min-height: 114px;
+        padding: 12px 16px 14px;
+      }
+
       display: flex;
       gap: 20px;
       align-items: flex-end;
@@ -122,10 +199,22 @@
     }
 
     &__info {
+      @include mq($until: notebook) {
+        padding-right: 30px;
+      }
+
       min-width: 0;
     }
 
     &__date {
+      @include mq($until: notebook) {
+        margin-bottom: 4px;
+
+        font-weight: $weight-Regular;
+        font-size: 13px;
+        line-height: normal;
+      }
+
       display: block;
       margin-bottom: 9px;
 
@@ -137,6 +226,13 @@
     }
 
     &__title {
+      @include mq($until: notebook) {
+        margin-bottom: 4px;
+
+        font-size: 13px;
+        line-height: normal;
+      }
+
       display: -webkit-box;
       overflow: hidden;
 
@@ -151,6 +247,13 @@
     }
 
     &__text {
+      @include mq($until: notebook) {
+        font-size: 13px;
+        line-height: normal;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+      }
+
       display: -webkit-box;
       overflow: hidden;
 
@@ -162,6 +265,17 @@
     }
 
     &__button {
+      @include mq($until: notebook) {
+        position: absolute;
+        z-index: 2;
+        top: 10px;
+        right: 16px;
+        display: block;
+
+        width: 22px;
+        height: 22px;
+      }
+
       flex: 0 0 auto;
 
       width: 32px;
@@ -178,17 +292,29 @@
     }
 
     &__button-more {
+      @include mq($until: notebook) {
+        display: none;
+      }
+
       display: none;
       flex: 0 0 auto;
     }
 
     &__navigation {
+      @include mq($until: notebook) {
+        gap: 0;
+      }
+
       display: flex;
       gap: 12px;
       align-items: center;
 
       .swiper-button-prev,
       .swiper-button-next {
+        @include mq($until: notebook) {
+          display: none;
+        }
+
         position: relative;
         top: auto;
         right: auto;
@@ -217,6 +343,25 @@
       }
 
       .swiper-pagination {
+        @include mq($until: notebook) {
+          position: static;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 54px;
+          max-width: none;
+          height: 24px;
+
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='54' height='24' viewBox='0 0 54 24' fill='none'%3e%3cpath d='M5 0.5H49L53.5 5V19L49 23.5H5L0.5 19V5L5 0.5Z' stroke='%23C1C1C1'/%3e%3c/svg%3e");
+          background-position: center;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+
+          font-size: 13px;
+          line-height: 150%;
+        }
+
         position: static;
         width: auto;
       }

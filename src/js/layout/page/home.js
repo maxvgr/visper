@@ -274,12 +274,20 @@ const newsSlider = document.querySelector("#cp-home-news");
 const newsTarget = newsSlider?.querySelector(".swiper");
 
 if (newsTarget) {
+  const rootStyles = getComputedStyle(document.documentElement);
+  const notebookBreakpoint = Number.parseFloat(
+    rootStyles.getPropertyValue("--bp-notebook"),
+  );
+
+  const getNewsOffsetAfter = () =>
+    window.innerWidth < notebookBreakpoint ? 0 : newsTarget.clientWidth / 3;
+
   const newsSwiper = new Swiper(newsTarget, {
     modules: [Navigation, Pagination],
 
     slidesPerView: "auto",
     spaceBetween: 20,
-    slidesOffsetAfter: newsTarget.clientWidth / 3,
+    slidesOffsetAfter: getNewsOffsetAfter(),
     speed: 600,
     grabCursor: true,
     centeredSlides: false,
@@ -296,7 +304,7 @@ if (newsTarget) {
   });
 
   window.addEventListener("resize", () => {
-    newsSwiper.params.slidesOffsetAfter = newsTarget.clientWidth / 3;
+    newsSwiper.params.slidesOffsetAfter = getNewsOffsetAfter();
     newsSwiper.update();
   });
 }
