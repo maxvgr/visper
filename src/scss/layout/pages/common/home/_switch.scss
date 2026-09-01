@@ -196,10 +196,19 @@
         }
 
         .swiper-pagination {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 64px;
           max-width: none;
+          height: 34px;
           margin-top: 0;
-
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='64' height='34' viewBox='0 0 64 34' fill='none'%3e%3cpath d='M8 1H56L63 8V26L56 33H8L1 26V8L8 1Z' stroke='%23C1C1C1'/%3e%3c/svg%3e");
+          background-position: center;
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
           font-size: 13px;
+          line-height: 1;
         }
       }
 
