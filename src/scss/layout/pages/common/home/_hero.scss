@@ -1,4 +1,14 @@
 #cp-home-hero {
+  @include mq($until: laptop) {
+    overflow: hidden;
+
+    height: auto;
+    padding-top: 0;
+    border-bottom: 0;
+
+    background-position: top left;
+  }
+
   position: relative;
   // overflow: hidden;
 
@@ -11,6 +21,10 @@
   background-repeat: no-repeat;
 
   &::before {
+    @include mq($until: laptop) {
+      width: 100%;
+    }
+
     content: "";
     position: absolute;
     z-index: -2;
@@ -22,6 +36,10 @@
   }
 
   &::after {
+    @include mq($until: laptop) {
+      display: none;
+    }
+
     content: "";
     position: absolute;
     z-index: -1;
@@ -33,14 +51,31 @@
   }
 
   .container {
+    @include mq($until: laptop) {
+      width: 100%;
+      max-width: none;
+      height: auto;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
     height: 100%;
   }
 
   .hero {
+    @include mq($until: laptop) {
+      height: auto;
+      padding-bottom: 11px;
+    }
+
     position: relative;
     height: 100%;
 
     &::after {
+      @include mq($until: laptop) {
+        display: none;
+      }
+
       content: "";
       position: absolute;
       z-index: 10;
@@ -56,6 +91,10 @@
     }
 
     &::before {
+      @include mq($until: laptop) {
+        display: none;
+      }
+
       content: "";
       position: absolute;
       z-index: 9;
@@ -68,6 +107,10 @@
     }
 
     &__center-cut {
+      @include mq($until: laptop) {
+        display: none;
+      }
+
       position: absolute;
       z-index: 0;
       top: -1px;
@@ -77,20 +120,40 @@
       background-color: #f7f7f7;
       transform: translateX(-50%);
       clip-path: polygon(0 0%, 0 92%, 100% 100%, 100% 0);
-
     }
 
     &__slide {
+      @include mq($until: laptop) {
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
     }
 
     &__info {
+      @include mq($until: laptop) {
+        display: contents;
+      }
+
       max-width: 590px;
     }
 
     &__title {
+      @include mq($until: laptop) {
+        grid-row: 1;
+
+        width: calc(100% - 36px);
+        max-width: 650px;
+        margin: 0 auto;
+        padding-top: 67px;
+
+        font-size: clamp(26px, 4vw, 36px);
+      }
+
       padding-top: 40px;
       color: $color-text__white;
       font-weight: $weight-Bold;
@@ -99,6 +162,14 @@
     }
 
     &__line {
+      @include mq($until: laptop) {
+        grid-row: 2;
+
+        width: calc(100% - 40px);
+        max-width: 650px;
+        margin: 18px auto 0;
+      }
+
       width: 572px;
       height: 1px;
       margin-top: 18px;
@@ -107,21 +178,113 @@
     }
 
     &__text {
+      @include mq($until: laptop) {
+        grid-row: 3;
+
+        width: calc(100% - 38px);
+        max-width: 650px;
+        margin: 14px auto 0;
+      }
+
       color: $color-text__white;
       font-weight: $weight-Medium;
       line-height: 150%; /* 24px */
     }
 
     &__action {
+      @include mq($until: laptop) {
+        display: flex;
+        grid-row: 5;
+        align-items: center;
+        justify-content: center;
+
+        height: 98px;
+        margin-top: 0;
+
+        background-color: $palette-blue;
+      }
+
       margin-top: 28px;
+
+      .button {
+        @include mq($until: laptop) {
+          width: 334px;
+          max-width: calc(100% - 68px);
+        }
+      }
+    }
+
+    &__image {
+      @include mq($until: laptop) {
+        position: relative;
+
+        display: flex;
+        grid-row: 4;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: clamp(313px, 38vw, 380px);
+        margin-top: 44px;
+
+        background-color: $palette-lightgray;
+
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: 2;
+          top: 0;
+          left: 0;
+
+          width: 48%;
+          height: 11px;
+
+          background-color: $palette-blue;
+
+          clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+        }
+
+        picture {
+          display: block;
+
+          width: calc(100% - 40px);
+          max-width: 720px;
+          height: clamp(204px, 28vw, 300px);
+
+          transform: translateY(-8px);
+        }
+
+        img {
+          object-fit: cover;
+        }
+      }
     }
 
     .swiper {
+      @include mq($until: laptop) {
+        height: auto;
+      }
+
       &-slide {
+        @include mq($until: laptop) {
+          height: auto;
+        }
       }
     }
 
     .swiper-pagination-numeric {
+      @include mq($until: laptop) {
+        top: 40px;
+        left: max(19px, calc((100% - 650px) / 2));
+
+        padding: 0 10px;
+
+        color: $color-text__white;
+
+        font-weight: $weight-SemiBold;
+        font-size: 12px;
+      }
+
       position: absolute;
       top: 0;
       bottom: unset;
@@ -153,6 +316,23 @@
     }
 
     .swiper-pagination-bullets {
+      @include mq($until: laptop) {
+        right: 36px;
+        bottom: 0;
+        left: 41px;
+
+        display: grid;
+        grid-template-columns: 99fr 111fr 104fr;
+        gap: 5px;
+
+        width: auto;
+        max-width: none;
+        height: 7px;
+        padding: 0;
+
+        transform: none;
+      }
+
       position: absolute;
       z-index: 20;
       bottom: 0;
@@ -162,6 +342,90 @@
       justify-content: center;
       padding: 0 30px;
       transform: translateX(-50%);
+    }
+
+    .swiper-pagination__animation {
+      @include mq($until: laptop) {
+        position: absolute;
+        z-index: 19;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 11px;
+
+        background-color: $palette-white;
+      }
+
+      &::before,
+      &::after {
+        @include mq($until: laptop) {
+          content: "";
+          position: absolute;
+          top: 0;
+
+          width: 34px;
+          height: 11px;
+
+          background-color: $palette-blue;
+        }
+      }
+
+      &::before {
+        @include mq($until: laptop) {
+          left: 0;
+
+          clip-path: polygon(0 0, 100% 0, 20px 100%, 0 100%);
+        }
+      }
+
+      &::after {
+        @include mq($until: laptop) {
+          right: 0;
+
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%);
+        }
+      }
+
+      .swiper-pagination-bullet {
+        @include mq($until: laptop) {
+          position: relative;
+
+          width: 100%;
+          height: 7px;
+          border: 0;
+
+          background-color: #c3d5ff;
+
+          clip-path: none;
+        }
+
+        &:first-child {
+          @include mq($until: laptop) {
+            left: -14px;
+
+            width: calc(100% + 14px);
+
+            clip-path: polygon(9px 0, 100% 0, 100% 100%, 0 100%);
+          }
+        }
+
+        &:last-child {
+          @include mq($until: laptop) {
+            width: calc(100% + 9px);
+
+            clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 100%, 0 100%);
+          }
+        }
+      }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      @include mq($until: laptop) {
+        display: none;
+      }
     }
   }
 }
