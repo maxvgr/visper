@@ -68,16 +68,20 @@ if (switchTarget) {
   new Swiper(switchTarget, {
     modules: [Navigation, Pagination, Autoplay],
 
-    slidesPerView: 3, // показываем 3 слайда
+    slidesPerView: 3,
     centeredSlides: true, // центральный слайд по центру
     spaceBetween: 30,
-    // spaceBetween: 60,
+
     speed: 600,
     grabCursor: true,
 
-    // autoplay: {
-    //   delay: 4400,
-    //   disableOnInteraction: false,
+    // breakpoints: {
+    //   816: {
+    //     spaceBetween: 20,
+    //   },
+    //   1248: {
+    //     spaceBetween: 30,
+    //   },
     // },
 
     navigation: {
