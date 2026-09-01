@@ -1,4 +1,8 @@
 #cp-home-hero {
+  @include mq($from: laptop) {
+    --hero-content-offset: clamp(96px, calc(20vw - 144px), 240px);
+  }
+
   @include mq($until: laptop) {
     overflow: hidden;
 
@@ -18,6 +22,7 @@
   border-bottom: 1px solid $palette-gray;
   background: url("../assets/images/layout/pages/home/hero/bg.webp");
   background-position: top right 100%;
+  background-size: 50% 100%;
   background-repeat: no-repeat;
 
   &::before {
@@ -51,6 +56,12 @@
   }
 
   .container {
+    @include mq($from: laptop) {
+      max-width: none;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
     @include mq($until: laptop) {
       width: 100%;
       max-width: none;
@@ -125,7 +136,7 @@
     &__slide {
       @include mq($from: laptop) {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: clamp(20px, 1.6vw, 30px);
+        gap: 0;
       }
 
       @include mq($until: laptop) {
@@ -139,13 +150,17 @@
 
     &__info {
       @include mq($from: laptop) {
+        width: min(590px, calc(50vw - var(--hero-content-offset) - 20px));
         min-width: 0;
-        max-width: 590px;
+        max-width: none;
+        margin-left: var(--hero-content-offset);
       }
 
       @include mq($until: laptop) {
         display: contents;
       }
+
+      max-width: 590px;
     }
 
     &__title {
@@ -241,6 +256,7 @@
           display: block;
 
           width: 100%;
+          max-width: 960px;
         }
 
         img {
@@ -308,6 +324,10 @@
     }
 
     .swiper-pagination-numeric {
+      @include mq($from: laptop) {
+        left: var(--hero-content-offset);
+      }
+
       @include mq($until: laptop) {
         top: 40px;
         left: max(19px, calc((100% - 650px) / 2));
@@ -453,6 +473,18 @@
             clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 100%, 0 100%);
           }
         }
+      }
+    }
+
+    .swiper-button-prev {
+      @include mq($from: laptop) {
+        left: clamp(24px, 7.4vw, 142px) !important;
+      }
+    }
+
+    .swiper-button-next {
+      @include mq($from: laptop) {
+        right: clamp(24px, 7.4vw, 142px) !important;
       }
     }
 
