@@ -110,6 +110,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const tabletBreakpoint = Number.parseFloat(
     rootStyles.getPropertyValue("--bp-tablet"),
   );
+  const mobileBreakpoint = Number.parseFloat(
+    rootStyles.getPropertyValue("--bp-mobile"),
+  );
 
   const snapRadius = 35;
   const releaseRadius = 75;
@@ -124,15 +127,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const layoutTimeline = () => {
     const isTablet = window.innerWidth < tabletBreakpoint;
-    const spacing = isTablet ? 306 : 200;
-    const tailOffset = isTablet ? 180 : 250;
-    const neededHeight = spacing * (points.length - 1) + tailOffset;
+    const isMobile = window.innerWidth < mobileBreakpoint;
 
-    timeline.style.height = `${neededHeight}px`;
+    if (isTablet) {
+      const pointGap = 40;
+      const bottomSpacing = isMobile ? 98 : 110;
 
-    for (const [i, point] of points.entries()) {
-      point.style.position = "absolute";
-      point.style.top = `${spacing * i}px`;
+      let pointTop = 0;
+
+      for (const point of points) {
+        point.style.position = "absolute";
+        point.style.top = `${pointTop}px`;
+
+        const content = point.querySelector(".timeline-content");
+
+        if (!content) continue;
+
+        const contentStyles = getComputedStyle(content);
+        const contentTop = Number.parseFloat(contentStyles.marginTop) || 0;
+
+        pointTop += contentTop + content.offsetHeight + pointGap;
+      }
+
+      const lastPointElement = points.at(-1);
+      const lastContent = lastPointElement.querySelector(".timeline-content");
+
+      if (lastContent) {
+        const lastContentStyles = getComputedStyle(lastContent);
+        const lastContentTop =
+          Number.parseFloat(lastContentStyles.marginTop) || 0;
+
+        const lastContentBottom =
+          lastPointElement.offsetTop +
+          lastContentTop +
+          lastContent.offsetHeight;
+
+        timeline.style.height = `${lastContentBottom + bottomSpacing}px`;
+      }
+    } else {
+      const spacing = 200;
+      const neededHeight = spacing * (points.length - 1) + 250;
+
+      timeline.style.height = `${neededHeight}px`;
+
+      for (const [i, point] of points.entries()) {
+        point.style.position = "absolute";
+        point.style.top = `${spacing * i}px`;
+      }
     }
 
     pointPositions = points.map((point) => point.offsetTop);

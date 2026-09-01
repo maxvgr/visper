@@ -1,5 +1,9 @@
 #cp-home-about {
   .about {
+    @include mq($until: tablet) {
+      margin-bottom: -50px;
+    }
+
     &__text {
       @include mq($until: tablet) {
         width: calc(100% - 40px);
@@ -48,13 +52,17 @@
   .timeline-line {
     @include mq($until: tablet) {
       width: 1px;
+      height: calc(100% - 65px);
       background: linear-gradient(
         to bottom,
         $palette-blue 0,
-        $palette-blue calc(100% - 56px),
-        rgba(0, 51, 171, 0.35) calc(100% - 24px),
-        rgba(0, 51, 171, 0) 100%
+        $palette-blue calc(100% - 40px),
+        rgba($palette-blue, 0) 100%
       );
+    }
+
+    @include mq($until: mobile) {
+      height: calc(100% - 53px);
     }
 
     position: absolute;
@@ -151,7 +159,7 @@
       left: 20px;
       width: auto;
       max-width: none;
-      margin-top: 58px;
+      margin-top: 62px;
       transform: none;
     }
 
@@ -240,7 +248,17 @@
         }
 
         &::after {
-          display: none;
+          position: absolute;
+          z-index: 5;
+          top: 100%;
+          right: auto;
+          left: 50%;
+          display: block;
+          width: 3px;
+          height: 6px;
+          background: $palette-white;
+          transform: translateX(-50%);
+          clip-path: none;
         }
       }
 
@@ -289,7 +307,17 @@
         }
 
         &::after {
-          display: none;
+          position: absolute;
+          z-index: 5;
+          top: 100%;
+          right: auto;
+          left: 50%;
+          display: block;
+          width: 3px;
+          height: 6px;
+          background: $palette-white;
+          transform: translateX(-50%);
+          clip-path: none;
         }
       }
 
