@@ -34,19 +34,27 @@
     @include mq($until: laptop) {
       width: 100%;
     }
+
     @include mq($until: tablet) {
       margin-top: 10px;
     }
 
     position: relative;
     width: 1060px;
-    height: 1300px; /* подкорректируй под реальную высоту */
+    height: 1300px;
     margin: 130px auto 0;
   }
 
   .timeline-line {
     @include mq($until: tablet) {
       width: 1px;
+      background: linear-gradient(
+        to bottom,
+        $palette-blue 0,
+        $palette-blue calc(100% - 56px),
+        rgba(0, 51, 171, 0.35) calc(100% - 24px),
+        rgba(0, 51, 171, 0) 100%
+      );
     }
 
     position: absolute;
@@ -55,31 +63,32 @@
     left: 50%;
     width: 2px;
     height: 100%;
-    // background: $palette-blue;
-
     background: linear-gradient(to bottom, $palette-blue 0%, $palette-blue 70%, rgba(58, 107, 215, 0) 100%);
     transform: translateX(-50%);
   }
 
   .timeline-point {
     @include mq($until: tablet) {
-       z-index: auto;
+      z-index: 6;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 58px;
       border: 0;
       border-radius: 0;
-      background: none;
+      background:
+        radial-gradient(circle, $palette-blue 0 2px, transparent 2px) center 34px / 4px 4px no-repeat,
+        linear-gradient($palette-white, $palette-white) center bottom / 3px 20px no-repeat;
       transform: none;
 
       &::before {
-        z-index: 3;
+        z-index: 6;
         top: 0;
         left: 50%;
         box-sizing: border-box;
         width: 20px;
         height: 20px;
         border: 1px solid $palette-blue;
+        border-radius: 50%;
         background-color: $palette-white;
         transform: translateX(-50%);
       }
@@ -87,13 +96,13 @@
       &::after {
         content: "";
         position: absolute;
-        z-index: 3;
-        top: 5px;
+        z-index: 7;
+        top: 4px;
         left: 50%;
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
-        background-color: $palette-blue;
+        background-color: $palette-red;
         transform: translateX(-50%);
       }
     }
@@ -130,11 +139,13 @@
     @include mq($until: laptop) {
       width: calc(50vw - 112px);
     }
+
     @include mq($until: notebook) {
       width: calc(50vw - 96px);
     }
+
     @include mq($until: tablet) {
-       z-index: 5;
+      z-index: 4;
       top: 0;
       right: 20px;
       left: 20px;
@@ -149,19 +160,6 @@
     width: 450px;
     margin-top: -50px;
     line-height: 1.4;
-
-    &--left,
-    &--right {
-      @include mq($until: tablet) {
-        right: 20px;
-        left: 20px;
-
-        &::before,
-        &::after {
-          display: none;
-        }
-      }
-    }
 
     &--inner {
       @include mq($until: tablet) {
@@ -179,7 +177,6 @@
 
       padding: 1px;
       background: $palette-gray;
-
       clip-path: polygon(
         15px 0,
         calc(100% - 15px) 0,
@@ -211,7 +208,6 @@
 
       padding: 20px;
       background: $palette-white;
-
       clip-path: polygon(
         14px 0,
         calc(100% - 14px) 0,
@@ -225,6 +221,29 @@
     }
 
     &--left {
+      @include mq($until: tablet) {
+        right: 20px;
+        left: 20px;
+
+        &::before {
+          position: absolute;
+          z-index: 5;
+          top: -4px;
+          right: auto;
+          left: 50%;
+          display: block;
+          width: 40px;
+          height: 4px;
+          background: $palette-gray;
+          transform: translateX(-50%);
+          clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+
       right: 80px;
       text-align: left;
 
@@ -234,27 +253,46 @@
         position: absolute;
         z-index: 1;
         right: -6px;
-
         width: 6px;
         height: 40px;
-
         background: $palette-gray;
       }
 
-      // Первый SVG из Figma
       &::before {
         top: 32px;
         clip-path: polygon(0 0, 100% 16.25%, 100% 100%, 0 100%);
       }
 
-      // Второй SVG сразу под первым
       &::after {
-        top: 72px; // 32 + 40
+        top: 72px;
         clip-path: polygon(0 0, 100% 0, 100% 83.75%, 0 100%);
       }
     }
 
     &--right {
+      @include mq($until: tablet) {
+        right: 20px;
+        left: 20px;
+
+        &::before {
+          position: absolute;
+          z-index: 5;
+          top: -4px;
+          right: auto;
+          left: 50%;
+          display: block;
+          width: 40px;
+          height: 4px;
+          background: $palette-gray;
+          transform: translateX(-50%);
+          clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+
       left: 80px;
       text-align: left;
 
@@ -269,13 +307,11 @@
         background: $palette-gray;
       }
 
-      // верхняя часть
       &::before {
         top: 32px;
         clip-path: polygon(100% 0, 0 16.25%, 0 100%, 100% 100%);
       }
 
-      // нижняя часть
       &::after {
         top: 72px;
         clip-path: polygon(100% 0, 0 0, 0 83.75%, 100% 100%);
@@ -322,8 +358,11 @@
     }
   }
 
-  /* Красная точка-индикатор */
   .timeline-indicator {
+    @include mq($until: tablet) {
+      display: none;
+    }
+
     position: absolute;
     z-index: 3;
     top: 0;

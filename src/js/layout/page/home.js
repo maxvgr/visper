@@ -106,31 +106,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!indicator || points.length === 0 || !timeline) return;
 
-  const spacing = 200;
+  const rootStyles = getComputedStyle(document.documentElement);
+  const tabletBreakpoint = Number.parseFloat(
+    rootStyles.getPropertyValue("--bp-tablet"),
+  );
+
   const snapRadius = 35;
   const releaseRadius = 75;
-  const neededHeight = spacing * (points.length - 1) + 250;
 
-  timeline.style.height = `${neededHeight}px`;
-
-  for (const [i, point] of points.entries()) {
-    point.style.position = "absolute";
-    point.style.top = `${spacing * i}px`;
-  }
-
-  const pointPositions = points.map((point) => point.offsetTop);
-  const firstPoint = pointPositions[0];
-  const lastPoint = pointPositions.at(-1);
-
+  let pointPositions = [];
+  let firstPoint = 0;
+  let lastPoint = 0;
   let currentPosition = 0;
   let targetPosition = 0;
   let activeSnapIndex = -1;
   let animationFrame;
 
+  const layoutTimeline = () => {
+    const isTablet = window.innerWidth < tabletBreakpoint;
+    const spacing = isTablet ? 306 : 200;
+    const tailOffset = isTablet ? 180 : 250;
+    const neededHeight = spacing * (points.length - 1) + tailOffset;
+
+    timeline.style.height = `${neededHeight}px`;
+
+    for (const [i, point] of points.entries()) {
+      point.style.position = "absolute";
+      point.style.top = `${spacing * i}px`;
+    }
+
+    pointPositions = points.map((point) => point.offsetTop);
+    firstPoint = pointPositions[0];
+    lastPoint = pointPositions.at(-1);
+  };
+
   const getTargetPosition = () => {
     const timelineRect = timeline.getBoundingClientRect();
     const viewportCenter = window.innerHeight / 2;
-
     const rawPosition = viewportCenter - timelineRect.top;
 
     const clampedPosition = Math.min(
@@ -195,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  layoutTimeline();
   getTargetPosition();
 
   currentPosition = targetPosition;
@@ -204,9 +217,16 @@ document.addEventListener("DOMContentLoaded", () => {
     passive: true,
   });
 
-  window.addEventListener("resize", updateIndicator, {
-    passive: true,
-  });
+  window.addEventListener(
+    "resize",
+    () => {
+      layoutTimeline();
+      updateIndicator();
+    },
+    {
+      passive: true,
+    },
+  );
 });
 
 const newsSlider = document.querySelector("#cp-home-news");
