@@ -147,6 +147,16 @@
   .input {
     position: relative;
 
+    &.is-error {
+      .input__field {
+        border-color: $palette-red;
+      }
+
+      .input__label {
+        color: $palette-red;
+      }
+    }
+
     &__field {
       min-height: 52px;
       padding: 14px 16px;

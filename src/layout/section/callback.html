@@ -22,20 +22,20 @@
           </div>
 
           <div class="callback__form">
-            <form class="form form-custom">
+            <form class="form form-custom" action="" data-validation data-success-modal="success" novalidate>
               <div class="callback__fields">
-                <div class="input">
-                  <input class="input__field" placeholder=" " autocomplete="off" type="text" name="user_name">
+                <div class="input" data-field>
+                  <input class="input__field" placeholder=" " autocomplete="name" type="text" name="user_name" required minlength="4" data-validate data-error-required="Необходимо заполнить поле" data-error-minlength="Необходимо заполнить поле [минимум 4 символа]">
                   <span class="input__label">ФИО</span>
                 </div>
 
-                <div class="input">
-                  <input class="input__field" placeholder=" " autocomplete="off" type="email" name="user_email">
+                <div class="input" data-field>
+                  <input class="input__field" placeholder=" " autocomplete="email" type="email" name="user_email" required data-validate data-error-required="Необходимо заполнить поле" data-error-format="Неверно указан адрес электронной почты">
                   <span class="input__label">Почта</span>
                 </div>
 
-                <div class="input callback__message">
-                  <textarea class="input__field" placeholder=" " name="user_message"></textarea>
+                <div class="input callback__message" data-field>
+                  <textarea class="input__field" placeholder=" " name="user_message" required minlength="30" data-validate data-error-required="Необходимо заполнить поле" data-error-minlength="Необходимо заполнить поле [минимум 30 символов]"></textarea>
                   <span class="input__label">Сообщение</span>
                 </div>
               </div>
@@ -65,6 +65,7 @@
                 Отправить
               </button>
             </form>
+
           </div>
         </div>
       </div>
