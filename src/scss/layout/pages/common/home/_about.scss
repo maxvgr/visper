@@ -1,6 +1,15 @@
 #cp-home-about {
   .about {
     &__text {
+      @include mq($until: tablet) {
+        width: calc(100% - 40px);
+        max-width: none;
+        padding-top: 56px;
+
+        font-size: 13px;
+        line-height: 150%;
+      }
+
       position: relative;
       max-width: 639px;
       margin: 0 auto;
@@ -22,6 +31,13 @@
   }
 
   .timeline-container {
+    @include mq($until: laptop) {
+      width: 100%;
+    }
+    @include mq($until: tablet) {
+      margin-top: 10px;
+    }
+
     position: relative;
     width: 1060px;
     height: 1300px; /* подкорректируй под реальную высоту */
@@ -29,6 +45,10 @@
   }
 
   .timeline-line {
+    @include mq($until: tablet) {
+      width: 1px;
+    }
+
     position: absolute;
     z-index: 1;
     top: 0;
@@ -42,6 +62,42 @@
   }
 
   .timeline-point {
+    @include mq($until: tablet) {
+       z-index: auto;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      transform: none;
+
+      &::before {
+        z-index: 3;
+        top: 0;
+        left: 50%;
+        box-sizing: border-box;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $palette-blue;
+        background-color: $palette-white;
+        transform: translateX(-50%);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 3;
+        top: 5px;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $palette-blue;
+        transform: translateX(-50%);
+      }
+    }
+
     position: absolute;
     z-index: 3;
     top: 0;
@@ -71,13 +127,56 @@
   }
 
   .timeline-content {
+    @include mq($until: laptop) {
+      width: calc(50vw - 112px);
+    }
+    @include mq($until: notebook) {
+      width: calc(50vw - 96px);
+    }
+    @include mq($until: tablet) {
+       z-index: 5;
+      top: 0;
+      right: 20px;
+      left: 20px;
+      width: auto;
+      max-width: none;
+      margin-top: 58px;
+      transform: none;
+    }
+
     position: absolute;
     overflow: visible;
     width: 450px;
     margin-top: -50px;
     line-height: 1.4;
 
+    &--left,
+    &--right {
+      @include mq($until: tablet) {
+        right: 20px;
+        left: 20px;
+
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+    }
+
     &--inner {
+      @include mq($until: tablet) {
+        clip-path: polygon(
+          8px 0,
+          calc(100% - 8px) 0,
+          100% 8px,
+          100% calc(100% - 8px),
+          calc(100% - 8px) 100%,
+          8px 100%,
+          0 calc(100% - 8px),
+          0 8px
+        );
+      }
+
       padding: 1px;
       background: $palette-gray;
 
@@ -94,6 +193,22 @@
     }
 
     &--body {
+      @include mq($until: tablet) {
+        min-height: 182px;
+        padding: 16px;
+
+        clip-path: polygon(
+          7px 0,
+          calc(100% - 7px) 0,
+          100% 7px,
+          100% calc(100% - 7px),
+          calc(100% - 7px) 100%,
+          7px 100%,
+          0 calc(100% - 7px),
+          0 7px
+        );
+      }
+
       padding: 20px;
       background: $palette-white;
 
@@ -168,6 +283,12 @@
     }
 
     &__year {
+      @include mq($until: tablet) {
+        margin-bottom: 4px;
+
+        font-size: 15px;
+      }
+
       margin-bottom: 8px;
       font-weight: $weight-Bold;
       font-size: var(--font-text-big);
@@ -175,6 +296,14 @@
     }
 
     &__title {
+      @include mq($until: tablet) {
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+
+        font-size: 13px;
+        line-height: 150%;
+      }
+
       margin-bottom: 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid $palette-gray;
@@ -184,6 +313,11 @@
     }
 
     &__text {
+      @include mq($until: tablet) {
+        font-size: 13px;
+        line-height: 140%;
+      }
+
       line-height: var(--line-height-medium);
     }
   }
