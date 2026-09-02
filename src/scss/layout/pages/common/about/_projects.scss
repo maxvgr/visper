@@ -1,4 +1,155 @@
 #cp-about-projects {
+  @include mq($from: tablet, $until: laptop) {
+    .about-projects {
+      grid-template-columns: minmax(0, 1.5fr) minmax(320px, 1fr);
+
+      &__list {
+        gap: 13px;
+      }
+
+      &__item {
+        grid-template-columns: minmax(0, 1fr) 70px;
+
+        height: 54px;
+
+        font-size: 16px;
+      }
+
+      &__name {
+        padding: 0 10px;
+
+        line-height: var(--line-height-small);
+      }
+    }
+  }
+  @include mq($until: tablet) {
+    padding-top: 33px;
+
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .section__line {
+      margin-bottom: 15px;
+    }
+
+    .about-projects {
+      display: block;
+
+      margin-top: 14px;
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        height: auto;
+      }
+
+      &__media {
+        width: 100%;
+        height: 309px;
+        margin-top: -1px;
+
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));
+
+        &::before {
+          clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 7px 100%, 0 calc(100% - 7px));
+        }
+      }
+
+      &__picture {
+        width: 100%;
+        height: 249px;
+      }
+
+      &__description {
+        min-height: 60px;
+        padding: 0 15px;
+
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      &__item {
+        grid-template-columns: 52px minmax(0, 1fr) 52px;
+
+        height: 38px;
+        margin-top: 16px;
+
+        font-weight: $weight-Regular;
+        font-size: 13px;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &::after {
+          content: "+";
+
+          display: flex;
+          grid-row: 1;
+          grid-column: 3;
+          align-items: center;
+          justify-content: center;
+
+          width: 52px;
+          height: 22px;
+          border-left: 1px solid $palette-gray;
+
+          color: $color-text__blue;
+
+          font-size: 22px;
+          line-height: 1;
+        }
+
+        &.is-active {
+          --cut-border-color: #{$palette-blue};
+
+          font-weight: $weight-SemiBold;
+
+          clip-path: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%, 0 8px);
+
+          &::before {
+            clip-path: polygon(7px 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%, 0 7px);
+          }
+
+          &::after {
+            content: "−";
+
+            border-left-color: $palette-blue;
+          }
+        }
+      }
+
+      &__name {
+        grid-row: 1;
+        grid-column: 2;
+
+        padding: 0 8px;
+
+        text-align: center;
+      }
+
+      &__year {
+        display: flex;
+        grid-row: 1;
+        grid-column: 1;
+        align-items: center;
+        justify-content: center;
+
+        height: 22px;
+        border-right: 1px solid $palette-gray;
+        border-left: 0;
+
+        .is-active & {
+          border-right-color: $palette-blue;
+        }
+      }
+    }
+  }
+
   padding-top: 104px;
 
   .about-projects {

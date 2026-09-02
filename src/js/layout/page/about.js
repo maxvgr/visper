@@ -141,13 +141,28 @@ if (aboutRegions) {
   }
 }
 
-
 const aboutProjects = document.querySelector("#cp-about-projects");
 
 if (aboutProjects) {
+  const projects = aboutProjects.querySelector(".about-projects");
+  const list = aboutProjects.querySelector(".about-projects__list");
   const items = [...aboutProjects.querySelectorAll(".about-projects__item")];
+  const media = aboutProjects.querySelector(".about-projects__media");
   const image = aboutProjects.querySelector(".about-projects__image");
-  const description = aboutProjects.querySelector(".about-projects__description");
+  const description = aboutProjects.querySelector(
+    ".about-projects__description",
+  );
+  const mobileProjects = window.matchMedia("(max-width: 815px)");
+
+  const placeMedia = (item) => {
+    if (!projects || !list || !media || !item) return;
+
+    if (mobileProjects.matches) {
+      item.after(media);
+    } else {
+      list.before(media);
+    }
+  };
 
   const setProject = (item) => {
     const imagePath = item.dataset.image;
@@ -168,13 +183,26 @@ if (aboutProjects) {
     if (description && projectDescription) {
       description.textContent = projectDescription;
     }
+
+    placeMedia(item);
   };
 
   for (const item of items) {
     item.addEventListener("click", () => setProject(item));
   }
-}
 
+  const activeItem = items.find((item) => item.classList.contains("is-active"));
+
+  placeMedia(activeItem);
+
+  mobileProjects.addEventListener("change", () => {
+    const currentItem = items.find((item) =>
+      item.classList.contains("is-active"),
+    );
+
+    placeMedia(currentItem);
+  });
+}
 
 const aboutReviews = document.querySelector("#cp-about-reviews");
 
@@ -199,8 +227,12 @@ if (aboutReviews) {
       grabCursor: true,
 
       navigation: {
-        prevEl: aboutReviews.querySelector(".about-reviews__navigation-button--prev"),
-        nextEl: aboutReviews.querySelector(".about-reviews__navigation-button--next"),
+        prevEl: aboutReviews.querySelector(
+          ".about-reviews__navigation-button--prev",
+        ),
+        nextEl: aboutReviews.querySelector(
+          ".about-reviews__navigation-button--next",
+        ),
       },
 
       on: {
