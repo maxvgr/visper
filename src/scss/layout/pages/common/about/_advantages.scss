@@ -1,4 +1,115 @@
 #cp-about-advantages {
+  @include mq($from: tablet, $until: laptop) {
+    .about-advantages {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px;
+
+      &__item {
+        gap: 9px;
+
+        height: auto;
+        min-height: 45px;
+        margin-bottom: 20px;
+
+        padding-bottom: 20px;
+
+        &:last-child {
+          height: auto;
+          min-height: 34px;
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+
+      &__icon {
+        width: 34px;
+        height: 34px;
+      }
+
+      &__text {
+        font-size: 16px;
+      }
+    }
+  }
+  @include mq($until: tablet) {
+    padding-top: 60px;
+
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .section__line {
+      margin-bottom: 15px;
+    }
+
+    .about-advantages {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      &__content {
+        display: contents;
+      }
+
+      &__title {
+        order: 1;
+      }
+
+      &__description {
+        order: 2;
+
+        max-width: none;
+        margin-top: 8px;
+
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      &__visual {
+        order: 3;
+
+        width: 100%;
+        height: 334px;
+        margin-top: 16px;
+
+        picture {
+          top: 39px;
+
+          width: 232px;
+          height: 249px;
+        }
+      }
+
+      &__list {
+        order: 4;
+
+        margin-top: 30px;
+      }
+
+      &__item {
+        gap: 9px;
+
+        height: 45px;
+        margin-bottom: 29px;
+
+        &:last-child {
+          height: 34px;
+          margin-bottom: 0;
+        }
+      }
+
+      &__icon {
+        width: 34px;
+        height: 34px;
+      }
+
+      &__text {
+        font-size: 16px;
+      }
+    }
+  }
+
   padding-top: 120px;
 
   .about-advantages {
@@ -25,10 +136,11 @@
     &__item {
       display: flex;
       gap: 19px;
-      align-items: flex-start;
+      align-items: center;
 
       height: 54px;
       margin-bottom: 29px;
+      padding-bottom: 29px;
       border-bottom: 1px solid $palette-gray;
 
       &:last-child {
@@ -48,8 +160,6 @@
     }
 
     &__text {
-      padding-top: 7px;
-
       font-weight: $weight-Medium;
       font-size: var(--font-text-big);
       line-height: var(--line-height-small);
