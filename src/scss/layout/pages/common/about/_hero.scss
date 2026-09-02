@@ -1,4 +1,253 @@
 #cp-about-hero {
+  @include mq($until: tablet) {
+    overflow: hidden;
+
+    padding-top: 4px;
+    padding-bottom: 60px;
+
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .about-hero {
+      position: relative;
+
+      &__title {
+        font-size: 26px;
+      }
+
+      &__main {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        margin-top: 15px;
+      }
+
+      &__content {
+        position: static;
+
+        order: 2;
+        overflow: visible;
+
+        width: calc(100% - 29px);
+        height: auto;
+        padding: 0;
+
+        background: transparent;
+        isolation: auto;
+
+        clip-path: none;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      &__slider {
+        overflow: visible;
+      }
+
+      &__slide {
+        position: relative;
+        z-index: 1;
+
+        box-sizing: border-box;
+        min-height: 233px;
+        padding: 16px;
+
+        background: $palette-gray;
+        isolation: isolate;
+
+        clip-path: polygon(
+          9px 0,
+          calc(100% - 9px) 0,
+          100% 9px,
+          100% calc(100% - 9px),
+          calc(100% - 9px) 100%,
+          9px 100%,
+          0 calc(100% - 9px),
+          0 9px
+        );
+
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+
+          inset: 1px;
+
+          background: $palette-white;
+
+          clip-path: polygon(
+            8px 0,
+            calc(100% - 8px) 0,
+            100% 8px,
+            100% calc(100% - 8px),
+            calc(100% - 8px) 100%,
+            8px 100%,
+            0 calc(100% - 8px),
+            0 8px
+          );
+        }
+      }
+
+      &__subtitle {
+        font-size: 16px;
+      }
+
+      &__lead {
+        max-width: 298px;
+        margin-top: 8px;
+
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      &__description {
+        max-width: 290px;
+        margin-top: 10px;
+
+        font-size: 13px;
+        line-height: 1.5;
+
+        p:nth-child(n + 2) {
+          display: none;
+        }
+      }
+
+      &__navigation {
+        position: absolute;
+        z-index: 2;
+        top: 3px;
+        right: 0;
+
+        width: 54px;
+        height: 24px;
+        margin-top: 0;
+
+        background: $palette-gray;
+        isolation: isolate;
+
+        clip-path: polygon(
+          5px 0,
+          calc(100% - 5px) 0,
+          100% 5px,
+          100% calc(100% - 5px),
+          calc(100% - 5px) 100%,
+          5px 100%,
+          0 calc(100% - 5px),
+          0 5px
+        );
+
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+
+          inset: 1px;
+
+          background: $palette-white;
+
+          clip-path: polygon(
+            4px 0,
+            calc(100% - 4px) 0,
+            100% 4px,
+            100% calc(100% - 4px),
+            calc(100% - 4px) 100%,
+            4px 100%,
+            0 calc(100% - 4px),
+            0 4px
+          );
+        }
+      }
+
+      &__navigation-button {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+
+        width: 50%;
+        height: 100%;
+
+        picture {
+          display: none;
+        }
+
+        &--prev {
+          left: 0;
+        }
+
+        &--next {
+          right: 0;
+        }
+      }
+
+      &__counter {
+        flex: 1 1 auto;
+
+        width: 100%;
+        height: 24px;
+
+        font-size: 13px;
+        line-height: 1.5;
+
+        pointer-events: none;
+      }
+
+      &__image {
+        order: 1;
+
+        height: auto;
+
+        aspect-ratio: 181 / 167;
+
+        img {
+          object-position: center bottom;
+        }
+      }
+
+      &__stats {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        margin-top: 40px;
+      }
+
+      &__stat {
+        width: 100%;
+        height: 112px;
+        padding: 16px;
+
+        clip-path: polygon(0 0, 100% 0, 100% 82px, calc(100% - 30px) 100%, 0 100%);
+
+        &::before {
+          clip-path: polygon(0 0, 100% 0, 100% 81px, calc(100% - 29px) 100%, 0 100%);
+        }
+      }
+
+      &__stat-dot {
+        top: 17px;
+        right: 17px;
+
+        width: 8px;
+        height: 8px;
+      }
+
+      &__stat-title {
+        font-size: 13px;
+      }
+
+      &__stat-value {
+        margin-top: 15px;
+
+        font-size: 50px;
+      }
+    }
+  }
+
   padding-top: 52px;
   padding-bottom: 120px;
 

@@ -16,6 +16,7 @@ if (aboutHero) {
         modules: [Navigation],
 
         slidesPerView: 1,
+        spaceBetween: 16,
         speed: 600,
         grabCursor: true,
 
