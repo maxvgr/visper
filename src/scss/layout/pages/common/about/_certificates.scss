@@ -1,4 +1,48 @@
 #cp-about-certificates {
+  @include mq($until: tablet) {
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .section__line {
+      margin-bottom: 15px;
+    }
+
+    .section__title {
+      padding-bottom: 0;
+    }
+
+    .about-certificates {
+      margin-top: 15px;
+
+      &__item {
+        grid-template-columns: 38px minmax(0, 1fr) 22px;
+
+        height: 65px;
+        padding-right: 0;
+        padding-left: 0;
+
+        font-size: 13px;
+        line-height: var(--line-height-small);
+      }
+
+      &__name {
+        max-width: 240px;
+      }
+
+      &__icon {
+        width: 22px;
+        height: 22px;
+
+        svg {
+          width: 22px;
+          height: 22px;
+        }
+      }
+    }
+  }
+
   padding-top: 0;
 
   .about-certificates {
