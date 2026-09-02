@@ -92,7 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.App.gallery = new Gallery();
   window.App.tab = new Tab();
-  window.App.scrollTop = new ScrollTop();
+  window.App.scrollTop = new ScrollTop({
+    footerMode: "off",
+    showThreshold: 0,
+  });
 
   PlayVideoInViewport();
 });

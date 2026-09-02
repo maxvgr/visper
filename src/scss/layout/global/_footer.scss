@@ -44,12 +44,12 @@
 
       height: auto;
       padding-top: 30px;
-      padding-bottom: 40px;
+      padding-bottom: 60px;
     }
 
     @include mq($until: tablet) {
       padding-top: 20px;
-      padding-bottom: 34px;
+      padding-bottom: 54px;
     }
 
     position: relative;
@@ -170,10 +170,10 @@
     @include mq($until: notebook) {
       position: absolute;
       z-index: 12;
-      top: 104px;
+      top: 124px;
       right: 30px;
 
-      width: 210px;
+      width: auto;
 
       text-align: right;
 
@@ -181,15 +181,13 @@
         color: $palette-white;
         font-size: var(--font-text-small);
         text-decoration: underline;
+        white-space: nowrap;
       }
     }
 
     @include mq($until: tablet) {
       top: 101px;
       right: 20px;
-
-      width: 187px;
-      max-width: calc(100% - 175px);
 
       a {
         font-size: 12px;
@@ -210,6 +208,7 @@
     justify-self: center;
 
     font-weight: $weight-SemiBold;
+    white-space: nowrap;
   }
 
   &-bottom__right {
@@ -320,11 +319,11 @@
 
     .nav__item {
       @include mq($until: notebook) {
-        padding-left: 34px;
+        padding-left: 40px;
       }
 
       @include mq($until: tablet) {
-        padding-left: 30px;
+        padding-left: 38px;
       }
     }
 
