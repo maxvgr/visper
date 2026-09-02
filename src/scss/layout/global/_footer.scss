@@ -2,11 +2,34 @@
 // В этом файле прописываются все стили относящиеся к подвалу сайта
 // -----------------------------------------------------------------------------
 
-#footer {
-}
-
 .footer {
+  @include mq($until: notebook) {
+    margin-top: 100px;
+  }
+
+  @include mq($until: tablet) {
+    margin-top: 60px;
+  }
+
+  position: relative;
+
   &__background {
+    @include mq($until: notebook) {
+      height: auto;
+      margin-top: 0;
+
+      background: $palette-blue;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    @include mq($until: tablet) {
+      margin-top: 60px;
+    }
+
     position: relative;
 
     height: 346px;
@@ -20,6 +43,10 @@
       top left,
       top left,
       top right;
+    background-size:
+      100% 100%,
+      50% 100%,
+      50% 100%;
     background-repeat: repeat, no-repeat, no-repeat;
 
     &::before {
@@ -33,6 +60,7 @@
       height: 100%;
 
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='960' height='347' viewBox='0 0 960 347' fill='none'%3e%3cpath d='M960 327L960 0L-1.51679e-05 4.19629e-05L0 347L259 347L285 327L960 327Z' fill='url(%23paint0_linear_1_2375)'/%3e%3cdefs%3e%3clinearGradient id='paint0_linear_1_2375' x1='960' y1='163.246' x2='0.125707' y2='180.497' gradientUnits='userSpaceOnUse'%3e%3cstop stop-color='%230033AB'/%3e%3cstop offset='1' stop-color='%230033AB' stop-opacity='0'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+      background-size: 100% 100%;
       background-repeat: no-repeat;
     }
 
@@ -47,11 +75,29 @@
       height: 100%;
 
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='961' height='347' viewBox='0 0 961 347' fill='none'%3e%3cpath d='M8.742e-07 327.001L1.51678e-05 0.000579834L961 0.000621841L961 347L702 347L676 327.001L8.742e-07 327.001Z' fill='url(%23paint0_linear_1_2374)'/%3e%3cdefs%3e%3clinearGradient id='paint0_linear_1_2374' x1='6.98972e-06' y1='153.835' x2='960.834' y2='172.179' gradientUnits='userSpaceOnUse'%3e%3cstop stop-color='%230033AB'/%3e%3cstop offset='1' stop-color='%230033AB' stop-opacity='0'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+      background-size: 100% 100%;
       background-repeat: no-repeat;
     }
   }
 
   &__wrapper {
+    @include mq($until: laptop) {
+      gap: 0 80px;
+    }
+    @include mq($until: notebook) {
+      display: flex;
+      flex-direction: column;
+
+      height: auto;
+      padding-top: 30px;
+      padding-bottom: 40px;
+    }
+
+    @include mq($until: tablet) {
+      padding-top: 20px;
+      padding-bottom: 34px;
+    }
+
     position: relative;
     z-index: 10;
 
@@ -64,6 +110,12 @@
     padding-bottom: 110px;
 
     &::after {
+      @include mq($until: tablet) {
+        height: 12px;
+
+        clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%);
+      }
+
       content: "";
       position: absolute;
       z-index: 1;
@@ -81,11 +133,60 @@
   }
 
   &__logo {
+    @include mq($until: notebook) {
+      order: 1;
+
+      width: 150px;
+    }
+
+    @include mq($until: tablet) {
+      width: 120px;
+      height: 58px;
+    }
+
     position: relative;
     z-index: 10;
+
+    .logo {
+      @include mq($until: tablet) {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    picture {
+      @include mq($until: tablet) {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__nav {
+    @include mq($until: notebook) {
+      order: 3;
+
+      margin-top: 32px;
+      padding-top: 20px;
+
+      border-top: 1px solid $palette-white;
+    }
+
+    @include mq($until: tablet) {
+      margin-top: 28px;
+      padding-top: 18px;
+    }
   }
 
   &__bottom {
+    @include mq($until: notebook) {
+      position: static;
+
+      margin-top: 0;
+    }
+
     position: relative;
     z-index: 11;
 
@@ -98,6 +199,16 @@
   }
 
   &-bottom__grid {
+    @include mq($until: notebook) {
+      display: block;
+
+      padding: 8px 0;
+    }
+
+    @include mq($until: tablet) {
+      padding: 6px 0 4px;
+    }
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
@@ -105,13 +216,98 @@
     padding: 0 46px 22px;
   }
 
+  &-bottom__left {
+    @include mq($until: notebook) {
+      position: absolute;
+      z-index: 12;
+
+      top: 104px;
+      right: 30px;
+
+      width: 210px;
+
+      text-align: right;
+
+      a {
+        color: $palette-white;
+        font-size: var(--font-text-small);
+        text-decoration: underline;
+      }
+    }
+
+    @include mq($until: tablet) {
+      top: 101px;
+      right: 20px;
+
+      width: 187px;
+      max-width: calc(100% - 175px);
+
+      a {
+        font-size: 12px;
+      }
+    }
+  }
+
   &-bottom__middle {
+    @include mq($until: notebook) {
+      font-size: var(--font-text-small);
+      text-align: center;
+    }
+
+    @include mq($until: tablet) {
+      font-size: 13px;
+    }
+
     justify-self: center;
 
     font-weight: $weight-SemiBold;
   }
 
   &-bottom__right {
+    @include mq($until: notebook) {
+      position: absolute;
+      z-index: 12;
+
+      top: 36px;
+      right: 30px;
+
+      @media (hover: hover) {
+        &:hover {
+          svg {
+            transform: translateY(-3px);
+          }
+        }
+      }
+
+      span {
+        display: none;
+      }
+
+      a {
+        svg {
+          width: 27px;
+          height: 27px;
+
+          rect,
+          path {
+            stroke: $palette-white;
+          }
+        }
+      }
+
+      svg {
+        width: initial;
+        height: initial;
+
+        transition: transform $transition-time ease;
+      }
+    }
+
+    @include mq($until: tablet) {
+      top: 35px;
+      right: 20px;
+    }
+
     a {
       display: flex;
       gap: 9px;
@@ -126,6 +322,25 @@
   }
 
   &__social {
+    @include mq($until: notebook) {
+      gap: 12px;
+      order: 2;
+
+      margin-top: 20px;
+
+      a {
+        width: 26px;
+        height: 26px;
+      }
+    }
+
+    @include mq($until: tablet) {
+      a {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
     display: flex;
     gap: 15px;
 
@@ -136,6 +351,43 @@
         &:hover {
           transform: scale(0.9);
         }
+      }
+    }
+  }
+
+  .nav--footer {
+    @include mq($until: notebook) {
+      padding-top: 0;
+    }
+
+    .nav__list {
+      @include mq($until: notebook) {
+        grid-template-columns: 1fr;
+        gap: 14px;
+
+        font-weight: $weight-Regular;
+      }
+    }
+
+    .nav__item {
+      @include mq($until: notebook) {
+        padding-left: 34px;
+      }
+
+      @include mq($until: tablet) {
+        padding-left: 30px;
+      }
+    }
+
+    .nav__link {
+      @include mq($until: notebook) {
+        font-weight: $weight-Regular;
+        font-size: var(--font-text-small);
+        line-height: 1.25;
+      }
+
+      @include mq($until: tablet) {
+        font-size: 13px;
       }
     }
   }
