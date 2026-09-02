@@ -28,11 +28,14 @@
   &__image,
   &__content {
     --cut-border-color: #{$palette-gray};
-    --cut-background-color: #{$palette-white};
 
     min-width: 0;
 
     transition: background $transition-time ease;
+  }
+
+  &__image.cut-border {
+    --cut-background-color: #{$palette-lightgray};
   }
 
   &__image-inner {
