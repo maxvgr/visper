@@ -1,5 +1,5 @@
 #ap-products-category-hero {
-  @include mq($until: notebook) {
+  @include mq($until: laptop) {
     padding-top: 40px;
 
     .products-category {
@@ -42,7 +42,7 @@
     }
 
     .c-subproduct {
-      grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
 
       height: 320px;
 
@@ -55,33 +55,64 @@
       }
 
       &__text {
+        max-width: none;
+
         font-size: var(--font-text-small);
       }
 
       &__footer {
         gap: 16px;
       }
+    }
 
-      &__properties {
-        flex-direction: column;
-        gap: 7px;
-        align-items: flex-start;
-      }
+    .c-subproduct__properties {
+      flex-direction: column;
+      gap: 0;
+      align-items: stretch;
 
-      &__property {
-        & + & {
-          padding-left: 0;
+      width: 100%;
+    }
 
-          &::before {
-            display: none;
-          }
-        }
-      }
+    .c-subproduct__property {
+      display: block;
+
+      width: 100%;
+    }
+
+    .c-subproduct__property + .c-subproduct__property {
+      margin-top: 8px;
+      padding-top: 8px;
+      padding-left: 0;
+      border-top: 1px solid $palette-gray;
+    }
+
+    .c-subproduct__property + .c-subproduct__property::before {
+      display: none;
+    }
+
+    .c-subproduct__property-value {
+      font-weight: $weight-Regular;
+    }
+  }
+
+  @include mq($until: notebook) {
+    .c-subproduct {
+      grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    }
+
+    .c-subproduct__image.cut-border::before,
+    .c-subproduct__content.cut-border::before {
+      inset: 1px 1px 2px;
     }
   }
 
   @include mq($until: tablet) {
     padding-top: 32px;
+
+    .c-subproduct__image.cut-border::before,
+    .c-subproduct__content.cut-border::before {
+      inset: 1px;
+    }
 
     .products-category {
       &__title {
@@ -139,27 +170,11 @@
       &__footer {
         margin-top: 24px;
       }
-
-      &__properties {
-        flex-direction: row;
-        gap: 14px;
-        align-items: center;
-      }
-
-      &__property {
-        & + & {
-          padding-left: 14px;
-
-          &::before {
-            display: block;
-          }
-        }
-      }
     }
   }
+
   @include mq($until: mobile) {
     padding-top: 25px;
-    // padding-bottom: 60px;
 
     .container {
       padding-right: 20px;
@@ -177,9 +192,7 @@
       margin-top: 11px;
 
       &__header {
-        flex-direction: column;
         gap: 0;
-        align-items: stretch;
       }
 
       &__title {
@@ -243,11 +256,7 @@
     }
 
     .c-subproduct {
-      display: flex;
-      flex-direction: column;
       gap: 16px;
-
-      height: auto;
 
       &__image,
       &__content {
@@ -293,7 +302,6 @@
       }
 
       &__text {
-        max-width: none;
         margin-top: 10px;
 
         font-size: 13px;
@@ -308,41 +316,13 @@
         margin-top: 16px;
       }
 
-      &__properties {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        align-items: stretch;
-
-        width: 100%;
-      }
-
-      &__property {
-        display: block;
-
-        width: 100%;
-
-        font-size: 13px;
-
-        & + & {
-          margin-top: 8px;
-          padding-top: 8px;
-          padding-left: 0;
-          border-top: 1px solid $palette-gray;
-
-          &::before {
-            display: none;
-          }
-        }
-      }
-
-      &__property-value {
-        font-weight: $weight-Regular;
-      }
-
       &__arrow {
         display: none;
       }
+    }
+
+    .c-subproduct__property {
+      font-size: 13px;
     }
   }
 
