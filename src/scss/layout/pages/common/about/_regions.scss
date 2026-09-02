@@ -1,4 +1,139 @@
 #cp-about-regions {
+    @include mq($until: tablet) {
+    padding-top: 60px;
+
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .section__line {
+      margin-bottom: 15px;
+    }
+
+    .section__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .section__title {
+      order: 2;
+
+      margin-top: 5px;
+      padding-bottom: 0;
+    }
+
+    .about-regions {
+      &__count {
+        order: 1;
+
+        margin-top: 0;
+
+        color: $color-text__blue;
+
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      &__body {
+        height: auto;
+        aspect-ratio: 181 / 92;
+        margin-top: 14px;
+      }
+
+      &__map {
+        top: 10px;
+        left: 20px;
+
+        width: calc(100% - 33px);
+        height: auto;
+
+        aspect-ratio: 2 / 1;
+
+        transform: none;
+      }
+
+      &__corner {
+        width: 18px;
+        height: 18px;
+
+        &--top-left {
+          top: 18px;
+          left: 18px;
+
+          border-top-width: 2px;
+          border-left-width: 2px;
+        }
+
+        &--top-right {
+          top: 18px;
+          right: 18px;
+
+          border-top-width: 2px;
+          border-right-width: 2px;
+        }
+
+        &--bottom-left {
+          bottom: 18px;
+          left: 18px;
+
+          border-bottom-width: 2px;
+          border-left-width: 2px;
+        }
+
+        &--bottom-right {
+          right: 18px;
+          bottom: 18px;
+
+          border-right-width: 2px;
+          border-bottom-width: 2px;
+        }
+      }
+
+      &__point {
+        width: 14px;
+        height: 14px;
+
+        &::before {
+          top: 2px;
+          left: 2px;
+
+          width: 8px;
+          height: 8px;
+        }
+      }
+
+      &__tooltip {
+        width: 149px;
+        height: 88px;
+        padding: 11px 16px 8px;
+      }
+
+      &__tooltip-title {
+        padding-bottom: 8px;
+
+        font-size: 12px;
+        text-align: center;
+      }
+
+      &__tooltip-content {
+        gap: 8px;
+
+        margin-top: 3px;
+      }
+
+      &__tooltip-value {
+        font-size: 35px;
+      }
+
+      &__tooltip-label {
+        max-width: 70px;
+
+        font-size: 12px;
+      }
+    }
+  }
+
   padding-top: 120px;
 
   .section__header {
@@ -12,6 +147,7 @@
       font-weight: $weight-Medium;
       font-size: 22px;
       line-height: var(--line-height-small);
+       white-space: nowrap;
     }
 
     &__body {
@@ -195,8 +331,6 @@
         0 calc(100% - 9px),
         0 9px
       );
-
-
 
       &.is-visible {
         display: block;
