@@ -1,8 +1,48 @@
 #s-contacts {
+  .section__header {
+    @include mq($until: notebook) {
+      align-items: flex-end;
+    }
+  }
+
+  .section__title {
+    @include mq($until: notebook) {
+      padding-bottom: 0;
+
+      font-size: var(--font-title-small);
+    }
+
+    @include mq($until: tablet) {
+      font-size: 26px;
+    }
+  }
+
   .contacts {
+    @include mq($until: laptop) {
+      margin-top: 30px;
+    }
+
+    @include mq($until: notebook) {
+      margin-top: 24px;
+    }
+
+    @include mq($until: tablet) {
+      margin-top: 14px;
+    }
+
     margin-top: 38px;
 
     &__city {
+      @include mq($until: laptop) {
+        font-size: var(--font-text-big);
+      }
+
+      @include mq($until: tablet) {
+        margin-bottom: 3px;
+
+        font-size: 13px;
+      }
+
       font-weight: $weight-Medium;
       font-size: 22px;
       line-height: 1.2;
@@ -10,6 +50,19 @@
     }
 
     &__map {
+      @include mq($until: laptop) {
+        height: 460px;
+      }
+
+      @include mq($until: notebook) {
+        height: 360px;
+      }
+
+      @include mq($until: tablet) {
+        height: auto;
+        aspect-ratio: 362 / 223;
+      }
+
       overflow: hidden;
 
       height: 580px;
@@ -43,10 +96,19 @@
     }
 
     &__marker {
+      @include mq($until: tablet) {
+        left: 16px;
+
+        width: 57px;
+        height: 57px;
+      }
+
       position: relative;
       left: 24px; // положение маркера
+
       width: 86px;
       height: 86px;
+
       pointer-events: none;
 
       transform: translate(-50%, -112%); // положение маркера
@@ -55,11 +117,29 @@
     &__marker-image {
       display: block;
       object-fit: contain;
+
       width: 100%;
       height: 100%;
     }
 
     &__info {
+      @include mq($until: laptop) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      @include mq($until: notebook) {
+        gap: 18px;
+
+        margin-top: 18px;
+      }
+
+      @include mq($until: tablet) {
+        gap: 16px;
+
+        margin-top: 16px;
+      }
+
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
       gap: 22px;
@@ -70,6 +150,21 @@
     &__card {
       --cut-border-color: #{$palette-gray};
       --cut-background-color: #{$palette-white};
+
+      @include mq($until: laptop) {
+        min-height: 112px;
+        padding: 20px 22px;
+      }
+
+      @include mq($until: notebook) {
+        min-height: 96px;
+        padding: 16px;
+      }
+
+      @include mq($until: tablet) {
+        min-height: 76px;
+        padding: 10px;
+      }
 
       display: flex;
       align-items: center;
@@ -87,6 +182,18 @@
       }
 
       &--address {
+        @include mq($until: laptop) {
+          grid-column: 1 / -1;
+
+          .contacts__row {
+            transform: none;
+          }
+
+          .contacts__icon {
+            margin-top: 0;
+          }
+        }
+
         .contacts__row {
           align-items: flex-start;
 
@@ -100,6 +207,10 @@
 
       &--communication,
       &--schedule {
+        @include mq($until: tablet) {
+          gap: 10px;
+        }
+
         flex-direction: column;
         gap: 18px;
         align-items: flex-start;
@@ -108,6 +219,10 @@
     }
 
     &__row {
+      @include mq($until: tablet) {
+        gap: 5px;
+      }
+
       display: flex;
       gap: 16px;
       align-items: center;
@@ -116,6 +231,11 @@
     }
 
     &__icon {
+      @include mq($until: tablet) {
+        width: 22px;
+        height: 22px;
+      }
+
       display: flex;
       flex: 0 0 auto;
       align-items: center;
@@ -132,12 +252,22 @@
     }
 
     &__icon-svg {
+      @include mq($until: tablet) {
+        width: 22px;
+        height: 22px;
+      }
+
       width: 33px;
       height: 33px;
 
       color: $palette-blue;
 
       &--calendar {
+        @include mq($until: tablet) {
+          width: 12px;
+          height: 14px;
+        }
+
         width: 16px;
         height: 19px;
 
@@ -150,6 +280,10 @@
     }
 
     &__text {
+      @include mq($until: tablet) {
+        font-size: 13px;
+      }
+
       color: $color-text__primary;
       font-weight: $weight-Regular;
       font-size: var(--font-text-regular);
@@ -169,6 +303,12 @@
     }
 
     &__link {
+      @include mq($until: tablet) {
+        margin-top: 6px;
+
+        font-size: 12px;
+      }
+
       display: inline-block;
 
       margin-top: 8px;
