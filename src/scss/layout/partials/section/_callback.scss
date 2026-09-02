@@ -1,14 +1,80 @@
 #s-callback {
+  .section__header {
+    @include mq($until: notebook) {
+      align-items: flex-end;
+    }
+
+    @include mq($until: tablet) {
+      align-items: center;
+    }
+  }
+
+  .section__title {
+    @include mq($until: notebook) {
+      padding-bottom: 0;
+
+      font-size: var(--font-title-small);
+    }
+
+    @include mq($until: tablet) {
+      font-size: 26px;
+    }
+  }
+
   .callback {
+    @include mq($until: notebook) {
+      margin-top: 28px;
+    }
+
+    @include mq($until: tablet) {
+      margin-top: 14px;
+    }
+
     margin-top: 38px;
 
     &__note {
+      @include mq($until: notebook) {
+        font-size: var(--font-text-big);
+      }
+
+      @include mq($until: tablet) {
+        margin-top: 5px;
+        font-size: 13px;
+      }
+
       font-weight: $weight-Medium;
       font-size: 22px;
       line-height: 1.2;
+      white-space: nowrap;
     }
 
     &__frame {
+      @include mq($until: notebook) {
+        clip-path: polygon(
+          12px 0,
+          calc(100% - 12px) 0,
+          100% 12px,
+          100% calc(100% - 12px),
+          calc(100% - 12px) 100%,
+          12px 100%,
+          0 calc(100% - 12px),
+          0 12px
+        );
+      }
+
+      @include mq($until: tablet) {
+        clip-path: polygon(
+          8px 0,
+          calc(100% - 8px) 0,
+          100% 8px,
+          100% calc(100% - 8px),
+          calc(100% - 8px) 100%,
+          8px 100%,
+          0 calc(100% - 8px),
+          0 8px
+        );
+      }
+
       overflow: visible;
 
       padding: 1px;
@@ -28,6 +94,36 @@
     }
 
     &__body {
+      @include mq($until: notebook) {
+        grid-template-columns: 1fr;
+
+        min-height: 0;
+
+        clip-path: polygon(
+          11px 0,
+          calc(100% - 11px) 0,
+          100% 11px,
+          100% calc(100% - 11px),
+          calc(100% - 11px) 100%,
+          11px 100%,
+          0 calc(100% - 11px),
+          0 11px
+        );
+      }
+
+      @include mq($until: tablet) {
+        clip-path: polygon(
+          7px 0,
+          calc(100% - 7px) 0,
+          100% 7px,
+          100% calc(100% - 7px),
+          calc(100% - 7px) 100%,
+          7px 100%,
+          0 calc(100% - 7px),
+          0 7px
+        );
+      }
+
       position: relative;
 
       display: grid;
@@ -51,6 +147,17 @@
     }
 
     &__picture {
+      @include mq($until: notebook) {
+        width: 100%;
+        height: 300px;
+
+        clip-path: none;
+      }
+
+      @include mq($until: tablet) {
+        height: 222px;
+      }
+
       position: relative;
       z-index: 2;
 
@@ -61,6 +168,13 @@
       clip-path: polygon(0 0, calc(100% - 18px) 0, calc(100% - 18px) 48%, 100% 51%, 100% 100%, 0 100%);
 
       picture {
+        @include mq($until: notebook) {
+          width: 100%;
+          padding-top: 30px;
+          border-bottom: 1px solid $palette-gray;
+          clip-path: none;
+        }
+
         display: flex;
         align-items: flex-end;
         justify-content: center;
@@ -84,6 +198,14 @@
     }
 
     &__form {
+      @include mq($until: notebook) {
+        padding: 32px;
+      }
+
+      @include mq($until: tablet) {
+        padding: 12px 20px 25px;
+      }
+
       position: relative;
       z-index: 1;
 
@@ -102,6 +224,10 @@
     }
 
     &__fields {
+      @include mq($until: tablet) {
+        gap: 16px;
+      }
+
       display: flex;
       flex-direction: column;
       gap: 18px;
@@ -109,6 +235,11 @@
 
     &__message {
       .input__field {
+        @include mq($until: tablet) {
+          min-height: 137px;
+          padding-top: 10px;
+        }
+
         min-height: 175px;
         padding-top: 16px;
 
@@ -116,6 +247,10 @@
       }
 
       .input__label {
+        @include mq($until: tablet) {
+          top: 10px;
+        }
+
         top: 16px;
 
         transform: none;
@@ -130,6 +265,12 @@
     }
 
     &__agreements {
+      @include mq($until: tablet) {
+        gap: 10px;
+
+        margin-top: 16px;
+      }
+
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -138,6 +279,11 @@
     }
 
     &__submit {
+      @include mq($until: tablet) {
+        height: 44px;
+        margin-top: 20px;
+      }
+
       width: 100%;
       height: 52px;
       margin-top: 34px;
@@ -158,6 +304,13 @@
     }
 
     &__field {
+      @include mq($until: tablet) {
+        min-height: 37px;
+        padding: 9px 10px;
+
+        font-size: 13px;
+      }
+
       min-height: 52px;
       padding: 14px 16px;
 
@@ -183,6 +336,12 @@
     }
 
     &__label {
+      @include mq($until: tablet) {
+        left: 6px;
+
+        font-size: 13px;
+      }
+
       position: absolute;
       top: 50%;
       left: 12px;
@@ -197,10 +356,20 @@
   }
 
   .checkbox {
+    @include mq($until: tablet) {
+      gap: 6px;
+      align-items: flex-start;
+    }
+
     gap: 10px;
     align-items: center;
 
     &__mark {
+      @include mq($until: tablet) {
+        width: 17px;
+        height: 17px;
+      }
+
       width: 24px;
       height: 24px;
       margin-top: 0;
@@ -222,6 +391,11 @@
     }
 
     &__label {
+      @include mq($until: tablet) {
+        font-size: 13px;
+        line-height: 1.3;
+      }
+
       font-weight: $weight-Regular;
       line-height: var(--line-height-small);
 
