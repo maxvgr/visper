@@ -55,9 +55,15 @@
       }
 
       &__text {
+        display: -webkit-box;
+        overflow: hidden;
+
         max-width: none;
 
         font-size: var(--font-text-small);
+
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 7;
       }
 
       &__footer {
