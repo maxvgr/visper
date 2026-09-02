@@ -220,9 +220,23 @@ if (aboutReviews) {
     new Swiper(sliderTarget, {
       modules: [Navigation],
 
-      slidesPerView: 3,
-      slidesPerGroup: 3,
-      spaceBetween: 20,
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 16,
+
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          slidesPerGroup: 2,
+          spaceBetween: 20,
+        },
+
+        1200: {
+          slidesPerView: 3,
+          slidesPerGroup: 3,
+          spaceBetween: 20,
+        },
+      },
       speed: 600,
       grabCursor: true,
 
