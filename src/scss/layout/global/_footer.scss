@@ -125,8 +125,11 @@
     }
 
     @include mq($until: tablet) {
-      margin-top: 28px;
+      margin-right: -$container-padding;
+      margin-left: -$container-padding;
       padding-top: 18px;
+      padding-right: $container-padding;
+      padding-left: $container-padding;
     }
   }
 
