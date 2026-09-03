@@ -210,7 +210,6 @@
       }
 
       .hamburger-inner,
-      .hamburger-inner::before,
       .hamburger-inner::after {
         width: 32px;
         height: 2px;
@@ -220,13 +219,21 @@
 
       .hamburger-inner {
         margin-top: -1px;
+        transform: translateY(-4.5px);
 
         &::before {
-          top: -9px;
+          display: none;
         }
 
         &::after {
           bottom: -9px;
+        }
+      }
+
+      .hamburger.is-active {
+        .hamburger-inner,
+        .hamburger-inner::after {
+          background-color: $palette-blue;
         }
       }
     }
