@@ -9,6 +9,70 @@
     }
   }
 
+  @include mq($until: notebook) {
+    padding: 10px 0;
+
+    .marquee {
+      &__group {
+        gap: 28px;
+
+        padding-right: 28px;
+      }
+
+      &__text {
+        font-size: var(--font-text-big);
+      }
+
+      &__icon {
+        width: 28px;
+        height: 32px;
+      }
+    }
+  }
+
+  @include mq($until: tablet) {
+    padding: 8px 0;
+
+    .marquee {
+      &__group {
+        gap: 22px;
+
+        padding-right: 22px;
+      }
+
+      &__text {
+        font-size: var(--font-text-small);
+      }
+
+      &__icon {
+        width: 24px;
+        height: 28px;
+      }
+    }
+  }
+
+  @include mq($until: mobile) {
+    margin-top: 60px;
+    padding: 7px 0;
+
+    .marquee {
+      &__group {
+        gap: 18px;
+
+        padding-right: 18px;
+      }
+
+      &__text {
+        line-height: 1.5;
+      }
+
+      &__icon {
+        width: 19px;
+        height: 22px;
+      }
+    }
+  }
+
   overflow: hidden;
 
   margin-top: 82px;
