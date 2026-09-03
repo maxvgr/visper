@@ -1,4 +1,174 @@
 #mp-policy {
+  @include mq($until: tablet) {
+    .policy {
+      padding-top: 32px;
+
+      &__title {
+        font-size: 32px;
+
+        br {
+          display: none;
+        }
+      }
+
+      &__section {
+        margin-top: 40px;
+
+        .section__line {
+          margin-bottom: 32px;
+        }
+      }
+
+      &__header + &__section {
+        margin-top: 40px;
+      }
+
+      &__content {
+        width: 100%;
+
+        &[data-editor] {
+          font-size: var(--font-text-regular);
+          line-height: 1.5;
+
+          > .policy__heading {
+            margin-bottom: 20px;
+          }
+        }
+      }
+
+      &__heading {
+        font-size: 30px;
+
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include mq($until: mobile) {
+    .policy > .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .policy {
+      margin-bottom: 0;
+      padding-top: 24px;
+
+      &__title {
+        font-size: 26px;
+        line-height: 1.2;
+      }
+
+      &__section {
+        margin-top: 32px;
+
+        .section__line {
+          margin-bottom: 20px;
+        }
+      }
+
+      &__header + &__section {
+        margin-top: 34px;
+      }
+
+      &__content {
+        &[data-editor] {
+          > *:not(:last-child) {
+            margin-bottom: 16px;
+          }
+
+          > .policy__heading {
+            margin-bottom: 14px;
+          }
+
+          > .policy__list {
+            padding-left: 20px;
+          }
+        }
+      }
+
+      &__heading {
+        font-weight: $weight-Bold;
+        font-size: 26px;
+        line-height: 1.2;
+      }
+
+      &__section--table {
+        .policy__heading {
+          margin-bottom: 24px;
+        }
+      }
+
+      &__table {
+        overflow: visible;
+
+        padding: 0;
+
+        background: none;
+
+        font-size: var(--font-text-regular);
+        line-height: 1.5;
+
+        clip-path: none;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      &__table-content {
+        display: block;
+
+        tbody,
+        tr,
+        th,
+        td {
+          display: block;
+
+          width: 100%;
+          height: auto;
+        }
+
+        tr {
+          padding-bottom: 16px;
+        }
+
+        tr:not(:last-child) {
+          margin-bottom: 16px;
+          border-bottom: 1px solid $palette-gray;
+
+          th,
+          td {
+            border-bottom: 0;
+          }
+        }
+
+        th,
+        td {
+          padding: 0;
+        }
+
+        th {
+          font-weight: $weight-SemiBold;
+        }
+
+        td {
+          margin-top: 8px;
+          border-left: 0;
+        }
+
+        tr:nth-child(1),
+        tr:nth-child(2),
+        tr:nth-child(3),
+        tr:nth-child(4) {
+          height: auto;
+        }
+      }
+    }
+  }
+
   .policy {
     margin-bottom: -27px;
     padding-top: 54px;
