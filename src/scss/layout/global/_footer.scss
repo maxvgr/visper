@@ -174,7 +174,7 @@
       position: absolute;
       z-index: 12;
       top: 124px;
-      right: 30px;
+      right: max($container-padding, calc((100% - 768px) / 2));
 
       width: auto;
 
@@ -190,7 +190,7 @@
 
     @include mq($until: tablet) {
       top: 101px;
-      right: 20px;
+      right: max(0px, calc((100% - 512px) / 2));
 
       a {
         font-size: 12px;
@@ -226,7 +226,7 @@
         position: absolute;
         z-index: 12;
         top: 36px;
-        right: 30px;
+        right: max($container-padding, calc((100% - 768px) / 2));
 
         svg {
           width: 27px;
@@ -243,7 +243,7 @@
     @include mq($until: tablet) {
       .scroll-top {
         top: 35px;
-        right: 20px;
+        right: max(0px, calc((100% - 512px) / 2));
       }
     }
 
