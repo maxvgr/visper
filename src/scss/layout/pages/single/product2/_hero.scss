@@ -1,4 +1,361 @@
 #sp-product-2-hero {
+  @include mq($until: laptop) {
+    .product-detail {
+      &__intro {
+        grid-template-columns: 1fr;
+      }
+
+      &__gallery {
+        grid-template-columns: 180px minmax(0, 1fr);
+
+        width: 100%;
+
+        .b-gallery__thumb {
+          width: 180px;
+        }
+
+        .b-gallery__viewport {
+          width: 100%;
+        }
+      }
+
+      &__thumb {
+        width: 180px;
+      }
+
+      &__summary {
+        width: 100%;
+      }
+    }
+  }
+
+  @include mq($until: notebook) {
+    padding-bottom: 0;
+
+    .product-detail {
+      &__title {
+        font-size: var(--font-title-small);
+      }
+
+      &__gallery {
+        grid-template-columns: 150px minmax(0, 1fr);
+
+        .b-gallery__thumb {
+          width: 150px;
+        }
+      }
+
+      &__thumb {
+        width: 150px;
+      }
+    }
+  }
+
+  @include mq($until: tablet) {
+    padding-top: 32px;
+
+    .product-detail {
+      &__number {
+        display: none;
+      }
+
+      &__intro {
+        display: block;
+
+        margin-top: 20px;
+      }
+
+      &__gallery {
+        position: relative;
+
+        display: block;
+
+        height: 360px;
+
+        .b-gallery__thumb {
+          position: absolute;
+          z-index: 3;
+
+          bottom: 10px;
+          left: 20px;
+
+          width: calc(100% - 40px);
+          height: 2px;
+
+          .swiper {
+            overflow: hidden;
+
+            width: 100%;
+            height: 2px;
+          }
+
+          .swiper-wrapper {
+            height: 2px;
+          }
+
+          .swiper-slide {
+            display: block;
+
+            height: 2px;
+
+            .product-detail__thumb {
+              --cut-border-color: transparent;
+              --cut-background-color: #{$palette-lightblue};
+            }
+
+            &.swiper-slide-thumb-active,
+            &.is-active {
+              .product-detail__thumb {
+                --cut-border-color: transparent;
+                --cut-background-color: #{$palette-blue};
+
+                background: $palette-blue;
+              }
+            }
+          }
+        }
+
+        .b-gallery__button {
+          display: none;
+        }
+
+        .b-gallery__viewport {
+          --cut-size: 7px;
+          --cut-inner-size: 6px;
+
+          width: 100%;
+          height: 360px;
+        }
+      }
+
+      &__thumb {
+        width: 100%;
+        height: 2px;
+
+        picture {
+          display: none;
+        }
+      }
+
+      &__summary {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: 16px;
+      }
+
+      &__description {
+        display: none;
+      }
+
+      &__downloads {
+        --cut-border-color: transparent;
+        --cut-background-color: transparent;
+
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        order: 1;
+
+        height: auto;
+        margin-top: 0;
+        padding: 0;
+      }
+
+      &__downloads-column {
+        display: contents;
+
+        &:first-child {
+          .product-detail__download {
+            &:first-child {
+              order: 1;
+            }
+
+            &:last-child {
+              order: 3;
+            }
+          }
+        }
+
+        &:last-child {
+          .product-detail__download {
+            &:first-child {
+              order: 2;
+            }
+
+            &:last-child {
+              order: 4;
+            }
+          }
+        }
+      }
+
+      &__downloads-divider {
+        display: none;
+      }
+
+      &__download {
+        gap: 8px;
+
+        height: 48px;
+        padding: 0 10px;
+        border: 1px solid $palette-gray;
+        border-radius: 6px;
+
+        font-size: 13px;
+      }
+
+      &__download-icon {
+        width: 26px;
+        height: 26px;
+      }
+
+      &__catalog {
+        display: grid;
+        grid-template-areas:
+          "phone mail"
+          "link link";
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 30px 16px;
+        order: 2;
+
+        margin-top: 16px;
+      }
+
+      &__catalog-link {
+        grid-area: link;
+
+        height: 44px;
+      }
+
+      &__catalog-phone {
+        grid-area: phone;
+
+        width: 100%;
+        height: 38px;
+      }
+
+      &__catalog-mail {
+        --cut-size: 6px;
+        --cut-inner-size: 5px;
+        --cut-border-color: #{$palette-blue};
+        --cut-background-color: #{$palette-white};
+
+        display: flex;
+        grid-area: mail;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 38px;
+
+        color: $palette-blue;
+      }
+
+      &__catalog-phone-icon,
+      &__catalog-mail-icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      &__tabs {
+        margin-top: 60px;
+
+        .section__line {
+          &::before {
+            display: none;
+          }
+        }
+      }
+
+      &__tabs-navigation {
+        display: flex;
+        gap: 10px;
+
+        overflow: auto hidden;
+
+        margin-top: 32px;
+        padding-bottom: 4px;
+
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      &__tab {
+        flex: 0 0 204px;
+
+        height: 40px;
+        padding: 0 10px;
+
+        font-size: var(--font-text-small);
+      }
+    }
+  }
+
+  @include mq($until: mobile) {
+    padding-top: 25px;
+
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .product-detail {
+      &__title {
+        width: 100%;
+
+        font-size: 26px;
+      }
+
+      &__intro {
+        margin-top: 13px;
+      }
+
+      &__gallery {
+        height: 252px;
+
+        .b-gallery__viewport {
+          height: 252px;
+        }
+
+        .b-gallery__slider img {
+          max-width: 239px;
+          max-height: 213px;
+        }
+      }
+
+      &__catalog-link {
+        font-size: var(--font-text-regular);
+      }
+
+      &__tabs-navigation {
+        width: calc(100% + 40px);
+        margin-top: 18px;
+        margin-left: -20px;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      &__tab {
+        --cut-size: 6px;
+        --cut-inner-size: 5px;
+
+        height: 30px;
+
+        font-weight: $weight-Regular;
+        font-size: 13px;
+
+        &.is-active {
+          font-weight: $weight-Medium;
+        }
+      }
+    }
+  }
+
   padding-top: 58px;
   padding-bottom: 98px;
 
@@ -289,6 +646,10 @@
           color: $palette-white;
         }
       }
+    }
+
+    &__catalog-mail {
+      display: none;
     }
 
     &__catalog-phone-icon {
