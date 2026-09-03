@@ -1,4 +1,197 @@
 #sp-product-1-hero {
+  @include mq($until: laptop) {
+    .product-detail {
+      &__viewer-button {
+        &--prev {
+          left: 70px;
+        }
+
+        &--next {
+          right: 70px;
+        }
+      }
+
+      &__toolbar {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  @include mq($until: notebook) {
+    .product-detail {
+      &__viewer-button {
+        &--prev {
+          left: 10px;
+        }
+
+        &--next {
+          right: 10px;
+        }
+      }
+
+      &__downloads {
+        grid-template-columns: 1fr;
+        gap: 0;
+
+        height: auto;
+        padding: 0;
+      }
+
+      &__download {
+        min-height: 48px;
+        padding: 0 20px;
+      }
+
+      &__downloads-divider {
+        width: 100%;
+        height: 1px;
+      }
+
+      &__contacts {
+        align-self: stretch;
+
+        width: 100%;
+      }
+
+      &__contact {
+        flex: 1 1 0;
+
+        width: auto;
+      }
+    }
+  }
+  @include mq($until: mobile) {
+    padding-top: 25px;
+
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .page-breadcrumbs {
+      &__link,
+      &__current {
+        font-size: 13px;
+      }
+    }
+
+    .product-detail {
+      margin-top: 11px;
+
+      &__title {
+        font-size: 26px;
+      }
+
+      &__viewer {
+        --cut-size: 7px;
+        --cut-inner-size: 6px;
+
+        height: 252px;
+        margin-top: 13px;
+      }
+
+      &__viewer-image {
+        top: 50px;
+
+        width: 220px;
+        height: 120px;
+      }
+
+      &__viewer-button {
+        top: 185px;
+
+        width: 30px;
+        height: 27px;
+
+        transform: none;
+
+        &--prev {
+          left: 37px;
+        }
+
+        &--next {
+          right: 37px;
+        }
+      }
+
+      &__rotation {
+        top: 185px;
+
+        width: 294px;
+        height: 39px;
+      }
+
+      &__rotation-line {
+        border-bottom-width: 2px;
+      }
+
+      &__rotation-text {
+        top: 12px;
+
+        font-size: 13px;
+      }
+
+      &__toolbar {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+
+        margin-top: 16px;
+      }
+
+      &__downloads {
+        grid-template-columns: 1fr;
+        gap: 16px;
+
+        width: 100%;
+        height: auto;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+
+        background: transparent;
+      }
+
+      &__download {
+        gap: 7px;
+
+        height: 48px;
+        padding: 0 10px;
+        border: 1px solid $palette-gray;
+        border-radius: 6px;
+
+        font-size: 13px;
+      }
+
+      &__download-icon {
+        width: 26px;
+        height: 26px;
+      }
+
+      &__downloads-divider {
+        display: none;
+      }
+
+      &__contacts {
+        gap: 16px;
+
+        width: 100%;
+      }
+
+      &__contact {
+        flex: 1 1 0;
+
+        width: auto;
+        height: 38px;
+      }
+
+      &__contact-icon {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
   padding-top: 59px;
 
   .product-detail {
