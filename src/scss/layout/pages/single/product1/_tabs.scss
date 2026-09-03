@@ -1,4 +1,137 @@
 #sp-product-1-tabs {
+  @include mq($until: notebook) {
+    padding-bottom: 0;
+  }
+
+  @include mq($until: tablet) {
+    padding-top: 60px;
+
+    .product-detail {
+      &__tabs-navigation {
+        gap: 10px;
+
+        margin-top: 32px;
+      }
+
+      &__tab {
+        height: 40px;
+        padding: 0 10px;
+
+        font-size: var(--font-text-small);
+      }
+
+      &__tabs-content {
+        margin-top: 32px;
+      }
+
+      &__panel {
+        &--text {
+          min-height: auto;
+          padding: 30px;
+        }
+      }
+
+      &__drawing {
+        height: 320px;
+      }
+    }
+  }
+
+  @include mq($until: mobile) {
+    overflow: hidden;
+
+    padding-top: 60px;
+    padding-bottom: 0;
+
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .product-detail {
+      &__tabs-navigation {
+        position: relative;
+
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+
+        overflow: hidden;
+
+        width: calc(100% + 40px);
+        margin-top: 18px;
+        margin-left: -20px;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: 2;
+
+          top: 0;
+
+          width: 60px;
+          height: 30px;
+
+          pointer-events: none;
+        }
+
+        &::before {
+          left: 0;
+
+          background: linear-gradient(90deg, $palette-white, rgba($palette-white, 0));
+        }
+
+        &::after {
+          right: 0;
+
+          background: linear-gradient(270deg, $palette-white, rgba($palette-white, 0));
+        }
+      }
+
+      &__tab {
+        --cut-size: 6px;
+        --cut-inner-size: 5px;
+
+        flex: 0 0 204px;
+
+        height: 30px;
+        padding: 0 10px;
+
+        font-weight: $weight-Regular;
+        font-size: 13px;
+
+        &.is-active {
+          font-weight: $weight-Medium;
+        }
+      }
+
+      &__tabs-content {
+        margin-top: 19px;
+      }
+
+      &__panel {
+        &--text {
+          padding: 20px;
+        }
+      }
+
+      &__drawing {
+        --cut-size: 7px;
+        --cut-inner-size: 6px;
+
+        height: 230px;
+
+        &::after {
+          background-position:
+            20px 16px,
+            68px 48px;
+          background-size: 48px auto;
+        }
+      }
+    }
+  }
+
   padding-top: 84px;
   padding-bottom: 98px;
 
@@ -6,6 +139,10 @@
     &__tabs {
       .section__line {
         margin-bottom: 0;
+
+        &::before {
+          display: none;
+        }
       }
     }
 
