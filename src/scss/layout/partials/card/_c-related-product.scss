@@ -2,6 +2,123 @@
   --cut-border-color: #{$palette-gray};
   --cut-background-color: #{$palette-white};
 
+  @include mq($until: notebook) {
+    --cut-size: 10px;
+    --cut-inner-size: 9px;
+
+    height: 260px;
+
+    &::after {
+      height: 184px;
+    }
+
+    &__image {
+      flex-basis: 185px;
+
+      height: 185px;
+
+      img {
+        max-width: 210px;
+        max-height: 145px;
+      }
+    }
+
+    &__content {
+      flex-basis: 75px;
+
+      height: 75px;
+      padding: 0 18px;
+    }
+
+    &__info {
+      font-size: 15px;
+    }
+
+    &__icon {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  @include mq($until: tablet) {
+    height: 240px;
+
+    &::after {
+      height: 164px;
+    }
+
+    &__image {
+      flex-basis: 165px;
+
+      height: 165px;
+
+      img {
+        max-width: 170px;
+        max-height: 125px;
+      }
+    }
+
+    &__content {
+      flex-basis: 75px;
+
+      height: 75px;
+      padding: 0 16px;
+    }
+
+    &__info {
+      font-size: var(--font-text-small);
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @include mq($until: mobile) {
+    --cut-size: 8px;
+    --cut-inner-size: 7px;
+
+    height: 222px;
+
+    &::after {
+      height: 136px;
+    }
+
+    &__image {
+      flex-basis: 137px;
+
+      height: 137px;
+
+      img {
+        max-width: 120px;
+        max-height: 100px;
+      }
+    }
+
+    &__content {
+      flex-basis: 85px;
+      gap: 8px;
+
+      height: 85px;
+      padding: 0 16px;
+    }
+
+    &__info {
+      font-size: 13px;
+      line-height: 14px;
+    }
+
+    &__subtitle {
+      margin-top: 2px;
+    }
+
+    &__icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
   position: relative;
 
   display: flex;

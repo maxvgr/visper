@@ -1,4 +1,81 @@
 .products-related {
+  @include mq($until: notebook) {
+    padding-top: 60px;
+
+    &__navigation {
+      gap: 16px;
+    }
+
+    &__button {
+      width: 40px;
+      height: 40px;
+    }
+
+    &__slider {
+      margin-top: 30px;
+
+      &::before,
+      &::after {
+        width: 130px;
+      }
+    }
+
+    .swiper-slide {
+      width: 320px;
+    }
+  }
+
+  @include mq($until: tablet) {
+    padding-top: 50px;
+
+    &__navigation {
+      gap: 12px;
+    }
+
+    &__button {
+      width: 36px;
+      height: 36px;
+    }
+
+    &__slider {
+      margin-top: 26px;
+
+      &::before,
+      &::after {
+        width: 100px;
+      }
+    }
+
+    .swiper-slide {
+      width: 240px;
+    }
+  }
+
+  @include mq($until: mobile) {
+    padding-top: 40px;
+
+    .section__line {
+      margin-bottom: 16px;
+    }
+
+    &__navigation {
+      display: none;
+    }
+
+    &__slider {
+      margin-top: 22px;
+
+      &::before,
+      &::after {
+        width: 90px;
+      }
+    }
+
+    .swiper-slide {
+      width: 173px;
+    }
+  }
+
   overflow: hidden;
 
   padding-top: 80px;
