@@ -179,6 +179,11 @@
                 <div class="swiper-slide">
                   <div class="product-detail__panel">
                     <div class="product-detail__drawing cut-border">
+                      <button class="product-detail__drawing-expand cut-border" type="button" data-modal-open="product-drawing" aria-label="Открыть чертёж">
+                        <span class="product-detail__drawing-expand-icon" aria-hidden="true">
+                          <span></span>
+                        </span>
+                      </button>
                       <picture class="lazy">
                         <img class="image image--contain lazy__item" data-src="assets/images/layout/pages/sp-product-1/drawing.webp" alt="Чертёж ИС-190-50">
                       </picture>
@@ -255,6 +260,8 @@
     </div>
     <!-- /.page__body -->
   </main>
+
+  <include src="layout/modal/product-drawing.html"></include>
 
   <include src="layout/footer.html"></include>
 </body>

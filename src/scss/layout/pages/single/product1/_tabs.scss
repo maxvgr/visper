@@ -34,6 +34,19 @@
       &__drawing {
         height: 320px;
       }
+
+      &__drawing-expand {
+        top: 12px;
+        right: 12px;
+
+        width: 36px;
+        height: 36px;
+      }
+
+      &__drawing-expand-icon {
+        width: 18px;
+        height: 18px;
+      }
     }
   }
 
@@ -127,6 +140,43 @@
             20px 16px,
             68px 48px;
           background-size: 48px auto;
+        }
+      }
+
+      &__drawing-expand {
+        --cut-size: 5px;
+        --cut-inner-size: 4px;
+
+        top: 10px;
+        right: 10px;
+
+        width: 29px;
+        height: 29px;
+      }
+
+      &__drawing-expand-icon {
+        width: 16px;
+        height: 16px;
+
+        &::before,
+        &::after {
+          width: 6px;
+          height: 6px;
+        }
+
+        span {
+          &::before,
+          &::after {
+            width: 8px;
+          }
+
+          &::before {
+            top: 4px;
+          }
+
+          &::after {
+            bottom: 4px;
+          }
         }
       }
     }
@@ -283,5 +333,119 @@
         height: 100%;
       }
     }
+
+    &__drawing-expand {
+      --cut-size: 6px;
+      --cut-inner-size: 5px;
+      --cut-border-color: #{$palette-gray};
+      --cut-background-color: #{$palette-white};
+
+      position: absolute;
+      z-index: 2;
+      top: 16px;
+      right: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+
+      color: $palette-blue;
+
+      cursor: pointer;
+
+      transition: color $transition-time ease;
+
+      appearance: none;
+
+      @media (hover: hover) {
+        &:hover {
+          --cut-border-color: #{$palette-blue};
+          --cut-background-color: #{$palette-lightblue};
+        }
+      }
+    }
+
+    &__drawing-expand-icon {
+      position: relative;
+
+      width: 20px;
+      height: 20px;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+
+        width: 7px;
+        height: 7px;
+      }
+
+      &::before {
+        top: 1px;
+        right: 1px;
+
+        border-top: 1px solid currentColor;
+        border-right: 1px solid currentColor;
+      }
+
+      &::after {
+        bottom: 1px;
+        left: 1px;
+
+        border-bottom: 1px solid currentColor;
+        border-left: 1px solid currentColor;
+      }
+
+      span {
+        position: absolute;
+
+        inset: 0;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+
+          width: 9px;
+          height: 1px;
+
+          background: currentColor;
+
+          transform: rotate(-45deg);
+        }
+
+        &::before {
+          top: 5px;
+          right: 2px;
+        }
+
+        &::after {
+          bottom: 5px;
+          left: 2px;
+        }
+      }
+    }
+  }
+}
+
+.modal--product-drawing {
+  .modal__close {
+    top: 16px;
+    right: 16px;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 0;
+
+    background-color: transparent;
+    background-size: 18px;
+
+    appearance: none;
   }
 }
