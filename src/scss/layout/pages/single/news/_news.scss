@@ -1,4 +1,220 @@
 #sp-news {
+  @include mq($until: laptop) {
+    .news-detail {
+      &__layout {
+        width: 900px;
+        max-width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+  }
+
+  @include mq($until: notebook) {
+    .news-detail {
+      &__layout {
+        grid-template-columns: minmax(0, 690px);
+        justify-content: center;
+
+        width: 100%;
+      }
+
+      &__navigation {
+        display: none;
+      }
+    }
+  }
+
+  @include mq($until: tablet) {
+    .news-detail__title,
+    .news-next__title {
+      max-width: none;
+
+      font-size: 32px;
+    }
+
+    .news-detail__hero,
+    .news-next__preview {
+      height: 320px;
+
+      picture {
+        width: 67.2%;
+        height: 63.6%;
+      }
+    }
+
+    .news-detail {
+      &__layout {
+        display: block;
+
+        width: 100%;
+        margin-top: 40px;
+        margin-left: 0;
+      }
+
+      &__content {
+        font-size: var(--font-text-regular);
+      }
+
+      &__section {
+        &--features {
+          margin-top: 40px;
+        }
+
+        &--structure {
+          margin-top: 40px;
+        }
+      }
+
+      &__heading {
+        font-size: 22px;
+      }
+
+      &__media {
+        height: 320px;
+      }
+    }
+
+    .news-next {
+      margin-top: 80px;
+
+      .section__line {
+        margin-bottom: 40px;
+      }
+
+      &__preview {
+        margin-top: 24px;
+      }
+    }
+  }
+
+  @include mq($until: mobile) {
+    .news-detail > .container,
+    .news-next > .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .news-detail__date,
+    .news-next__date {
+      width: 112px;
+      height: 24px;
+      margin-left: -20px;
+      padding-right: 9px;
+
+      font-size: 13px;
+
+      clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 50%, 100% 100%, 0 100%);
+    }
+
+    .news-detail__title,
+    .news-next__title {
+      margin-top: 13px;
+
+      font-size: 26px;
+      line-height: 1.2;
+    }
+
+    .news-detail__hero,
+    .news-next__preview {
+      height: auto;
+      aspect-ratio: 362 / 244;
+    }
+
+    .news-detail {
+      padding-top: 22px;
+
+      &__hero {
+        margin-top: 20px;
+      }
+
+      &__layout {
+        margin-top: 34px;
+      }
+
+      &__content {
+        line-height: 1.6;
+      }
+
+      &__section {
+        &--features {
+          margin-top: 24px;
+        }
+
+        &--structure {
+          margin-top: 34px;
+        }
+
+        &--conclusion {
+          margin-top: 16px;
+        }
+
+        p {
+          & + p {
+            margin-top: 13px;
+          }
+        }
+      }
+
+      &__heading {
+        margin-bottom: 14px;
+
+        font-size: 22px;
+      }
+
+      &__media {
+        height: auto;
+        margin-top: 23px;
+
+        aspect-ratio: 362 / 244;
+      }
+
+      &__list {
+        gap: 7px;
+
+        line-height: 1.4;
+      }
+
+      &__meta {
+        margin-top: 25px;
+        padding-bottom: 20px;
+      }
+
+      &__related {
+        margin-top: 23px;
+      }
+
+      &__related-title {
+        font-size: var(--font-text-regular);
+      }
+
+      &__related-list {
+        gap: 8px;
+
+        margin-top: 10px;
+
+        font-size: 13px;
+      }
+    }
+
+    .news-next {
+      margin-top: 58px;
+      padding-bottom: 45px;
+
+      .section__line {
+        margin-bottom: 20px;
+      }
+
+      &__title {
+        margin-top: 18px;
+      }
+
+      &__preview {
+        margin-top: 17px;
+      }
+    }
+  }
+
   .news-detail > .container,
   .news-next > .container {
     @include mq($from: desktop) {

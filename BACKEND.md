@@ -464,3 +464,5 @@ class="about-regions__point"
 ```text
 [ 12 регионов поставки ]
 ```
+
+
