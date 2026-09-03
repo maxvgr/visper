@@ -1,10 +1,6 @@
 #sp-product-2-hero {
-  @include mq($until: laptop) {
+  @include mq($until: desktop) {
     .product-detail {
-      &__intro {
-        grid-template-columns: 1fr;
-      }
-
       &__gallery {
         grid-template-columns: 180px minmax(0, 1fr);
 
@@ -25,6 +21,14 @@
 
       &__summary {
         width: 100%;
+      }
+    }
+  }
+
+  @include mq($until: laptop) {
+    .product-detail {
+      &__intro {
+        grid-template-columns: 1fr;
       }
     }
   }
@@ -99,16 +103,12 @@
             height: 2px;
 
             .product-detail__thumb {
-              --cut-border-color: transparent;
-              --cut-background-color: #{$palette-lightblue};
+              background: $palette-gray;
             }
 
             &.swiper-slide-thumb-active,
             &.is-active {
               .product-detail__thumb {
-                --cut-border-color: transparent;
-                --cut-background-color: #{$palette-blue};
-
                 background: $palette-blue;
               }
             }
@@ -129,8 +129,15 @@
       }
 
       &__thumb {
+        --cut-size: 0;
+        --cut-inner-size: 0;
+        --cut-border-color: transparent;
+        --cut-background-color: transparent;
+
         width: 100%;
         height: 2px;
+
+        background: $palette-gray;
 
         picture {
           display: none;
@@ -149,6 +156,8 @@
       }
 
       &__downloads {
+        --cut-size: 0;
+        --cut-inner-size: 0;
         --cut-border-color: transparent;
         --cut-background-color: transparent;
 
@@ -197,6 +206,8 @@
       &__download {
         gap: 8px;
 
+        box-sizing: border-box;
+        width: 100%;
         height: 48px;
         padding: 0 10px;
         border: 1px solid $palette-gray;
@@ -216,7 +227,6 @@
           "phone mail"
           "link link";
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
         gap: 30px 16px;
         order: 2;
 

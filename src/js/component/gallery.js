@@ -43,6 +43,7 @@ export default class Gallery {
     if (!mainEl) return;
 
     const isVerticalGallery = gallery.classList.contains('b-gallery--vertical');
+    const hasMobileSwipe = gallery.classList.contains('b-gallery--mobile-swipe');
     const thumbEl = gallery.querySelector('.b-gallery__thumb .swiper');
 
     const instance = {
@@ -50,6 +51,7 @@ export default class Gallery {
       mainEl,
       thumbEl,
       isVerticalGallery,
+      hasMobileSwipe,
       isCurrentlyVertical: undefined,
       previewSwiper: undefined,
       mainSlider: undefined,
@@ -99,6 +101,7 @@ export default class Gallery {
     if (!instance.thumbEl) return;
 
     const isVertical = instance.isVerticalGallery && MediaQuery(breakpoint.tablet);
+    const isMobileSwipe = instance.hasMobileSwipe && !isVertical;
 
     let navigation;
 
@@ -119,10 +122,18 @@ export default class Gallery {
       };
     }
 
+    let slidesPerView = 4.5;
+
+    if (isVertical) {
+      slidesPerView = 'auto';
+    } else if (isMobileSwipe) {
+      slidesPerView = 5;
+    }
+
     const swiperInstance = new Swiper(instance.thumbEl, {
       modules: isVertical ? [Navigation] : [],
       direction: isVertical ? 'vertical' : 'horizontal',
-      slidesPerView: isVertical ? 'auto' : 4.5,
+      slidesPerView,
       spaceBetween: 8,
       slideToClickedSlide: true,
       centerInsufficientSlides: false,
@@ -134,18 +145,26 @@ export default class Gallery {
     /* Автоматическая прокрутка превью при клике на крайний видимый слайд */
     if (isVertical) {
       swiperInstance.on('tap', () => {
-        const { clickedIndex, activeIndex, clickedSlide, slides, params, height } = swiperInstance;
-        let slidesPerView = params.slidesPerView;
+        const {
+          clickedIndex,
+          activeIndex,
+          clickedSlide,
+          slides,
+          params,
+          height,
+        } = swiperInstance;
+        let currentSlidesPerView = params.slidesPerView;
 
-        if (slidesPerView === 'auto') {
+        if (currentSlidesPerView === 'auto') {
           const slideHeight = slides[0]?.offsetHeight || 0;
           const spaceBetween = params.spaceBetween || 0;
+          const calculatedSlidesPerView = Math.floor(
+            (height + spaceBetween) / (slideHeight + spaceBetween),
+          );
 
-          slidesPerView = slideHeight > 0
-            ? Math.floor((height + spaceBetween) / (slideHeight + spaceBetween))
-            : 1;
+          currentSlidesPerView = slideHeight > 0 ? calculatedSlidesPerView : 1;
         } else {
-          slidesPerView = Math.floor(slidesPerView);
+          currentSlidesPerView = Math.floor(currentSlidesPerView);
         }
 
         if (
@@ -156,8 +175,8 @@ export default class Gallery {
           return;
         }
 
-        const lastVisibleIndex = activeIndex + slidesPerView - 1;
-        const maxIndex = slides.length - slidesPerView;
+        const lastVisibleIndex = activeIndex + currentSlidesPerView - 1;
+        const maxIndex = slides.length - currentSlidesPerView;
 
         if (clickedIndex === activeIndex && activeIndex > 0) {
           swiperInstance.slideTo(activeIndex - 1);
@@ -178,13 +197,20 @@ export default class Gallery {
     }
   }
 
-  createMainSlider(instance) {
+  createMainSlider(instance, initialSlide = 0) {
+    const isMobileSwipe = (
+      instance.hasMobileSwipe &&
+      !MediaQuery(breakpoint.tablet)
+    );
+
     const mainSlider = new Swiper(instance.mainEl, {
       modules: [Thumbs, EffectFade],
       slidesPerView: 1,
-      spaceBetween: 32,
-      allowTouchMove: false,
-      effect: 'fade',
+      spaceBetween: 0,
+      speed: 400,
+      allowTouchMove: isMobileSwipe,
+      initialSlide,
+      effect: isMobileSwipe ? 'slide' : 'fade',
       fadeEffect: {
         crossFade: true,
       },
@@ -215,20 +241,51 @@ export default class Gallery {
     return mainSlider;
   }
 
-  onResize(instance) {
-    const isVertical = MediaQuery(breakpoint.tablet);
+  rebuildMobileSwipeGallery(instance, isVertical) {
+    const activeIndex = instance.mainSlider?.activeIndex || 0;
+
+    if (instance.mainSlider && !instance.mainSlider.destroyed) {
+      instance.mainSlider.destroy(true, true);
+    }
+
+    if (instance.previewSwiper && !instance.previewSwiper.destroyed) {
+      instance.previewSwiper.destroy(true, true);
+    }
+
+    instance.isCurrentlyVertical = isVertical;
 
     this.setThumbSize(instance, isVertical);
 
+    instance.previewSwiper = this.createPreview(instance);
+    instance.mainSlider = this.createMainSlider(instance, activeIndex);
+  }
+
+  onResize(instance) {
+    const isVertical = MediaQuery(breakpoint.tablet);
+
     if (isVertical === instance.isCurrentlyVertical) {
+      this.setThumbSize(instance, isVertical);
+
       if (instance.previewSwiper && !instance.previewSwiper.destroyed) {
         instance.previewSwiper.update();
+      }
+
+      if (instance.mainSlider && !instance.mainSlider.destroyed) {
+        instance.mainSlider.update();
       }
 
       return;
     }
 
+    if (instance.hasMobileSwipe) {
+      this.rebuildMobileSwipeGallery(instance, isVertical);
+
+      return;
+    }
+
     instance.isCurrentlyVertical = isVertical;
+
+    this.setThumbSize(instance, isVertical);
 
     if (instance.previewSwiper && !instance.previewSwiper.destroyed) {
       instance.previewSwiper.destroy(true, true);
