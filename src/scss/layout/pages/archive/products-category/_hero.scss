@@ -105,20 +105,10 @@
     .c-subproduct {
       grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
     }
-
-    .c-subproduct__image.cut-border::before,
-    .c-subproduct__content.cut-border::before {
-      inset: 1px 1px 2px;
-    }
   }
 
   @include mq($until: tablet) {
     padding-top: 32px;
-
-    .c-subproduct__image.cut-border::before,
-    .c-subproduct__content.cut-border::before {
-      inset: 1px;
-    }
 
     .products-category {
       &__title {
