@@ -30,6 +30,15 @@
       &__intro {
         grid-template-columns: 1fr;
       }
+
+      &__purpose-drawing {
+        min-width: 0;
+
+        picture {
+          width: calc(100% - 40px);
+          max-width: 458px;
+        }
+      }
     }
   }
 
@@ -51,6 +60,64 @@
 
       &__thumb {
         width: 150px;
+      }
+
+      &__panel--purpose {
+        height: auto;
+      }
+
+      &__purpose-content {
+        padding: 23px 24px 24px;
+      }
+
+      &__purpose-drawing {
+        min-width: 0;
+        height: auto;
+
+        picture {
+          width: 100%;
+          max-width: 360px;
+          height: 300px;
+          margin-top: 30px;
+        }
+      }
+
+      &__purpose-caption {
+        margin-top: 24px;
+        padding: 0 16px 20px;
+      }
+
+      &__specs {
+        height: auto;
+      }
+
+      &__specs-header {
+        height: auto;
+        min-height: 40px;
+      }
+
+      &__specs-header-item {
+        display: block;
+
+        padding: 10px 20px;
+
+        line-height: 1.4;
+      }
+
+      &__specs-body {
+        height: auto;
+      }
+
+      &__specs-list {
+        padding: 20px 24px;
+      }
+
+      &__specs-row {
+        height: auto;
+        min-height: 57px;
+        padding: 10px 0;
+
+        line-height: 1.4;
       }
     }
   }
@@ -345,7 +412,6 @@
         font-size: var(--font-text-small);
       }
 
-      /* Технические характеристики */
       &__specs {
         width: 100%;
         height: auto;
@@ -356,7 +422,14 @@
 
         height: auto;
 
-        clip-path: none;
+        clip-path: polygon(
+          var(--cut-inner-size) 0,
+          calc(100% - var(--cut-inner-size)) 0,
+          100% var(--cut-inner-size),
+          100% 100%,
+          0 100%,
+          0 var(--cut-inner-size)
+        );
       }
 
       &__specs-header-item {
@@ -414,8 +487,14 @@
         font-size: var(--font-text-small);
       }
 
-      /* Встроенные элементы */
       &__elements {
+        overflow: hidden;
+
+        width: 100%;
+        height: auto;
+      }
+
+      &__elements-scroll {
         overflow: auto hidden;
 
         width: 100%;
@@ -435,7 +514,6 @@
         }
       }
 
-      /* Гарантия и сервис */
       &__panel--warranty {
         display: block;
 
@@ -1094,7 +1172,7 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
 
-      height: 40px;
+      min-height: 40px;
       border-bottom: 1px solid $palette-gray;
 
       background: $palette-lightgray;
@@ -1113,19 +1191,24 @@
       display: flex;
       align-items: center;
 
-      padding: 0 48px;
-
+      min-width: 0;
+      padding: 8px 48px;
       font-size: var(--font-text-small);
-      line-height: 1.75;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
 
       & + & {
         border-left: 1px solid $palette-gray;
       }
 
       span {
+        flex: 0 0 auto;
+
         margin-right: 4px;
 
         font-weight: $weight-Medium;
+
+        white-space: nowrap;
       }
     }
 
@@ -1200,14 +1283,13 @@
       padding: 1px;
     }
 
-    &__elements-table {
+    &__elements-scroll {
+      overflow: hidden;
+
       width: 100%;
-      height: calc(100% - 2px);
-      border-collapse: collapse;
+      height: 100%;
 
       background: $palette-white;
-
-      table-layout: fixed;
 
       clip-path: polygon(
         var(--cut-inner-size) 0,
@@ -1219,6 +1301,29 @@
         0 calc(100% - var(--cut-inner-size)),
         0 var(--cut-inner-size)
       );
+    }
+
+    &__elements-table {
+      width: 100%;
+      // height: calc(100% - 2px);
+
+      height: 100%;
+      border-collapse: collapse;
+
+      background: $palette-white;
+
+      table-layout: fixed;
+
+      // clip-path: polygon(
+      //   var(--cut-inner-size) 0,
+      //   calc(100% - var(--cut-inner-size)) 0,
+      //   100% var(--cut-inner-size),
+      //   100% calc(100% - var(--cut-inner-size)),
+      //   calc(100% - var(--cut-inner-size)) 100%,
+      //   var(--cut-inner-size) 100%,
+      //   0 calc(100% - var(--cut-inner-size)),
+      //   0 var(--cut-inner-size)
+      // );
 
       th,
       td {
