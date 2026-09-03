@@ -330,6 +330,10 @@
       .c-product-model {
         grid-column: span 2;
 
+        &[hidden] {
+          display: none;
+        }
+
         &--wide {
           grid-column: span 3;
         }
