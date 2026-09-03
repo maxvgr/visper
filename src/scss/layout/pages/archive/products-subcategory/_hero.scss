@@ -304,6 +304,13 @@
           color: $palette-blue;
         }
       }
+
+      &.is-active {
+        --cut-border-color: #{$palette-blue};
+        --cut-background-color: #{$palette-lightblue};
+
+        color: $palette-blue;
+      }
     }
 
     &__divider {

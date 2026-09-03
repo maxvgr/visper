@@ -10,6 +10,7 @@ import './global/init';
 import './layout/header';
 import './layout/menu';
 import './layout/products-category-nav';
+import './layout/products-subcategory-filter';
 
 /* Подключение cnhfybw */
 import './layout/page/home';
