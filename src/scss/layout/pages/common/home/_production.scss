@@ -43,10 +43,17 @@
 
             background: $palette-blue;
             color: $palette-white;
+
+            &::before {
+              opacity: 0.67;
+            }
           }
 
           .production__icon {
-            color: $palette-white;
+            border-radius: 50%;
+
+            background: $palette-white;
+            color: $palette-blue;
           }
         }
       }
@@ -168,6 +175,7 @@
         font-size: var(--font-text-regular);
       }
 
+      position: relative;
       display: flex;
       flex: 0 0 auto;
       gap: 20px;
@@ -191,12 +199,27 @@
 
       clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px));
 
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        background: url("../assets/images/layout/pages/home/production/bg.webp") center / cover no-repeat;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $transition-time ease;
+        mix-blend-mode: overlay;
+      }
+
       span {
         @include mq($until: laptop) {
           -webkit-line-clamp: 3;
           line-clamp: 3;
         }
 
+        position: relative;
+        z-index: 1;
         display: -webkit-box;
         flex: 1 1 auto;
         overflow: hidden;
@@ -215,8 +238,9 @@
         height: 24px;
       }
 
+      position: relative;
+      z-index: 1;
       flex: 0 0 auto;
-
       width: 32px;
       height: 32px;
 
