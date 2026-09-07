@@ -1,4 +1,18 @@
 #ap-products-hero {
+  @include mq($until: laptop) {
+    .products-hero {
+      &__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+  @include mq($until: notebook) {
+    .products-hero {
+      &__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
   @include mq($until: tablet) {
     padding-top: 24px;
     // padding-bottom: 60px;
@@ -22,7 +36,6 @@
       }
 
       &__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-auto-rows: 222px;
         gap: 16px;
 
@@ -120,6 +133,7 @@
 
     &__number {
       flex: 0 0 auto;
+      padding-top: 15px;
 
       font-weight: $weight-Bold;
       font-size: 28px;
