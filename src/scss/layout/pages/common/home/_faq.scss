@@ -240,16 +240,6 @@
       border-radius: 50%;
       transition: transform $transition-time ease;
 
-      // @media (hover: hover) {
-      //   &:hover {
-      //     background: $palette-blue;
-
-      //     span {
-      //       background: $palette-white;
-      //     }
-      //   }
-      // }
-
       span {
         position: absolute;
         top: 50%;
@@ -267,12 +257,6 @@
         &:last-child {
           transform: translate(-50%, -50%) rotate(90deg);
         }
-      }
-    }
-
-    &__title-prefix {
-      @include mq($until: tablet) {
-        display: none;
       }
     }
 

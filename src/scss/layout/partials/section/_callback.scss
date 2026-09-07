@@ -32,6 +32,22 @@
 
     margin-top: 38px;
 
+    &__title {
+      @include mq($until: mobile) {
+        &--desktop {
+          display: none;
+        }
+
+        &--mobile {
+          display: block;
+        }
+      }
+
+      &--mobile {
+        display: none;
+      }
+    }
+
     &__note {
       @include mq($until: notebook) {
         font-size: var(--font-text-big);
@@ -243,7 +259,7 @@
         min-height: 175px;
         padding-top: 16px;
 
-        resize: none;
+        resize: vertical;
       }
 
       .input__label {
@@ -253,7 +269,7 @@
 
         top: 16px;
 
-        transform: none;
+        transform: vertical;
       }
 
       .input__field:focus + .input__label,
