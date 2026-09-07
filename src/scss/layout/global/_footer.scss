@@ -190,7 +190,8 @@
 
     @include mq($until: tablet) {
       top: 101px;
-      right: max(0px, calc((100% - 512px) / 2));
+      right: 20px;
+
 
       a {
         font-size: 12px;
@@ -243,7 +244,7 @@
     @include mq($until: tablet) {
       .scroll-top {
         top: 35px;
-        right: max(0px, calc((100% - 512px) / 2));
+        right: 20px;
       }
     }
 

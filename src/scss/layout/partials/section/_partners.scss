@@ -356,7 +356,7 @@
 
       transition: -webkit-text-stroke-color $transition-time ease;
 
-      -webkit-text-stroke: 1px $palette-lightgray;
+      -webkit-text-stroke: 1px rgba($palette-gray, 0.5);
 
       &--vacuum-switch {
         align-items: flex-end;
