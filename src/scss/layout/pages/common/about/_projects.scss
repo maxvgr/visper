@@ -127,9 +127,7 @@
         grid-row: 1;
         grid-column: 2;
 
-        padding: 0 8px;
-
-        text-align: center;
+        padding: 0 8px 0 20px;
       }
 
       &__year {
@@ -249,7 +247,8 @@
     }
 
     &__name {
-      text-align: center;
+      padding-left: 20px;
+      text-align: left;
     }
 
     &__year {
