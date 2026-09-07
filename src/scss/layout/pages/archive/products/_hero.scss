@@ -72,12 +72,12 @@
 
         flex-basis: 56px;
         align-items: flex-start;
+        overflow: visible;
 
         min-height: 56px;
         padding: 8px 10px;
 
-        // font-weight: $weight-Regular;
-        // font-size: 13px;
+        clip-path: none;
 
         span {
           -webkit-line-clamp: 4;
