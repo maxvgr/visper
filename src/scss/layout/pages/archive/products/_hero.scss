@@ -36,6 +36,7 @@
       }
 
       &__grid {
+        grid-template-columns: 1fr;
         grid-auto-rows: 222px;
         gap: 16px;
 
@@ -69,14 +70,14 @@
       &__info {
         position: static;
 
-        flex-basis: 86px;
+        flex-basis: 56px;
         align-items: flex-start;
 
-        min-height: 86px;
+        min-height: 56px;
         padding: 8px 10px;
 
-        font-weight: $weight-Regular;
-        font-size: 13px;
+        // font-weight: $weight-Regular;
+        // font-size: 13px;
 
         span {
           -webkit-line-clamp: 4;
@@ -95,12 +96,6 @@
     }
   }
   @include mq($until: mobile) {
-    .products-hero {
-      &__grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .c-product {
       &__info {
         flex-basis: 58px;
