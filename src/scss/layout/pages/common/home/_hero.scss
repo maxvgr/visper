@@ -227,9 +227,25 @@
       margin-top: 28px;
 
       .button {
+        --cut-size: 4px;
+        --cut-inner-size: 3px;
+        --cut-border-color: transparent;
+        --cut-background-color: linear-gradient(180deg, #{$palette-white} 89.76%, #c4d6ff 99.53%);
+
         @include mq($until: laptop) {
           width: 334px;
           max-width: calc(100% - 68px);
+        }
+
+        padding: 11px 32px;
+
+        @media (hover: hover) {
+          &:hover {
+            --cut-border-color: #{$palette-white};
+            --cut-background-color: #{$palette-blue};
+
+            background: var(--cut-border-color);
+          }
         }
       }
     }

@@ -69,7 +69,8 @@ if (switchTarget) {
     modules: [Navigation, Pagination, Autoplay],
 
     slidesPerView: 2.2,
-    centeredSlides: true, // центральный слайд по центру
+    centeredSlides: true,
+    loop: true,
     spaceBetween: 30,
 
     speed: 600,
