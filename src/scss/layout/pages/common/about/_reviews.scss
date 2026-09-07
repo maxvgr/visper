@@ -116,6 +116,9 @@
 
         font-size: 13px;
         line-height: 1.4;
+
+        -webkit-line-clamp: 7;
+        line-clamp: 7;
       }
 
       &__author {
@@ -210,9 +213,15 @@
     }
 
     &__text {
+      display: -webkit-box;
+      overflow: hidden;
       margin: 15px 0 0;
 
       line-height: 1.4;
+
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 8;
+      line-clamp: 8;
 
       strong {
         font-weight: $weight-Bold;
