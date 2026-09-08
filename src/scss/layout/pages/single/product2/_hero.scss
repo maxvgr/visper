@@ -749,6 +749,7 @@
       .b-gallery__viewport {
         --cut-size: 10px;
         --cut-inner-size: 9px;
+        --cut-background-color: #{$palette-lightgray};
 
         overflow: hidden;
 
@@ -783,7 +784,7 @@
       --cut-size: 8px;
       --cut-inner-size: 7px;
       --cut-border-color: #{$palette-gray};
-      --cut-background-color: #{$palette-white};
+      --cut-background-color: #{$palette-lightgray};
 
       display: flex;
       align-items: center;

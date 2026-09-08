@@ -2,15 +2,9 @@ import { Swiper } from "swiper";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
 
-// const getSliderOffset = () => Math.max(16, (window.innerWidth - 1760) / 2);
+const mobileBreakpoint = 529;
 
-const getSliderOffset = () => {
-  if (window.innerWidth < 529) {
-    return (window.innerWidth - 173) / 2;
-  }
-
-  return Math.max(16, (window.innerWidth - 1760) / 2);
-};
+const getSliderOffset = () => Math.max(16, (window.innerWidth - 1760) / 2);
 
 const relatedSections = document.querySelectorAll(".products-related");
 
@@ -21,33 +15,52 @@ for (const relatedSection of relatedSections) {
     continue;
   }
 
-  const relatedSwiper = new Swiper(relatedTarget, {
-    modules: [Navigation],
+  let isMobile = window.innerWidth < mobileBreakpoint;
+  let relatedSwiper;
 
-    slidesPerView: "auto",
-    spaceBetween: 16,
-    slidesOffsetBefore: getSliderOffset(),
-    slidesOffsetAfter: getSliderOffset(),
-    speed: 600,
-    grabCursor: true,
+  const initSlider = () => {
+    const mobile = window.innerWidth < mobileBreakpoint;
 
-    breakpoints: {
-      529: {
-        spaceBetween: 20,
+    relatedSwiper = new Swiper(relatedTarget, {
+      modules: [Navigation],
+
+      slidesPerView: "auto",
+      spaceBetween: mobile ? 16 : 20,
+      centeredSlides: mobile,
+      initialSlide: mobile ? 1 : 0,
+      slidesOffsetBefore: mobile ? 0 : getSliderOffset(),
+      slidesOffsetAfter: mobile ? 0 : getSliderOffset(),
+      speed: 600,
+      grabCursor: true,
+
+      navigation: {
+        prevEl: relatedSection.querySelector(".products-related__button--prev"),
+        nextEl: relatedSection.querySelector(".products-related__button--next"),
       },
-    },
+    });
+  };
 
-    navigation: {
-      prevEl: relatedSection.querySelector(".products-related__button--prev"),
-      nextEl: relatedSection.querySelector(".products-related__button--next"),
-    },
-  });
+  initSlider();
 
   window.addEventListener("resize", () => {
-    const offset = getSliderOffset();
+    const mobile = window.innerWidth < mobileBreakpoint;
 
-    relatedSwiper.params.slidesOffsetBefore = offset;
-    relatedSwiper.params.slidesOffsetAfter = offset;
+    if (mobile !== isMobile) {
+      isMobile = mobile;
+
+      relatedSwiper.destroy(true, true);
+      initSlider();
+
+      return;
+    }
+
+    if (!mobile) {
+      const offset = getSliderOffset();
+
+      relatedSwiper.params.slidesOffsetBefore = offset;
+      relatedSwiper.params.slidesOffsetAfter = offset;
+    }
+
     relatedSwiper.update();
   });
 }
