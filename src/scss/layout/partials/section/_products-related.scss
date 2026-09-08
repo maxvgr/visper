@@ -124,7 +124,7 @@
       top: 0;
       bottom: 0;
 
-      width: 180px;
+      width: min(27.9vw, 535px);
 
       pointer-events: none;
     }
