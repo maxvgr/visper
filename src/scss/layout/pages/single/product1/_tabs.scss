@@ -240,9 +240,10 @@
 
       &.is-active {
         --cut-border-color: #{$palette-blue};
-        --cut-background-color: #{$palette-white};
+        --cut-background-color: #{$palette-lightblue};
 
         color: $palette-blue;
+        font-weight: $weight-SemiBold;
       }
     }
 
@@ -298,21 +299,41 @@
 
       height: 609px;
 
+      // &::after {
+      //   content: "";
+      //   position: absolute;
+      //   z-index: 0;
+
+      //   top: -30%;
+      //   left: -10%;
+
+      //   width: 120%;
+      //   height: 160%;
+
+      //   background-image: url("../assets/images/watermark-pattern.png");
+      //   background-size: 170px 89px;
+      //   background-repeat: repeat;
+
+      //   opacity: 0.08;
+      //   pointer-events: none;
+
+      //   transform: rotate(-15deg);
+      // }
+
       &::after {
         content: "";
         position: absolute;
         z-index: 0;
-
         inset: 1px;
 
-        background-image: url("../assets/images/logo.png"), url("../assets/images/logo.png");
-        background-position:
-          40px 32px,
-          135px 118px;
-        background-size: 150px auto;
+
+        background-image: url("../assets/images/watermark-pattern.svg");
+        background-position: 0 0;
+        background-size: 210px 120px;
+
         background-repeat: repeat;
 
-        opacity: 0.04;
+
         pointer-events: none;
       }
 

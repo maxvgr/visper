@@ -78,10 +78,6 @@
     .product-detail {
       margin-top: 11px;
 
-      &__title {
-        font-size: 26px;
-      }
-
       &__viewer {
         --cut-size: 7px;
         --cut-inner-size: 6px;
@@ -199,10 +195,7 @@
 
     &__title {
       margin: 0;
-
-      font-weight: $weight-Bold;
-      font-size: var(--font-title-small);
-      line-height: var(--line-height-small);
+      padding-bottom: 0;
     }
 
     &__viewer {
