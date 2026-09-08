@@ -23,11 +23,24 @@
 
       .c-product-model__content {
         color: $palette-white;
+
+        &::before {
+          opacity: 0.47;
+        }
       }
 
-      .c-product-model__subtitle,
-      .c-product-model__icon {
+      .c-product-model__subtitle {
         color: $palette-white;
+      }
+
+      .c-product-model__arrow {
+        border-radius: 50%;
+
+        background: $palette-white;
+      }
+
+      .c-product-model__icon {
+        color: $palette-blue;
       }
     }
   }
@@ -100,9 +113,27 @@
     padding: 16px 20px 16px 24px;
 
     transition: color $transition-time ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+
+      inset: 0;
+
+      background: url("../assets/images/layout/pages/home/production/bg.webp") center / cover no-repeat;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition-time ease;
+
+      mix-blend-mode: overlay;
+    }
   }
 
   &__info {
+    position: relative;
+    z-index: 1;
+
     min-width: 0;
   }
 
@@ -127,11 +158,14 @@
 
   &__arrow {
     position: relative;
+    z-index: 1;
 
     flex: 0 0 auto;
 
     width: 32px;
     height: 32px;
+
+    transition: background $transition-time ease;
   }
 
   &__icon {
