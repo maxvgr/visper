@@ -378,7 +378,7 @@
       &__tab {
         flex: 0 0 204px;
 
-        height: 40px;
+        height: 48px;
         padding: 0 10px;
 
         font-size: var(--font-text-small);
@@ -537,6 +537,10 @@
         display: block;
 
         height: auto;
+
+        &::after {
+          display: none;
+        }
       }
 
       &__warranty-column {
@@ -621,8 +625,6 @@
       &__tab {
         --cut-size: 6px;
         --cut-inner-size: 5px;
-
-        height: 30px;
 
         font-weight: $weight-Medium;
         font-size: 13px;
@@ -1376,6 +1378,7 @@
     &__standards {
       --cut-size: 12px;
       --cut-inner-size: 11px;
+      --cut-background-color: #{$palette-lightgray};
 
       display: flex;
       align-items: center;
@@ -1495,6 +1498,22 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
 
       height: 506px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+
+        top: 31px;
+        bottom: 31px;
+        left: 50%;
+
+        width: 1px;
+
+        background: $palette-gray;
+
+        pointer-events: none;
+      }
     }
 
     &__warranty-column {
@@ -1542,10 +1561,6 @@
         li::marker {
           color: $palette-blue;
         }
-      }
-
-      & + & {
-        border-left: 1px solid $palette-gray;
       }
 
       &:last-child {
