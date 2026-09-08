@@ -430,6 +430,10 @@
       &__specs {
         width: 100%;
         height: auto;
+
+        &::after {
+          display: none;
+        }
       }
 
       &__specs-header {
@@ -1265,6 +1269,22 @@
       width: calc(100% - 1px);
       height: 376px;
       padding: 1px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+
+        top: 1px;
+        bottom: 1px;
+        left: 50%;
+
+        width: 1px;
+
+        background: $palette-gray;
+
+        pointer-events: none;
+      }
     }
 
     &__specs-header {
