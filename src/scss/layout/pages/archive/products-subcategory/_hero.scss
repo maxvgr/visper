@@ -258,10 +258,7 @@
       flex: 0 0 auto;
 
       margin: 0;
-
-      font-weight: $weight-Bold;
-      font-size: var(--font-title-medium);
-      line-height: var(--line-height-small);
+      padding-bottom: 0;
     }
 
     &__filters {
