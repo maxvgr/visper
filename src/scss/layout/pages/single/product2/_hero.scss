@@ -384,13 +384,9 @@
       &__purpose-content {
         padding: 24px;
 
-        p {
+        &[data-editor] {
           font-size: var(--font-text-small);
         }
-      }
-
-      &__purpose-list {
-        font-size: var(--font-text-small);
       }
 
       &__purpose-drawing {
@@ -523,8 +519,7 @@
       &__warranty-column {
         padding: 24px;
 
-        p,
-        ul {
+        [data-editor] {
           font-size: var(--font-text-small);
         }
 
@@ -532,10 +527,14 @@
           border-top: 1px solid $palette-gray;
           border-left: 0;
         }
-      }
 
-      &__warranty-title {
-        max-width: none;
+        &:last-child {
+          [data-editor] {
+            & > p:first-child {
+              max-width: none;
+            }
+          }
+        }
       }
 
       &__warranty-downloads {
@@ -602,11 +601,11 @@
 
         height: 30px;
 
-        font-weight: $weight-Regular;
+        font-weight: $weight-Medium;
         font-size: 13px;
 
         &.is-active {
-          font-weight: $weight-Medium;
+          font-weight: $weight-SemiBold;
         }
       }
     }
@@ -1048,6 +1047,7 @@
         --cut-background-color: #{$palette-lightblue};
 
         color: $palette-blue;
+
         font-weight: $weight-SemiBold;
       }
     }
@@ -1083,45 +1083,48 @@
     &__purpose-content {
       padding: 23px 29px 16px;
 
-      p {
-        margin: 0;
-
+      &[data-editor] {
         color: $color-text__gray;
 
         line-height: 1.5;
-      }
 
-      .product-detail__purpose-list + p {
-        margin-top: 10px;
-      }
+        & > *:not(:last-child) {
+          margin-bottom: 0;
+        }
 
-      p + p {
-        margin-top: 12px;
-      }
-    }
+        & > p {
+          margin: 0;
+        }
 
-    &__panel-title {
-      margin: 0;
+        & > p:first-child {
+          margin-bottom: 4px;
 
-      font-weight: $weight-Medium;
-      font-size: var(--font-text-regular);
-      line-height: 1.5;
-    }
+          color: $color-text__primary;
 
-    &__purpose-list {
-      margin: 0;
-      margin-top: 4px;
-      padding-left: 14px;
+          strong {
+            font-weight: $weight-SemiBold;
+          }
+        }
 
-      color: $color-text__gray;
+        & > ul {
+          margin: 0 0 10px;
+          padding-left: 14px;
 
-      list-style-position: outside;
-      list-style-type: disc;
+          list-style-position: outside;
+          list-style-type: disc;
+        }
 
-      line-height: 1.5;
+        li {
+          margin-bottom: 0;
+        }
 
-      li::marker {
-        color: $palette-blue;
+        li::marker {
+          color: $palette-blue;
+        }
+
+        & > p + p {
+          margin-top: 12px;
+        }
       }
     }
 
@@ -1384,25 +1387,44 @@
     &__warranty-column {
       padding: 23px 29px 12px;
 
-      p {
-        margin: 0;
-
+      [data-editor] {
         color: $color-text__gray;
 
         line-height: 1.5;
-      }
 
-      ul {
-        margin: 0;
-        margin-top: 16px;
-        padding-left: 14px;
+        & > *:not(:last-child) {
+          margin-bottom: 0;
+        }
 
-        color: $color-text__gray;
+        & > p {
+          margin: 0;
+        }
 
-        list-style-position: outside;
-        list-style-type: disc;
+        & > p + p {
+          margin-top: 3px;
+        }
 
-        line-height: 1.5;
+        & > p:first-child + p {
+          margin-top: 4px;
+        }
+
+        & > p strong {
+          color: $color-text__primary;
+
+          font-weight: $weight-Medium;
+        }
+
+        & > ul {
+          margin: 16px 0 0;
+          padding-left: 14px;
+
+          list-style-position: outside;
+          list-style-type: disc;
+        }
+
+        li {
+          margin-bottom: 0;
+        }
 
         li::marker {
           color: $palette-blue;
@@ -1412,29 +1434,16 @@
       & + & {
         border-left: 1px solid $palette-gray;
       }
-    }
 
-    &__warranty-lead {
-      color: $color-text__primary !important;
+      &:last-child {
+        [data-editor] {
+          & > p:first-child {
+            max-width: 528px;
 
-      font-weight: $weight-Medium;
-
-      & + p {
-        margin-top: 4px;
+            line-height: 1.2;
+          }
+        }
       }
-
-      p + & {
-        margin-top: 3px;
-      }
-    }
-
-    &__warranty-title {
-      max-width: 528px;
-
-      color: $color-text__primary !important;
-
-      font-weight: $weight-Medium;
-      line-height: 1.2 !important;
     }
 
     &__warranty-downloads {
