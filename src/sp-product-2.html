@@ -271,13 +271,40 @@
                       <!-- /.product-detail__purpose-content -->
 
                       <div class="product-detail__purpose-drawing">
-                        <picture class="lazy">
-                          <img class="image image--contain lazy__item" data-src="assets/images/layout/pages/sp-product-2/tabs/purpose.png" alt="Строповочная схема вакуумного выключателя">
-                        </picture>
+                        <div class="product-detail__purpose-slider swiper">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                              <picture class="lazy">
+                                <img class="image image--contain lazy__item" data-src="assets/images/layout/pages/sp-product-2/tabs/purpose.png" alt="Строповочная схема вакуумного выключателя">
+                              </picture>
 
-                        <div class="product-detail__purpose-caption">
-                          Строповочная схема Вакуумного выключателя
+                              <div class="product-detail__purpose-caption">
+                                Строповочная схема Вакуумного выключателя
+                              </div>
+                            </div>
+                            <div class="swiper-slide">
+                              <picture class="lazy">
+                                <img class="image image--contain lazy__item" data-src="assets/images/layout/pages/sp-product-2/tabs/purpose.png" alt="Строповочная схема вакуумного выключателя">
+                              </picture>
+
+                              <div class="product-detail__purpose-caption">
+                                Строповочная схема Вакуумного выключателя
+                              </div>
+                            </div>
+                          </div>
                         </div>
+
+                        <button class="product-detail__purpose-button product-detail__purpose-button--prev" type="button" aria-label="Предыдущая схема">
+                          <svg class="product-detail__purpose-button-icon" aria-hidden="true">
+                            <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                          </svg>
+                        </button>
+
+                        <button class="product-detail__purpose-button product-detail__purpose-button--next" type="button" aria-label="Следующая схема">
+                          <svg class="product-detail__purpose-button-icon" aria-hidden="true">
+                            <use href="assets/images/icons/package.svg#arrow-circle"></use>
+                          </svg>
+                        </button>
                       </div>
                       <!-- /.product-detail__purpose-drawing -->
                     </div>

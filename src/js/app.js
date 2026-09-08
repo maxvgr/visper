@@ -16,6 +16,7 @@ import './layout/products-subcategory-filter';
 import './layout/page/home';
 import './layout/page/news';
 import './layout/page/about';
+import './layout/page/product-2';
 
 import './layout/section/contacts-map';
 import './layout/section/products-related';

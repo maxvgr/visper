@@ -82,9 +82,13 @@
         }
       }
 
+      &__purpose-button {
+        top: 169px;
+      }
+
       &__purpose-caption {
         margin-top: 24px;
-        padding: 0 16px 20px;
+        padding: 8px 16px 20px;
       }
 
       &__specs {
@@ -402,8 +406,13 @@
         }
       }
 
+      &__purpose-button {
+        top: 163px;
+      }
+
       &__purpose-caption {
         margin-top: 12px;
+        padding-top: 8px;
 
         font-size: var(--font-text-small);
       }
@@ -1057,7 +1066,7 @@
 
       margin-top: 40px;
 
-      .swiper-slide {
+      & > .swiper-wrapper > .swiper-slide {
         padding-bottom: 2px;
       }
 
@@ -1129,9 +1138,7 @@
     }
 
     &__purpose-drawing {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      position: relative;
 
       height: 100%;
       border-left: 1px solid $palette-gray;
@@ -1154,9 +1161,71 @@
       }
     }
 
+    &__purpose-slider {
+      overflow: hidden;
+
+      width: 100%;
+
+      & > .swiper-wrapper > .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    &__purpose-button {
+      position: absolute;
+      z-index: 2;
+
+      top: 207px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border: 0;
+
+      background: transparent;
+      color: $palette-blue;
+
+      cursor: pointer;
+
+      transition: color $transition-time ease;
+
+      appearance: none;
+
+      &--prev {
+        left: 20px;
+
+        .product-detail__purpose-button-icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      &--next {
+        right: 20px;
+      }
+
+      &.swiper-button-disabled {
+        color: $palette-gray;
+
+        pointer-events: none;
+      }
+    }
+
+    &__purpose-button-icon {
+      width: 22px;
+      height: 22px;
+    }
+
     &__purpose-caption {
       width: 100%;
-      margin-top: 62px;
+      margin-top: 57px;
+      padding-top: 7px;
+      border-top: 1px solid $palette-gray;
 
       font-size: var(--font-text-regular);
       line-height: 1.5;
