@@ -34,8 +34,6 @@
       }
 
       .c-product-model__arrow {
-        border-radius: 50%;
-
         background: $palette-white;
       }
 
@@ -164,8 +162,11 @@
 
     width: 32px;
     height: 32px;
+    border-radius: 50%;
 
-    transition: background $transition-time ease;
+    background-color: transparent;
+
+    transition: background-color $transition-time ease;
   }
 
   &__icon {
