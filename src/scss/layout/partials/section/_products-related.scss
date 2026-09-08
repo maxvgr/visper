@@ -100,7 +100,16 @@
 
     cursor: pointer;
 
+    transition: opacity $transition-time ease;
+
     appearance: none;
+
+    &.swiper-button-disabled {
+      opacity: 0.35;
+
+      cursor: default;
+      pointer-events: none;
+    }
 
     picture {
       width: 100%;

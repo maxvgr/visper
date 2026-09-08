@@ -4,6 +4,123 @@
   --cut-border-color: #{$palette-gray};
   --cut-background-color: #{$palette-white};
 
+  @include mq($until: mobile) {
+    padding-top: 25px;
+    padding-bottom: 0;
+
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .page-breadcrumbs {
+      &__link,
+      &__current {
+        font-size: 13px;
+      }
+    }
+
+    .products-subcategory {
+      margin-top: 11px;
+
+      &__header {
+        gap: 16px;
+      }
+
+      &__title {
+        width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $palette-gray;
+
+        font-size: 26px;
+      }
+
+      &__filters {
+        gap: 10px;
+      }
+
+      &__filter {
+        height: 29px;
+
+        font-size: 13px;
+      }
+
+      &__divider {
+        display: none;
+      }
+
+      &__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+
+        margin-top: 30px;
+
+        .c-product-model,
+        .c-product-model--wide,
+        .c-product-model:first-child {
+          grid-column: span 1;
+        }
+      }
+    }
+
+    .c-product-model {
+      --cut-size: 8px;
+      --cut-inner-size: 7px;
+
+      height: auto;
+
+      @media (hover: hover) {
+        &:hover {
+          .c-product-model__image {
+            background: $palette-lightblue;
+          }
+        }
+      }
+
+      &::after {
+        display: none;
+      }
+
+      &__image {
+        flex: 0 0 137px;
+
+        background: $palette-lightgray;
+
+        transition: background $transition-time ease;
+
+        img {
+          max-width: 80%;
+          max-height: 90px;
+        }
+      }
+
+      &__content {
+        flex: 0 0 auto;
+        gap: 8px;
+        align-items: flex-start;
+
+        padding: 11px 16px 23px;
+      }
+
+      &__title {
+        font-size: 15px;
+      }
+
+      &__subtitle {
+        margin-top: 3px;
+
+        font-size: 13px;
+        line-height: 14px;
+      }
+
+      &__arrow,
+      &__icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
   position: relative;
 
   display: flex;
