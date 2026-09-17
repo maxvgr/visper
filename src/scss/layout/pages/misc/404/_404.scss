@@ -139,8 +139,27 @@
     }
 
     &__button {
+      --cut-size: 4px;
+      --cut-inner-size: 3px;
+      --cut-border-color: transparent;
+      --cut-background-color: #{$palette-blue};
+
       width: 200px;
       margin-top: 22px;
+
+      font-weight: $weight-SemiBold;
+      font-size: var(--font-text-small);
+      line-height: 1.5;
+
+      @media (hover: hover) {
+        &:hover {
+          --cut-border-color: #{$palette-blue};
+          --cut-background-color: #{$palette-white};
+
+          border: 0;
+          background: var(--cut-border-color);
+        }
+      }
     }
 
     &__visual {
