@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<include src="layout/head.html"></include>
+
+<body class="page">
+  <include src="layout/header.html"></include>
+
+  <main>
+    <div id="cp-contacts" class="page__body">
+      <section id="s-contacts" class="section contacts-page">
+        <div class="container">
+          <h1 class="section__title contacts-page__title">Контакты</h1>
+
+          <div class="contacts-page__office cut-border">
+            <div class="contacts-page__office-name">
+              <span class="contacts-page__icon">
+                <svg class="contacts-page__icon-svg" aria-hidden="true">
+                  <use href="assets/images/icons/package.svg#contacts-location"></use>
+                </svg>
+              </span>
+
+              <span>Офис в Санкт-Петербурге</span>
+            </div>
+
+            <div class="contacts-page__office-address">
+              195009, г. Санкт-Петербург, улица Комсомола, 1-3М
+            </div>
+
+            <a href="https://yandex.ru/maps/?ll=30.3718%2C59.9564&amp;z=16" class="contacts-page__office-link link" target="_blank" rel="noopener">
+              Посмотреть на карте яндекс
+            </a>
+          </div>
+          <!-- /.contacts-page__office -->
+
+          <div class="contacts__map contacts-page__map">
+            <div class="contacts__map-gray">
+              <div id="contacts-map" class="contacts__map-container"></div>
+            </div>
+          </div>
+          <!-- /.contacts-page__map -->
+
+          <div class="contacts-page__info">
+            <div class="contacts-page__communication cut-border">
+              <div class="contacts-page__communication-list">
+                <div class="contacts-page__communication-item">
+                  <span class="contacts-page__icon">
+                    <svg class="contacts-page__icon-svg" aria-hidden="true">
+                      <use href="assets/images/icons/package.svg#contacts-phone"></use>
+                    </svg>
+                  </span>
+
+                  <div class="contacts-page__communication-content">
+                    <div class="contacts-page__label">Телефон</div>
+                    <a href="tel:+79216427858" class="contacts-page__value link">+7 921 642-78-58</a>
+                  </div>
+                </div>
+
+                <div class="contacts-page__communication-item">
+                  <span class="contacts-page__icon contacts-page__icon--calendar">
+                    <svg class="contacts-page__icon-svg contacts-page__icon-svg--calendar" aria-hidden="true">
+                      <use href="assets/images/icons/package.svg#contacts-calendar"></use>
+                    </svg>
+                  </span>
+
+                  <div class="contacts-page__communication-content">
+                    <div class="contacts-page__label">График работы</div>
+                    <div class="contacts-page__value">пн-пт / 09:00-17:30</div>
+                  </div>
+                </div>
+
+                <div class="contacts-page__communication-item">
+                  <span class="contacts-page__icon">
+                    <svg class="contacts-page__icon-svg" aria-hidden="true">
+                      <use href="assets/images/icons/package.svg#contacts-mail"></use>
+                    </svg>
+                  </span>
+
+                  <div class="contacts-page__communication-content">
+                    <div class="contacts-page__label">Почта</div>
+                    <a href="mailto:office@w-av.ru" class="contacts-page__value link">office@w-av.ru</a>
+                  </div>
+                </div>
+              </div>
+              <!-- /.contacts-page__communication-list -->
+
+              <button class="button button-secondary cut-border contacts-page__feedback" type="button" data-modal-open="write-us">
+                Обратная связь
+              </button>
+            </div>
+            <!-- /.contacts-page__communication -->
+
+            <div class="contacts-page__details cut-border">
+              <div class="contacts-page__details-column">
+                <div class="contacts-page__detail">
+                  <div class="contacts-page__label">Полное наименование</div>
+                  <div class="contacts-page__value">Общество с ограниченной ответственностью «Виспер»</div>
+                </div>
+
+                <div class="contacts-page__detail">
+                  <div class="contacts-page__label">Краткое наименование</div>
+                  <div class="contacts-page__value">ООО «Виспер»</div>
+                </div>
+
+                <div class="contacts-page__detail">
+                  <div class="contacts-page__label">ОГРН</div>
+                  <div class="contacts-page__value">1227800100120</div>
+                </div>
+
+                <div class="contacts-page__detail contacts-page__detail--last">
+                  <div class="contacts-page__label">ИНН</div>
+                  <div class="contacts-page__value">7811802424</div>
+                </div>
+              </div>
+
+              <div class="contacts-page__details-column">
+                <div class="contacts-page__detail">
+                  <div class="contacts-page__label">КПП</div>
+                  <div class="contacts-page__value">781301001</div>
+                </div>
+
+                <div class="contacts-page__detail">
+                  <div class="contacts-page__label">ОКПО</div>
+                  <div class="contacts-page__value">72727009</div>
+                </div>
+
+                <div class="contacts-page__detail">
+                  <div class="contacts-page__label">Юридический адрес</div>
+                  <div class="contacts-page__value">
+                    197022, город Санкт-Петербург, Инструментальная улица, д. 3 литера В, офис 4308 помещ. 7-н.
+                  </div>
+                </div>
+
+                <div class="contacts-page__detail contacts-page__detail--last">
+                  <a href="#" class="contacts-page__download link">
+                    <svg class="contacts-page__download-icon" aria-hidden="true">
+                      <use href="assets/images/icons/package.svg#certificate-download"></use>
+                    </svg>
+
+                    <span>Реквизиты ООО «Виспер». pdf (250 КБ)</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- /.contacts-page__details -->
+          </div>
+          <!-- /.contacts-page__info -->
+        </div>
+        <!-- /.container -->
+      </section>
+
+      <include src="layout/section/marquee.html"></include>
+
+      <include src="layout/section/products-related.html">
+        {
+        "id": "cp-contacts-related",
+        "title": "Еще продукция",
+        "items": [
+        {
+        "title": "Оборудование для производства ячеек КРУ и КСО",
+        "picture": "assets/images/layout/pages/sp-product-2/related/01.png",
+        "href": "ap-products.html"
+        },
+        {
+        "title": "Вакуумные выключатели серии ВВ/FE",
+        "picture": "assets/images/layout/pages/sp-product-2/related/02.png",
+        "href": "sp-product-2.html"
+        },
+        {
+        "title": "Вакуумные выключатели наружного исполнения серии ВВН/FE",
+        "picture": "assets/images/layout/pages/sp-product-2/related/03.png",
+        "href": "#"
+        },
+        {
+        "title": "Вакуумные контакторы серий ВК/FE и ВК/FM",
+        "picture": "assets/images/layout/pages/sp-product-2/related/04.png",
+        "href": "#"
+        },
+        {
+        "title": "Выключатели нагрузки автогазовые серии ВНА/W-10",
+        "picture": "assets/images/layout/pages/sp-product-2/related/05.png",
+        "href": "#"
+        },
+        {
+        "title": "Разъединители серии РВ/W-10",
+        "picture": "assets/images/layout/pages/sp-product-2/related/06.png",
+        "href": "#"
+        },
+        {
+        "title": "Воздушные автоматические выключатели серии WGS",
+        "picture": "assets/images/layout/pages/sp-product-2/related/07.png",
+        "href": "#"
+        },
+        {
+        "title": "Автоматические выключатели в литом корпусе серии WGM",
+        "picture": "assets/images/layout/pages/sp-product-2/related/08.png",
+        "href": "#"
+        }
+        ]
+        }
+      </include>
+    </div>
+    <!-- /.page__body -->
+  </main>
+
+  <include src="layout/footer.html"></include>
+</body>
+
+</html>
