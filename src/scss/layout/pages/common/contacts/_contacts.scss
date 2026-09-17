@@ -123,9 +123,8 @@
 
       &__map {
         height: auto;
-        margin-top: 16px;
-
         aspect-ratio: 362 / 223;
+        margin-top: 16px;
       }
 
       &__info {
@@ -146,7 +145,6 @@
 
       &__communication-item {
         min-height: 76px;
-        border-bottom: 1px solid $palette-gray;
       }
 
       &__feedback {
@@ -169,11 +167,11 @@
       &__detail--last {
         min-height: 76px;
         padding: 12px 0;
-        border-bottom: 1px solid $palette-gray;
       }
 
-      &__details-column:last-child .contacts-page__detail--last {
-        border-bottom: 0;
+      &__communication-item:not(:last-child)::after,
+      &__detail:not(.contacts-page__detail--last)::after {
+        bottom: 0;
       }
 
       &__label {
@@ -243,8 +241,8 @@
     &__office-link {
       color: $palette-blue;
       text-decoration: underline;
-      text-underline-offset: 3px;
       white-space: nowrap;
+      text-underline-offset: 3px;
     }
 
     &__icon {
@@ -302,15 +300,25 @@
     }
 
     &__communication-item {
+      position: relative;
+
       display: flex;
       gap: 9px;
       align-items: flex-start;
 
       min-height: 84px;
-      border-bottom: 1px solid $palette-gray;
 
-      &:last-child {
-        border-bottom: 0;
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+
+        right: 0;
+        bottom: 21px;
+        left: 0;
+
+        height: 1px;
+
+        background: $palette-gray;
       }
     }
 
@@ -354,10 +362,13 @@
       font-size: var(--font-text-small);
 
       @media (hover: hover) {
-        &:hover {
+        &.button-secondary:hover {
+          --cut-border-color: #{$palette-blue};
           --cut-background-color: #{$palette-white};
 
           border: 0;
+          background: $palette-blue;
+          color: $palette-blue;
         }
       }
     }
@@ -376,10 +387,19 @@
     }
 
     &__detail {
-      border-bottom: 1px solid $palette-gray;
+      position: relative;
 
-      &--last {
-        border-bottom: 0;
+      &:not(.contacts-page__detail--last)::after {
+        content: "";
+        position: absolute;
+
+        right: 0;
+        bottom: 21px;
+        left: 0;
+
+        height: 1px;
+
+        background: $palette-gray;
       }
     }
 
@@ -397,8 +417,21 @@
     }
 
     &__download-icon {
+      display: flex;
       flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
 
+      width: 25px;
+      height: 25px;
+
+      border-radius: 50%;
+
+      background: $palette-blue;
+      color: $palette-white;
+    }
+
+    &__download-icon-svg {
       width: 25px;
       height: 25px;
     }
