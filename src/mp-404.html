@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<include src="layout/head.html"></include>
+
+<body class="page">
+  <include src="layout/header.html"></include>
+
+  <main>
+    <div id="mp-404" class="page__body">
+      <section id="mp-404-error" class="error-page">
+        <picture class="error-page__background lazy">
+          <img class="error-page__background-img image image--cover lazy__item" data-src="assets/images/layout/pages/mp-404/bg.webp" alt="">
+        </picture>
+
+        <div class="container error-page__container">
+          <header class="error-page__header">
+            <h1 class="error-page__title">
+              Страница не найдена
+              <span class="error-page__title-icon">:(</span>
+            </h1>
+
+            <p class="error-page__text">
+              Возможно, она была удалена, или Вы просто неверно указали адрес страницы.
+            </p>
+
+            <a href="index.html" class="button-secondary error-page__button">
+              Перейти на главную
+            </a>
+          </header>
+
+          <div class="error-page__visual" aria-hidden="true">
+            <picture class="error-page__number lazy">
+              <img class="error-page__number-img image lazy__item" data-src="assets/images/layout/pages/mp-404/404.png" alt="">
+            </picture>
+
+            <picture class="error-page__device lazy">
+              <img class="error-page__device-img image lazy__item" data-src="assets/images/layout/pages/mp-404/center.webp" alt="">
+            </picture>
+          </div>
+          <!-- /.error-page__visual -->
+        </div>
+        <!-- /.container -->
+      </section>
+
+      <include src="layout/section/marquee.html"></include>
+
+      <include src="layout/section/products-related.html">
+        {
+        "id": "mp-404-related",
+        "title": "Еще продукция",
+        "items": [
+        {
+        "title": "Оборудование для производства ячеек КРУ и КСО",
+        "picture": "assets/images/layout/pages/sp-product-2/related/01.png",
+        "href": "ap-products.html"
+        },
+        {
+        "title": "Вакуумные выключатели серии ВВ/FE",
+        "picture": "assets/images/layout/pages/sp-product-2/related/02.png",
+        "href": "sp-product-2.html"
+        },
+        {
+        "title": "Вакуумные выключатели наружного исполнения серии ВВН/FE",
+        "picture": "assets/images/layout/pages/sp-product-2/related/03.png",
+        "href": "#"
+        },
+        {
+        "title": "Вакуумные контакторы серий ВК/FE и ВК/FM",
+        "picture": "assets/images/layout/pages/sp-product-2/related/04.png",
+        "href": "#"
+        },
+        {
+        "title": "Выключатели нагрузки автогазовые серии ВНА/W-10",
+        "picture": "assets/images/layout/pages/sp-product-2/related/05.png",
+        "href": "#"
+        },
+        {
+        "title": "Разъединители серии РВ/W-10",
+        "picture": "assets/images/layout/pages/sp-product-2/related/06.png",
+        "href": "#"
+        },
+        {
+        "title": "Воздушные автоматические выключатели серии WGS",
+        "picture": "assets/images/layout/pages/sp-product-2/related/07.png",
+        "href": "#"
+        },
+        {
+        "title": "Автоматические выключатели в литом корпусе серии WGM",
+        "picture": "assets/images/layout/pages/sp-product-2/related/08.png",
+        "href": "#"
+        }
+        ]
+        }
+      </include>
+    </div>
+    <!-- /.page__body -->
+  </main>
+
+  <include src="layout/footer.html"></include>
+</body>
+
+</html>
