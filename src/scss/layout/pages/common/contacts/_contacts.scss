@@ -1,4 +1,12 @@
 #cp-contacts {
+  @include mq($until: desktop) {
+    .contacts-page {
+      &__detail:not(.contacts-page__detail--last)::after {
+        bottom: 0;
+      }
+    }
+  }
+
   @include mq($until: laptop) {
     .contacts-page {
       &__office {
@@ -64,9 +72,7 @@
       }
 
       &__communication {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 240px;
-        gap: 24px;
+        display: block;
 
         padding: 24px;
       }
@@ -82,12 +88,16 @@
 
         min-height: 0;
         border-bottom: 0;
+
+        &:not(:last-child)::after {
+          display: none;
+        }
       }
 
       &__feedback {
-        align-self: center;
-
-        margin-top: 0;
+        width: 240px;
+        margin-top: 24px;
+        margin-left: auto;
       }
 
       &__details {
@@ -148,7 +158,9 @@
       }
 
       &__feedback {
+        width: 100%;
         margin-top: 20px;
+        margin-left: 0;
       }
 
       &__details {
@@ -172,6 +184,7 @@
       &__communication-item:not(:last-child)::after,
       &__detail:not(.contacts-page__detail--last)::after {
         bottom: 0;
+        display: block;
       }
 
       &__label {
