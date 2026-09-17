@@ -93,10 +93,11 @@
 }
 
 .modal--contact {
-  top: var(--header-height, 76px);
+  // top: var(--header-height, 76px);
 
   .modal__overlay {
-    top: var(--header-height, 76px);
+    // top: var(--header-height, 76px);
+
     bottom: 0;
 
     height: auto;
