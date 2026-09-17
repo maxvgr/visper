@@ -131,11 +131,12 @@
     }
 
     &__text {
-      max-width: 410px;
+      max-width: 450px;
       margin-top: 10px;
 
       color: $color-text__gray;
       font-weight: $weight-Medium;
+      line-height: 1.5;
     }
 
     &__button {
